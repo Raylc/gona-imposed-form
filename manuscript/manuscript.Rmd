@@ -1,0 +1,143 @@
+---
+title: "Imposed form in the Early Acheulean? Evidence from Gona, Afar, Ethiopia"
+author:
+- Dietrich Stout^[Department of Anthropology, Emory University, Atlanta, GA, USA;  dwstout@emory.edu]
+- Antoine Muller^[Institute of Archaeology, Mount Scopus, The Hebrew University of Jerusalem, Jerusalem, Israel; antoine.muller@mail.huji.ac.il]
+- Cheng Liu^[Department of Anthropology, Emory University, Atlanta, GA, USA; raylc1996@outlook.com]
+- Michael J. Rogers^[Department of Anthropology, Southern Connecticut State University, New Haven, CT, USA; rogersm1@southernct.edu]
+- Sileshi Semaw^[Centro Nacional de Investigación sobre la Evolución Humana (CENIEH), Burgos, Spain; sileshi.semaw@cenieh.es]
+abstract: "TBD.\\par \\textbf{Keywords:} Gona; TBD; TBD; TBD; TBD; TBD; TBD"
+date: "`r Sys.Date()`"
+fontsize: 11pt
+output: bookdown::pdf_document2
+header-includes:
+   - \usepackage{textcomp}
+   - \usepackage{utopia}
+   - \usepackage{lineno}
+   - \linenumbers
+   - \usepackage{float}
+   - \floatplacement{figure}{H}
+   - \usepackage{caption}
+   - \captionsetup[figure]{font=scriptsize}
+   - \captionsetup[table]{font=scriptsize}
+linestretch: 1.5
+link-citations: yes
+linkcolor: blue
+bibliography: bibliography.bib
+csl: apa.csl
+editor_options: 
+  markdown: 
+    wrap: sentence
+---
+
+# Introduction
+
+The imposition of intended form on artifacts has long been viewed as a watershed in human cognitive and cultural evolution and is most commonly associated with the emergence of "Large Cutting Tools" (LCTs) in the Early Acheulean [@isaac1976; @kuhnEvolutionPaleolithicTechnologies2020; @holloway1969]. However, this interpretation of Acheulean LCTs as intentionally designed artifacts remains controversial. Alternative proposals range from the possibility that LCTs were unintended by-products of flake production [@moore2016; @noble1996] to the suggestion that their form was "at least partly under genetic control" [@corbey2016]. Even accepting that LCT form was to some extent intended, there is substantial disagreement over the specificity of design. Some analyses have indicated that shape variation in Acheulean handaxes is largely a result of resharpening [@iovita2011; @mcpherron2000] whereas others find form to be unrelated to reduction intensity and more likely to reflect normative expectations of what handaxes should look like [@garcía-medrano2019; @shiptonHandaxeReductionIts2015a; @shipton2020]. Debates about shape of Acheulean LCTs may appear narrowly technical but have broad relevance for evolutionary questions including the origins of human culture [@corbey2016; @tennie2017; @shiptonHandaxeReductionIts2015a], language [@stout2012], teaching [@gärdenfors2017], brain structure [@hecht2015], and cognition [@stout2015; @wynn2016].
+To examine these questions, we studied the complete collection of Early Acheulean flaked pieces from 5 sites at Gona and compared them with Oldowan cores form 2 published sites.
+By comparing shape variation to typological assignment and measures of flaking intensity, we sought to identify technological patterns that might reveal intent.
+
+There appears to be a broad consensus that refined handaxes and cleavers from the later Acheulean resulted from procedurally elaborate, skill intensive, and socially learned production strategies [@caruana2020; @garcía-medrano2019; @moore2020; @sharon2009; @shiptonEvolutionSocialTransmission2019; @stout2014] although debate over the presence of explicit, culturally transmitted shape preferences continues [@iovita2011; @moore2020; @shipton2020; @wynn2018]. However, there is less agreement regarding the cruder LCTs that are typical of the earliest Acheulean [@beyene2013; @delatorre2018; @diez-martín2015; @lepre2011; @semaw2018] and which continue to occur with variable frequency in later time periods [@mcnabb2015] including in eastern Asia [@li2021].
+Although several formal types have been recognized, many workers now see continuum, including the possibility that flake production remained an important or even primary purpose of LCT reduction (Shea).
+This questions imposed form.
+It is clear that LFB is new but not clear t
+
+Types are questionable, Kuhn on LFB.
+Isaac but some on cobbles.
+It is even controversial whether asia is "acheulean" Prevailing opinion, but Beyene.
+A conservative interpretation of available evidence is that LCT production was guided by a recurring set of functional, ergonomic, and aesthetic design preferences [@wynn2018] with other elements free to vary in response to raw materials, use life, and random population dynamics like drift, bottlenecks, and founder effects [@kuhnEvolutionPaleolithicTechnologies2020; @lycett2016].
+
+Hypotheses: 1) Valid technological types should produce clear morphological clusters with different reduction trajectories vs. points along a continuum.
+2) Debitage is indicated by relation of SDI and flaked area to core size but not shape.
+3) Shaping is indicated by relation of flaked area to shape & weaker or absent relations of shape with SDI.
+Shape independent of size.
+4) Shaping plus resharpening means shape should be related to core size and SDI (Shipton)
+
+# Materials and Methods
+
+## Materials
+
+Archaeological Sample
+
+## Methods
+
+### Artifact Shape Measurement
+
+Three-dimensional scanning and geometric morphometric (3DGM) methods are becoming increasingly common in the study of LCT form [@archer2010; @caruana2020; @li2021; @lycett2006; @presnyakova2018; @shiptonHandaxeReductionIts2015a]. These methods can provide high-resolution, coordinate-based descriptions of artifact form including detailed information about whole object geometric relations that is not captured by conventional linear measures [@shott2010]. However, they also impose additional costs in terms of data collection and processing time as well as required equipment, software, and training. Insofar as these costs might present an obstacle to participation by some researchers and/or draw resources away from other activities, they must be balanced against benefits. In particular, it is not clear that these powerful methods are required in order to describe relevant variation in Acheulean LCT shape. Unlike hominin crania or even projectile points, Acheulean handaxes, cleavers, and picks are not complex shapes. Individual LCTs exhibit complex morphologies defined by idiosyncratic scar patterns, but these details are largely noise at the level of comparative analyses. Laser-scanning 3DGM studies of LCTs collect vast amounts of shape data, but typically discard upward of 50% of the observed variation in order to focus on two or three interpretable principal components. Across studies, these PCs consistently corresponding to basic features like elongation, relative thickness, pointedness, and position of maximum thickness that also emerge from lower-resolution spatial data [@archer2010; @garcía-medrano2019; @lycett2006] and studies employing linear measures rather than spatial coordinates [@crompton1993; @pargeter2019].
+Thus, while the level of detail enabled by 3DGM is arguably useful for building artifact phylogenies [@okumura2019], it is of questionable behavioral/technological relevance for the study of LCTs.
+For these reasons, we favored the use of simple caliper-based linear measures to quantify shape in our study.
+Nevertheless, Shott and Trail [-@shott2010] do identify three potential shortcomings of linear measurements compared to 3DGM.
+We considered each in the context of our particular materials and research questions.
+First, conventional linear measures capture the direction (e.g. length \> breadth) but not the location of geometric relations (e.g. position of maximum breadth).
+We address this by collecting linear measures defined by homologous semi-landmarks.
+All artifacts were oriented along their maximum dimension, which was measured and defined as "length." The next largest dimension orthogonal to length was used to define the plane of "breadth," with the dimension orthogonal to this plane defined as "thickness." Breath and thickness measures were then collected at 25%, 50%, and 75% of length, oriented so that 25% Breadth \> 75% Breath.
+To partition variation in shape from variation in size, we divided all linear measures by the geometric mean [@lycett2006].
+
+Second, linear measures risk reducing complex forms to overly simplistic "stick figure caricatures" [@shott2010]. However, whether or not this risk actually presents a problem depends on the particular artifacts and research questions involved. We have already noted that 3DGM LCT studies typically evaluate only a small portion of the measured variation. To better evaluate the measurement density required for our study, we reanalyzed a data set of 128 experimental handaxes previously published by Pargeter et al. [-@pargeter2019]. These data comprise 19 linear measures (length plus breadth and thickness at 10% increments of length) collected from digital photos using the same orientation protocol described above. We conducted a PCA on the full set of 19 measures and again on a reduced set of 7 (length plus breadth and thickness at 30%, 50%, and 70% length). Despite this reduction, the first two components from each analysis displayed strikingly similar component loading matrices (PC1 positive on length and tip breadth, negative on thickness; PC2 positive on base breadth, negative on length and thickness) almost perfectly correlated component scores for individual pieces (PC1 r=0.919, PC2 r=0.913). As a further check, we performed the same comparison on a subset of the current archaeological sample from Gona for which photos were available for measurement (n = 50). This produced two PCs that were not only similar with each other, but also matched the PCs extracted from the experimental handaxe sample. Individual piece component scores were again highly correlated (r=0.975 and 0.927 respectively). Seven linear measures thus appear sufficient to explain technologically/behaviorally relevant shape variation in our sample. Third, linear measures may struggle to capture attributes such as cross-sectional area and shape (e.g. Caruana, 2020) more easily assessed using 3DGM. Particularly relevant here are measures of surface area used to calculate indices of reduction intensity [@shiptonHandaxeReductionIts2015a; @clarkson2013] and surface modification [@li2015] used in our study.
+Clarkson [-@clarkson2013] advocates the use of 3D surface area measures as more accurate than estimation from linear measures (e.g. surface area of a rectangular prism defined by artifact dimensions).
+However, he also found that the error introduced by the linear approach was a highly systematic, isometric overestimation of surface area and that results correlated with direct 3D measures with an impressive r2 = 0.944 and no effect of variation in core shape.
+Insofar as it is variation in the relationship between surface area and flaking intensity that is of interest, rather than the absolute size of artifacts, such consistent overestimation is not problematic.
+Here we improved on the prism-based surface area formula (2LW + 2LT + 2 WT) by using our 7 recorded dimensions to more tightly fit three prisms (Figure 1) around the artifact: SA = W1T1 + 2(.33L \* W1) + 2(.33L \* T1) + 2(.33L \* W2) + 2(.33L \* T2) + 2(.33L \* W3) + 2(.33L \* T3) + W3T3.
+Surface area calculated in this way correlates with mass2/3 at r2 = 0.947 in our sample.
+
+### Reduction Indices
+
+Research by Clarkson and Shipton has established the Scar Density Index (SDI = number of flake scars \> 1cm per unit surface area) as a reliable indicator of mass removed from a core across technologies [@clarkson2013] and for handaxes specifically [@shiptonFlakeScarDensity2015].
+We thus use SDI as an indicator of reduction intensity (mass removed) in our study.
+However, reduction intensity does not constitute a full description of core modification.
+Mass removal is the aim during flake production and extent of shaping are not necessarily the same thing.
+For example, imposition of a desired form
+
+# Results
+
+A PCA (covariance matrix) on our 7 linear measures (scaled by geometric mean) for pieces identified two PCs explaining 80% of variance (56.4% and 23.7%).
+Rescaled component matrix shows that PC1 reflects "flatness" (length and breadth vs. thickness).
+PC
+
+Two-step cluster analysis identified 3 clusters.
+
+Typologically, these loosely correspond to Mode 1 cores, Large Flake/Knifes, and Picks, with handaxes split between knife vs. pick categories.
+
+PC1 differentiates Mode 1 and Mode 2 pretty well, in that M1 cores tend not to be flat or elongated.
+Mode 1 exceptions (i.e. misclassified on shape) are generally still distinguishable as smaller and more heavily reduced than Mode 2 (of Mode 1 included in Cluster 1: mean weight =159.4 vs. 635.6, p \< 0.001; Mean logSDI = .74 vs. .20, p \< 0.001).
+(of Mode 1 included in Cluster 3: mean weight =224.1 vs. 398.1, p \< 0.001; Mean logSDI = .67 vs. .39, p = 0.004).
+We thus treat Mode 1 as a valid techno-morphological category.
+Consistent with the characterization of Mode 1 as focused on debitage rather than shaping, we observe a strong power relationship between reduction intensity (SDI) and core size (r2=0.715, p \< 0.001, b1 = -0.872):
+
+In contrast, and also in keeping with a focus on debitage rather than shaping and resharpening, there is no such relationship with shape PCs for SDI:
+
+Cluster 1 is divided from Cluster 3 by PC2 (pointedness).
+Cluster 1 is much more likely to be executed on a flake base (91% flakes) vs. cluster 3 (35% flakes).
+Cluster 1 is also significantly less reduced (Mean logSDI = .39 vs. .20, p \< 0.001).
+So, cluster 1 basically comprises lightly retouched LFB acheulean, with shapes that remain largely within the range of unmodified flakes (n.s. mean difference).
+
+The effect of reduction on LFB acheulean shape is evident only for flaked area (not SDI) and corresponds to decreases in both PCs (i.e. less elongated but more pointy).
+The PC1 effect is relatively weak (r2=0.1, p =0.008, Standardized Beta = -0.215).
+The PC2 effect is stronger (r2=0.244, p \< 0.001, Standardized Beta = -0.537).
+This is most consistent with flaking placed to shape a point.
+A weak power effect of SDI on weight (r2=0.178, p \< 0.001, b1= -.330), as well as low number of scars in general, suggests resharpening is not a major factor.
+
+These trends mean that heavily modified flakes enter into cluster 3 (i.e. look like picks).
+Indeed, 40% of identifiable bases for cluster 3 are flakes.
+Cluster 3 pieces executed on flakes tend to be less pointed regardless of reduction intensity, which is likely a reflection of starting blank form.
+Indeed, Mode 2 Cobble bases show no effect of reduction intensity on shape but do show SDI effect on weight (r2=0.432, p \< 0.001, b1=-0.711).
+This appears to reflect the presence of cobble blanks that are already relatively pointed without substantial reduction and raises the possibility that these pieces are produced through debitage on pointed cobbles.
+Could they start as LFB cores?
+look at maximum flake scar size.
+Large cores have few, large scars.
+
+These patterns indicates that there is a common reduction trajectory for Mode 2 forms at Gona, regardless of typology or blank form.
+Although some pieces start much closer to the terminal morphology than others (i.e. display low PC2 values without substantial reduction), none undergo substantial reduction without becoming pointed.
+
+This uniform trajectory casts serious doubt on the likelihood that picks are a distinct morpho-functional type, although they may represent "4-dimensional design" sensu Kuhn.
+edge angles up to 70 degrees are quite efficient and obtuse trimming of butt may help ergonomics.
+
+No evidence for shaping of cobbles.
+
+Acheulean cobbles are larger and more cylindrical (geologically “rollers”). Shape difference may reflect availability and/or selectivity for flake-able shapes.
+
+Some Achuelean flaked cobbles might hypothetically be heavily reduced remnants of giant cores for LFB production. Size of scars overlaps with LFBs (right). However, smaller scars are present and so reduction seems to have continued past potential for LFB production. Cobbles are generally pretty heavily reduced.
+
+Acheulean flaked flakes seem to have been (mildly) shaped to increase elongation and pointedness. This might have been an explicit design target, a passive result of preferentially flaking working edges, and or a desire to retain length for some reason.  
+
+
+# References

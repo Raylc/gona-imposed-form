@@ -1,2 +1,2 @@
-# GMM-exp-boxgrove-gona
-Comparing the efficiency of traditional and different GMM methods in discriminating early lithic industries and typologies
+# gona-imposed-form
+This repository contains the code, data, figure and manuscript of the Gona ESA project.
