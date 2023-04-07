@@ -79,6 +79,12 @@ Insofar as it is variation in the relationship between surface area and flaking 
 Here we improved on the prism-based surface area formula (2LW + 2LT + 2 WT) by using our 7 recorded dimensions to more tightly fit three prisms (Figure 1) around the artifact: SA = W1T1 + 2(.33L \* W1) + 2(.33L \* T1) + 2(.33L \* W2) + 2(.33L \* T2) + 2(.33L \* W3) + 2(.33L \* T3) + W3T3.
 Surface area calculated in this way correlates with mass2/3 at r2 = 0.947 in our sample.
 
+PCA on GM-transformed caliper measures (length, 3 breadth, 3 thickness). Length is maximum dimension, piece oriented so that Br1>Br3 
+
+Typological and technological attributions considered unreliable. Data grouped according to context (~2.5 mya Oldowan sites vs. ~1.5 mya Acheulean sites) and blank form (cobble, flake, indeterminant).
+
+Associations between form and reduction intensity are considered as an indicator of “imposed form.” Such form could reflect mental templates and/or biased flaking patterns due to functional or technological constraints
+
 ### Reduction Indices
 
 Research by Clarkson and Shipton has established the Scar Density Index (SDI = number of flake scars \> 1cm per unit surface area) as a reliable indicator of mass removed from a core across technologies [@clarkson2013] and for handaxes specifically [@shiptonFlakeScarDensity2015].
