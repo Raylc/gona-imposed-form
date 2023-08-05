@@ -38,7 +38,7 @@ editor_options:
 
 # Introduction
 
-The imposition of intended form on artifacts has long been viewed as a watershed in human cognitive and cultural evolution and is most commonly associated with the emergence of "Large Cutting Tools" (LCTs) in the Early Acheulean [@isaac1976; @kuhnEvolutionPaleolithicTechnologies2020; @holloway1969].
+The imposition of intended form on artifacts has long been viewed as a watershed in human cognitive and cultural evolution and is most commonly associated with the emergence of "Large Cutting Tools" (LCTs) in the Early Acheulean [@isaac1976; @kuhn2020; @holloway1969].
 However, this interpretation of Acheulean LCTs as intentionally designed artifacts remains controversial.
 Alternative proposals range from the possibility that LCTs were unintended by-products of flake production [@moore2016; @noble1996] to the suggestion that their form was "at least partly under genetic control" [@corbey2016].
 Even accepting that LCT form was to some extent intended, there is substantial disagreement over the specificity of design.
@@ -78,38 +78,66 @@ Notably, a 3-dimensional morphometric (3DGM) study by Presnyakova, et al. [-@pre
 However, this study did not directly address the presence/absence of design targets constraining the observed range of variation.
 
 In later Acheulean contexts, reduction intensity effects are commonly equated with resharpening and seen as an alternative to intentional form imposition [@mcpherron2000].
-Across heavily-worked and relatively standardized LCT assemblages [e.g. @shipton2020], a *lack* of association between morphology and reduction intensity has be used as an argument-by-elimination for the presence of imposed morphological norms or \"mental templates\" [@garcía-medrano2019; @shipton2015; @shipton2023].
+Across heavily-worked and relatively standardized LCT assemblages [e.g., @shipton2020], a *lack* of association between morphology and reduction intensity has be used as an argument-by-elimination for the presence of imposed morphological norms or "mental templates" [@garcía-medrano2019; @shipton2015; @shipton2023].
 However, in the less heavily-worked and more heterogenous assemblages typical of the early Acheulean [@kuhn2020], it is equally plausible that increasing reduction intensity would reflect degree of primary reduction rather than subsequent resharpening [@archer2010].
 In this case, reduction intensity effects on morphology would have the opposite interpretation:  more reduction should result in closer approximation of a desired form if such were present.
 For example, Beyene, et al. [-@beyene2013] found that increasing flake scar counts were associated with increasing handaxe refinement through time at Konso, Ethiopia, which may reflect a more general trend in the African Acheulean [@shipton2018].
 
-Interpretive approaches address this quandary by \"reading\" the organization of scars on individual pieces to infer intent, but an adequate method to objectively quantify these insights has yet to be developed.
+Interpretive approaches address this quandary by "reading" the organization of scars on individual pieces to infer intent, but an adequate method to objectively quantify these insights has yet to be developed.
 Current measures of reduction intensity, such as the scar density index (SDI) [@clarkson2013], are designed to estimate total mass removed from a core and are reasonably effective [@lombao2023].
 However, mass removal was not the objective of Paleolithic flaking.
 Indeed, knapping efficiency is usually conceived as generating an outcome while *minimizing* required mass removal.
 This is true whether the desired outcome is a useful flake, a rejuvenated edge, or a particular core morphology.
-In simple flake production, mass removed is probably a good reflection of the completeness of exploitation (\"exhaustion\") of cores and may have implications for required skill [@toth1982; @pargeter2023] as well as raw material economy [@reeves2021; @shick1987].
+In simple flake production, mass removed is probably a good reflection of the completeness of exploitation ("exhaustion") of cores and may have implications for required skill [@toth1982; @pargeter2023] as well as raw material economy [@reeves2021; @shick1987].
 However, in core shaping and resharpening, mass removal would typically represent an energetic and raw material cost to be minimized, and might even interfere with function [@keyHandaxeShapeVariation2019].
 Without further information, relationships between artifact shape and reduction intensity are thus open to conflicting interpretations as evidence of intentional design or its absence.
 
 Li, et al. [-@li2015] proposed a Flaked Area Index (FAI) as an alternative to SDI as a measure of reduction intensity, arguing that its validity is supported by an observed correlation (r=0.424) with SDI.
-However, they also explain that \"flaked area does not necessarily relate to the number of flake scars\...a small number of large scars can produce a large area of scar coverage, and conversely, a large number of small scars can produce a small area of scar coverage.\" (p. 6).
+However, they also explain that "flaked area does not necessarily relate to the number of flake scars\...a small number of large scars can produce a large area of scar coverage, and conversely, a large number of small scars can produce a small area of scar coverage." (p. 6).
 We suggest that what FAI actually captures is the spatial extent modifications to the surface of a core.
 It is thus complementary to the measure of volume reduction provided by SDI and provides additional information to inform technological interpretations.
-For example, a correlation between FAI and artifact form without any effect of SDI would suggest a focus on \"least-effort\" shape imposition whereas the opposite pattern would be consistent with relatively intense resharpening of spatially restricted areas on the core.
-A lack of shape correlation with either measure would be expected for simple debitage with no morphological targets whereas a strong correlation with both would indicate a highly \"designed\" form achieved through extensive morphological and volumetric transformation.
+For example, a correlation between FAI and artifact form without any effect of SDI would suggest a focus on "least-effort" shape imposition whereas the opposite pattern would be consistent with relatively intense resharpening of spatially restricted areas on the core.
+A lack of shape correlation with either measure would be expected for simple debitage with no morphological targets whereas a strong correlation with both would indicate a highly "designed" form achieved through extensive morphological and volumetric transformation.
 In the current study we thus considered SDI and FAI together in order to evaluate evidence of intentional shaping in the early Acheulean of Gona.
 
 ## Measuring artifact form and modification
 
-Hypotheses: 1) Valid technological types should produce clear morphological clusters with different reduction trajectories vs. points along a continuum.
-2) Debitage is indicated by relation of SDI and flaked area to core size but not shape.
-3) Shaping is indicated by relation of flaked area to shape & weaker or absent relations of shape with SDI.
-Shape independent of size.
-4) Shaping plus resharpening means shape should be related to core size and SDI (Shipton)
+Three-dimensional scanning and geometric morphometric (3DGM) methods are increasingly common in the study of LCT form and reduction intensity [@shipton2015; @caruana2020; @presnyakova2018; @li2021; @archer2010; @li2015; @lycett2006].
+These methods provide high-resolution, coordinate-based descriptions of artifact form including detailed information about whole object geometric relations that is not captured by conventional linear measures [@shott2010].
+This includes measures of surface area used to compute both SDI and FAI measures [@clarkson2013; @li2015].
+At the time of writing, however, 3D scans are available for only a small number of Gona artifacts, including 33 of the Oldowan and Acheulean flaked pieces used in this study (**Figure** \@ref(fig:fig1)).
+Despite continuing improvements, 3DGM methods still impose additional costs in terms of data collection and processing time as well as required equipment, software, and training.
+Importantly, 3DGM methods cannot be applied to pre-existing photographic and metric data sets [e.g., @marshall], including available data from Gona.
+For this reason, and to better understand the relative costs and benefits of 3DGM more generally, we sought to test the degree to which conventional measurements can approximate 3DGM methods and produce reliable results by directly comparing our conventional measures with 3DGM analysis of the 33 available scans.
 
-It is even controversial whether asia is "acheulean" Prevailing opinion, but Beyene.
-A conservative interpretation of available evidence is that LCT production was guided by a recurring set of functional, ergonomic, and aesthetic design preferences [@wynn2018] with other elements free to vary in response to raw materials, use life, and random population dynamics like drift, bottlenecks, and founder effects [@kuhnEvolutionPaleolithicTechnologies2020; @lycett2016].
+```{r fig1, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="3D Artifact scans from Gona used in this study."}
+knitr::include_graphics(here::here("figure/Fig1.png"))
+```
+
+For our study, we are specifically concerned with the accurate description of morphological variation and estimation of artifact surface and flaked areas.
+With respect to morphology, we were encouraged by the fact that aspects of form variation relevant to our research question (i.e., core elongation, flattening, and pointedness) are relatively simple to describe using sparse data.
+Laser-scanning 3DGM studies of LCTs collect vast amounts of shape data but may discard upward of 50% of the observed variation in order to focus on two or three interpretable principal components.
+Across studies, these PCs consistently corresponding to basic features like elongation, relative thickness, pointedness, and position of maximum thickness that also emerge from lower-resolution spatial data [@garcía-medrano2019; @archer2010; @lycett2006] and studies employing linear measures rather than spatial coordinates [@pargeter2019; @crompton1993].
+There is less evidence that conventional methods can accurately estimate artifact surface and flaked areas.
+Clarkson [-@clarkson2013] advocated the use of 3D surface area measures as more accurate than estimation from linear measures (e.g., surface area of a rectangular prism defined by artifact dimensions).
+However, he also found that the error introduced by the linear approach was a highly systematic, isometric overestimation of surface area and that results correlated with direct 3D measures with an impressive r^2^ = 0.944 and no effect of variation in core shape.
+Insofar as it is variation in the relationship between surface area and flaking intensity that is of interest, rather than absolute artifact size, such systematic overestimation may not be problematic.
+Similar concerns apply to the estimation of flaked area.
+Traditionally, such estimates have been done \"by eye\" as a percentage of the total artifact surface [e.g., @dibble2005].
+Such estimation on have been found to be reasonably accurate when compared to 3D methods, but with the potential for substantial error on individual artifacts [@lin2010].
+The accuracy of by-eye estimation has yet to be systematically studied in Early Stone Age cores like those from Gona.
+
+## The Early Acheulean at Gona
+
+Early Acheulean sites in the Gona Project area are distributed over a wide area within the Dana Aoule North (DAN), Ounda Gona South (OGS), and Busidima North (BSN) drainages in the Busidima Formation [@quade2004] and range in age from approximately 1.7 to 1.2 mya [@semaw2018].
+The specific sites included in the current analysis are DAN-5, OGS-5, OGS-12, and BSN-17, all estimated to ca.
+1.7 -- 1.4 mya by stratigraphic position in the Gona sequence [@quade2008; @semaw2020].
+The Busidima Formation accumulated through fluvial deposition by the ancestral Awash River (Type I context) and its smaller tributary channels (Type II context) [@quade2004; @quade2008].
+Oldowan sites at Gona all occur in Type I sediments, indicating channel bank/margin (OGS-7) or proximal floodplain (EG-10, EG-12) contexts close to the large, hetero-lithic clasts available from point bars in the axial river channel [@quade2004; @stout2005].
+Acheulean sites continue to occur in Type I contexts (BSN-17, DAN-5) but are also found in Type II sediments (OGS-5, OGS-12,) reflecting increased utilization of large perennial tributaries to the ancestral Awash River [@quade2008].
+Clasts locally available in these tributaries were relatively small, implying that the large flakes and cobbles used to produce Acheulean artifacts were initially sourced from the axial river.
+A similar pattern of habitat diversification and increasing lithic transport distances has been described at other sites and may be typical of the early Acheulean [@rogers1994; @linaresmatás2021; @hay1976].
+As with other early (i.e. \>1.0 mya [@stoutStoneToolmakingEvolution2011; @presnyakova2018]) Acheulean assemblages, the Gona collections include numerous \"crudely made\" handaxes and picks on large flake blanks and cobbles, as well as large (\> 10cm) unmodified flakes, flaked pieces interpreted typo-technologically as Mode 1 cores (see Figure 1af), and smaller debitage [@semaw2018; @semaw2020].
 
 # Materials and Methods
 
@@ -134,7 +162,7 @@ Thus, while the level of detail enabled by 3DGM is arguably useful for building 
 For these reasons, we favored the use of simple caliper-based linear measures to quantify shape in our study.
 Nevertheless, Shott and Trail [-@shott2010] do identify three potential shortcomings of linear measurements compared to 3DGM.
 We considered each in the context of our particular materials and research questions.
-First, conventional linear measures capture the direction (e.g. length \> breadth) but not the location of geometric relations (e.g. position of maximum breadth).
+First, conventional linear measures capture the direction (e.g., length \> breadth) but not the location of geometric relations (e.g., position of maximum breadth).
 We address this by collecting linear measures defined by homologous semi-landmarks.
 All artifacts were oriented along their maximum dimension, which was measured and defined as "length." The next largest dimension orthogonal to length was used to define the plane of "breadth," with the dimension orthogonal to this plane defined as "thickness." Breath and thickness measures were then collected at 25%, 50%, and 75% of length, oriented so that 25% Breadth \> 75% Breath.
 To partition variation in shape from variation in size, we divided all linear measures by the geometric mean [@lycett2006].
@@ -150,9 +178,9 @@ As a further check, we performed the same comparison on a subset of the current 
 This produced two PCs that were not only similar with each other, but also matched the PCs extracted from the experimental handaxe sample.
 Individual piece component scores were again highly correlated (r=0.975 and 0.927 respectively).
 Seven linear measures thus appear sufficient to explain technologically/behaviorally relevant shape variation in our sample.
-Third, linear measures may struggle to capture attributes such as cross-sectional area and shape (e.g. Caruana, 2020) more easily assessed using 3DGM.
+Third, linear measures may struggle to capture attributes such as cross-sectional area and shape (e.g., Caruana, 2020) more easily assessed using 3DGM.
 Particularly relevant here are measures of surface area used to calculate indices of reduction intensity [@shiptonHandaxeReductionIts2015a; @clarkson2013] and surface modification [@li2015] used in our study.
-Clarkson [-@clarkson2013] advocates the use of 3D surface area measures as more accurate than estimation from linear measures (e.g. surface area of a rectangular prism defined by artifact dimensions).
+Clarkson [-@clarkson2013] advocates the use of 3D surface area measures as more accurate than estimation from linear measures (e.g., surface area of a rectangular prism defined by artifact dimensions).
 However, he also found that the error introduced by the linear approach was a highly systematic, isometric overestimation of surface area and that results correlated with direct 3D measures with an impressive r2 = 0.944 and no effect of variation in core shape.
 Insofar as it is variation in the relationship between surface area and flaking intensity that is of interest, rather than the absolute size of artifacts, such consistent overestimation is not problematic.
 Here we improved on the prism-based surface area formula (2LW + 2LT + 2 WT) by using our 7 recorded dimensions to more tightly fit three prisms (Figure 1) around the artifact: SA = W1T1 + 2(.33L \* W1) + 2(.33L \* T1) + 2(.33L \* W2) + 2(.33L \* T2) + 2(.33L \* W3) + 2(.33L \* T3) + W3T3.
@@ -176,59 +204,5 @@ For example, imposition of a desired form
 
 # Results
 
-A PCA (covariance matrix) on our 7 linear measures (scaled by geometric mean) for pieces identified two PCs explaining 80% of variance (56.4% and 23.7%).
-Rescaled component matrix shows that PC1 reflects "flatness" (length and breadth vs. thickness).
-PC
-
-Two-step cluster analysis identified 3 clusters.
-
-Typologically, these loosely correspond to Mode 1 cores, Large Flake/Knifes, and Picks, with handaxes split between knife vs. pick categories.
-
-PC1 differentiates Mode 1 and Mode 2 pretty well, in that M1 cores tend not to be flat or elongated.
-Mode 1 exceptions (i.e. misclassified on shape) are generally still distinguishable as smaller and more heavily reduced than Mode 2 (of Mode 1 included in Cluster 1: mean weight =159.4 vs. 635.6, p \< 0.001; Mean logSDI = .74 vs. .20, p \< 0.001).
-(of Mode 1 included in Cluster 3: mean weight =224.1 vs. 398.1, p \< 0.001; Mean logSDI = .67 vs. .39, p = 0.004).
-We thus treat Mode 1 as a valid techno-morphological category.
-Consistent with the characterization of Mode 1 as focused on debitage rather than shaping, we observe a strong power relationship between reduction intensity (SDI) and core size (r2=0.715, p \< 0.001, b1 = -0.872):
-
-In contrast, and also in keeping with a focus on debitage rather than shaping and resharpening, there is no such relationship with shape PCs for SDI:
-
-Cluster 1 is divided from Cluster 3 by PC2 (pointedness).
-Cluster 1 is much more likely to be executed on a flake base (91% flakes) vs. cluster 3 (35% flakes).
-Cluster 1 is also significantly less reduced (Mean logSDI = .39 vs. .20, p \< 0.001).
-So, cluster 1 basically comprises lightly retouched LFB acheulean, with shapes that remain largely within the range of unmodified flakes (n.s. mean difference).
-
-The effect of reduction on LFB acheulean shape is evident only for flaked area (not SDI) and corresponds to decreases in both PCs (i.e. less elongated but more pointy).
-The PC1 effect is relatively weak (r2=0.1, p =0.008, Standardized Beta = -0.215).
-The PC2 effect is stronger (r2=0.244, p \< 0.001, Standardized Beta = -0.537).
-This is most consistent with flaking placed to shape a point.
-A weak power effect of SDI on weight (r2=0.178, p \< 0.001, b1= -.330), as well as low number of scars in general, suggests resharpening is not a major factor.
-
-These trends mean that heavily modified flakes enter into cluster 3 (i.e. look like picks).
-Indeed, 40% of identifiable bases for cluster 3 are flakes.
-Cluster 3 pieces executed on flakes tend to be less pointed regardless of reduction intensity, which is likely a reflection of starting blank form.
-Indeed, Mode 2 Cobble bases show no effect of reduction intensity on shape but do show SDI effect on weight (r2=0.432, p \< 0.001, b1=-0.711).
-This appears to reflect the presence of cobble blanks that are already relatively pointed without substantial reduction and raises the possibility that these pieces are produced through debitage on pointed cobbles.
-Could they start as LFB cores?
-look at maximum flake scar size.
-Large cores have few, large scars.
-
-These patterns indicates that there is a common reduction trajectory for Mode 2 forms at Gona, regardless of typology or blank form.
-Although some pieces start much closer to the terminal morphology than others (i.e. display low PC2 values without substantial reduction), none undergo substantial reduction without becoming pointed.
-
-This uniform trajectory casts serious doubt on the likelihood that picks are a distinct morpho-functional type, although they may represent "4-dimensional design" sensu Kuhn.
-edge angles up to 70 degrees are quite efficient and obtuse trimming of butt may help ergonomics.
-
-No evidence for shaping of cobbles.
-
-Acheulean cobbles are larger and more cylindrical (geologically "rollers").
-Shape difference may reflect availability and/or selectivity for flake-able shapes.
-
-Some Achuelean flaked cobbles might hypothetically be heavily reduced remnants of giant cores for LFB production.
-Size of scars overlaps with LFBs (right).
-However, smaller scars are present and so reduction seems to have continued past potential for LFB production.
-Cobbles are generally pretty heavily reduced.
-
-Acheulean flaked flakes seem to have been (mildly) shaped to increase elongation and pointedness.
-This might have been an explicit design target, a passive result of preferentially flaking working edges, and or a desire to retain length for some reason.
 
 # References
