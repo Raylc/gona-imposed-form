@@ -6,7 +6,13 @@ author:
 - Antoine Muller^[Institute of Archaeology, Mount Scopus, The Hebrew University of Jerusalem, Jerusalem, Israel; antoine.muller@mail.huji.ac.il]
 - Michael J. Rogers^[Department of Anthropology, Southern Connecticut State University, New Haven, CT, USA; rogersm1@southernct.edu]
 - Sileshi Semaw^[Centro Nacional de Investigación sobre la Evolución Humana (CENIEH), Burgos, Spain; sileshi.semaw@cenieh.es]
-abstract: "TBD.\\par \\textbf{Keywords:} Gona; TBD; TBD; TBD; TBD; TBD; TBD"
+abstract: 
+|
+  ```{=latex}
+  TBD.
+
+  \textbf{Keywords:} Gona; TBD; TBD; TBD; TBD; TBD; TBD
+  ```
 date: "`r Sys.Date()`"
 fontsize: 11pt
 output: bookdown::pdf_document2
@@ -41,7 +47,7 @@ Such debates about shape of Acheulean LCTs may appear narrowly technical but hav
 To examine these questions, we studied the complete collection of Early Acheulean flaked pieces from 5 sites at Gona Project Area and compared them with Oldowan cores form 2 published sites at Gona.
 By comparing shape variation to measures of flaking intensity and patterning, we sought to identify technological patterns that might reveal intent.
 
-## Origin of design
+## Identifying design
 
 There is a broad consensus that refined handaxes and cleavers from the later Acheulean resulted from procedurally elaborate, skill intensive, and socially learned production strategies [@caruana2020; @garcía-medrano2019; @moore2020; @sharon2009; @shiptonEvolutionSocialTransmission2019; @stout2014] although debate over the presence of explicit, culturally transmitted shape preferences continues [@iovita2011; @moore2020; @shipton2020; @wynn2018].
 There is much less agreement regarding the less heavily worked and formally standardized LCTs typical of the earliest Acheulean [@beyene2013; @delatorre2018; @diez-martín2015; @lepre2011; @semaw2018].
@@ -68,9 +74,33 @@ Similarly, the difficulty of flaking relatively spherical cobbles [@toth1982] mi
 On the other hand, it has been argued that the shape of Early Acheulean LFBs was intentionally predetermined using core preparation techniques [@delatorre2018] and many researchers perceive efforts at intentional shaping in the organization of flake scars on Early Acheulean handaxes and picks [@beyene2013; @delatorre2018; @diez-martín2015; @duke2021; @lepre2011; @semaw2009].
 To date, however, the identification of Early Acheulean shaping has generally relied on qualitative assessment by lithic analysts.
 Such assessment may in fact be reliable, but is subject to concerns about potential selectivity, bias, and/or overinterpretation [@davidson2002; @moore2016].
+Notably, a 3-dimensional morphometric (3DGM) study by Presnyakova, et al. [-@presnyakova2018] concluded that LCT shape variation in the Okote Member (\~1.4 mya) at Koobi Fora was largely driven by reduction intensity rather than different knapping strategies.
+However, this study did not directly address the presence/absence of design targets constraining the observed range of variation.
 
-\
-This qualitative approach stands in contrast to investigations of Later Achuelean shaping
+In later Acheulean contexts, reduction intensity effects are commonly equated with resharpening and seen as an alternative to intentional form imposition [@mcpherron2000].
+Across heavily-worked and relatively standardized LCT assemblages [e.g. @shipton2020], a *lack* of association between morphology and reduction intensity has be used as an argument-by-elimination for the presence of imposed morphological norms or \"mental templates\" [@garcía-medrano2019; @shipton2015; @shipton2023].
+However, in the less heavily-worked and more heterogenous assemblages typical of the early Acheulean [@kuhn2020], it is equally plausible that increasing reduction intensity would reflect degree of primary reduction rather than subsequent resharpening [@archer2010].
+In this case, reduction intensity effects on morphology would have the opposite interpretation:  more reduction should result in closer approximation of a desired form if such were present.
+For example, Beyene, et al. [-@beyene2013] found that increasing flake scar counts were associated with increasing handaxe refinement through time at Konso, Ethiopia, which may reflect a more general trend in the African Acheulean [@shipton2018].
+
+Interpretive approaches address this quandary by \"reading\" the organization of scars on individual pieces to infer intent, but an adequate method to objectively quantify these insights has yet to be developed.
+Current measures of reduction intensity, such as the scar density index (SDI) [@clarkson2013], are designed to estimate total mass removed from a core and are reasonably effective [@lombao2023].
+However, mass removal was not the objective of Paleolithic flaking.
+Indeed, knapping efficiency is usually conceived as generating an outcome while *minimizing* required mass removal.
+This is true whether the desired outcome is a useful flake, a rejuvenated edge, or a particular core morphology.
+In simple flake production, mass removed is probably a good reflection of the completeness of exploitation (\"exhaustion\") of cores and may have implications for required skill [@toth1982; @pargeter2023] as well as raw material economy [@reeves2021; @shick1987].
+However, in core shaping and resharpening, mass removal would typically represent an energetic and raw material cost to be minimized, and might even interfere with function [@keyHandaxeShapeVariation2019].
+Without further information, relationships between artifact shape and reduction intensity are thus open to conflicting interpretations as evidence of intentional design or its absence.
+
+Li, et al. [-@li2015] proposed a Flaked Area Index (FAI) as an alternative to SDI as a measure of reduction intensity, arguing that its validity is supported by an observed correlation (r=0.424) with SDI.
+However, they also explain that \"flaked area does not necessarily relate to the number of flake scars\...a small number of large scars can produce a large area of scar coverage, and conversely, a large number of small scars can produce a small area of scar coverage.\" (p. 6).
+We suggest that what FAI actually captures is the spatial extent modifications to the surface of a core.
+It is thus complementary to the measure of volume reduction provided by SDI and provides additional information to inform technological interpretations.
+For example, a correlation between FAI and artifact form without any effect of SDI would suggest a focus on \"least-effort\" shape imposition whereas the opposite pattern would be consistent with relatively intense resharpening of spatially restricted areas on the core.
+A lack of shape correlation with either measure would be expected for simple debitage with no morphological targets whereas a strong correlation with both would indicate a highly \"designed\" form achieved through extensive morphological and volumetric transformation.
+In the current study we thus considered SDI and FAI together in order to evaluate evidence of intentional shaping in the early Acheulean of Gona.
+
+## Measuring artifact form and modification
 
 Hypotheses: 1) Valid technological types should produce clear morphological clusters with different reduction trajectories vs. points along a continuum.
 2) Debitage is indicated by relation of SDI and flaked area to core size but not shape.
