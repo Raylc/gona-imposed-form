@@ -20,6 +20,7 @@ header-includes:
    - \usepackage{textcomp}
    - \usepackage{utopia}
    - \usepackage{lineno}
+   - \usepackage[utf8]{inputenc}
    - \linenumbers
    - \usepackage{float}
    - \floatplacement{figure}{H}
@@ -79,8 +80,8 @@ However, this study did not directly address the presence/absence of design targ
 
 In later Acheulean contexts, reduction intensity effects are commonly equated with resharpening and seen as an alternative to intentional form imposition [@mcpherron2000].
 Across heavily-worked and relatively standardized LCT assemblages [e.g., @shipton2020], a *lack* of association between morphology and reduction intensity has be used as an argument-by-elimination for the presence of imposed morphological norms or "mental templates" [@garcía-medrano2019; @shipton2015; @shipton2023].
-However, in the less heavily-worked and more heterogenous assemblages typical of the early Acheulean [@kuhn2020], it is equally plausible that increasing reduction intensity would reflect degree of primary reduction rather than subsequent resharpening [@archer2010].
-In this case, reduction intensity effects on morphology would have the opposite interpretation:  more reduction should result in closer approximation of a desired form if such were present.
+However, in the less heavily-worked and more heterogeneous assemblages typical of the early Acheulean [@kuhn2020], it is equally plausible that increasing reduction intensity would reflect degree of primary reduction rather than subsequent resharpening [@archer2010].
+In this case, reduction intensity effects on morphology would have the opposite interpretation: more reduction should result in closer approximation of a desired form if such were present.
 For example, Beyene, et al. [-@beyene2013] found that increasing flake scar counts were associated with increasing handaxe refinement through time at Konso, Ethiopia, which may reflect a more general trend in the African Acheulean [@shipton2018].
 
 Interpretive approaches address this quandary by "reading" the organization of scars on individual pieces to infer intent, but an adequate method to objectively quantify these insights has yet to be developed.
@@ -116,15 +117,15 @@ knitr::include_graphics(here::here("figure/Fig1.png"))
 
 For our study, we are specifically concerned with the accurate description of morphological variation and estimation of artifact surface and flaked areas.
 With respect to morphology, we were encouraged by the fact that aspects of form variation relevant to our research question (i.e., core elongation, flattening, and pointedness) are relatively simple to describe using sparse data.
-Laser-scanning 3DGM studies of LCTs collect vast amounts of shape data but may discard upward of 50% of the observed variation in order to focus on two or three interpretable principal components.
-Across studies, these PCs consistently corresponding to basic features like elongation, relative thickness, pointedness, and position of maximum thickness that also emerge from lower-resolution spatial data [@garcía-medrano2019; @archer2010; @lycett2006] and studies employing linear measures rather than spatial coordinates [@pargeter2019; @crompton1993].
+3DGM studies of LCTs collect vast amounts of shape data but may discard upward of 50% of the observed variation in order to focus on two or three interpretable principal components.
+Across studies, these PCs consistently correspond to basic features like elongation, relative thickness, pointedness, and position of maximum thickness that also emerge from lower-resolution spatial data [@garcía-medrano2019; @archer2010; @lycett2006] and studies employing linear measures rather than spatial coordinates [@pargeter2019; @crompton1993].
 There is less evidence that conventional methods can accurately estimate artifact surface and flaked areas.
 Clarkson [-@clarkson2013] advocated the use of 3D surface area measures as more accurate than estimation from linear measures (e.g., surface area of a rectangular prism defined by artifact dimensions).
 However, he also found that the error introduced by the linear approach was a highly systematic, isometric overestimation of surface area and that results correlated with direct 3D measures with an impressive r^2^ = 0.944 and no effect of variation in core shape.
 Insofar as it is variation in the relationship between surface area and flaking intensity that is of interest, rather than absolute artifact size, such systematic overestimation may not be problematic.
 Similar concerns apply to the estimation of flaked area.
-Traditionally, such estimates have been done \"by eye\" as a percentage of the total artifact surface [e.g., @dibble2005].
-Such estimation on have been found to be reasonably accurate when compared to 3D methods, but with the potential for substantial error on individual artifacts [@lin2010].
+Traditionally, such estimates have been done "by eye" as a percentage of the total artifact surface [e.g., @dibble2005].
+Such estimations have been found to be reasonably accurate when compared to 3D methods, but with the potential for substantial error on individual artifacts [@lin2010].
 The accuracy of by-eye estimation has yet to be systematically studied in Early Stone Age cores like those from Gona.
 
 ## The Early Acheulean at Gona
@@ -137,17 +138,57 @@ Oldowan sites at Gona all occur in Type I sediments, indicating channel bank/mar
 Acheulean sites continue to occur in Type I contexts (BSN-17, DAN-5) but are also found in Type II sediments (OGS-5, OGS-12,) reflecting increased utilization of large perennial tributaries to the ancestral Awash River [@quade2008].
 Clasts locally available in these tributaries were relatively small, implying that the large flakes and cobbles used to produce Acheulean artifacts were initially sourced from the axial river.
 A similar pattern of habitat diversification and increasing lithic transport distances has been described at other sites and may be typical of the early Acheulean [@rogers1994; @linaresmatás2021; @hay1976].
-As with other early (i.e. \>1.0 mya [@stoutStoneToolmakingEvolution2011; @presnyakova2018]) Acheulean assemblages, the Gona collections include numerous \"crudely made\" handaxes and picks on large flake blanks and cobbles, as well as large (\> 10cm) unmodified flakes, flaked pieces interpreted typo-technologically as Mode 1 cores (see Figure 1af), and smaller debitage [@semaw2018; @semaw2020].
+As with other early (i.e. \>1.0 mya [@stoutStoneToolmakingEvolution2011; @presnyakova2018]) Acheulean assemblages, the Gona collections include numerous "crudely made" handaxes and picks on large flake blanks and cobbles, as well as large (\> 10cm) unmodified flakes, flaked pieces interpreted typo-technologically as Mode 1 cores (see Figure 1af), and smaller debitage [@semaw2018; @semaw2020].
 
 # Materials and Methods
 
 ## Materials
 
-Archaeological Sample
+### Archaeological Sample
+
+Artifact collections analyzed here include *in situ* pieces excavated from intact stratigraphic contexts and surface pieces systematically collected from the sediments eroding from these layers.
+Surface pieces are included because the current technological analysis does not require more precise spatial association, stratigraphic, and chronological control.
+Our sample comprises the total collection of flaked pieces [@isaac1997] and large (\>10 cm) detached pieces from each site, regardless of typo-technological interpretation.
 
 ## Methods
 
-### Artifact Shape Measurement
+### Artifact Classification
+
+Artifacts were classified according to initial form (pebble/cobble, detached piece, or indeterminate), presence/absence of retouch, technological interpretation ("Mode 1" core vs. "Mode 2" LCT), and archaeological context (Oldowan vs. Early Acheulean sites).
+LCTs were additionally classified as handaxes, knives, or picks following definitions from Kleindienst [-@kleindienst1962].
+The validity of technological interpretations and typological classifications was assessed through cluster analysis based on artifact shape and reduction intensity variables.
+
+### Artifact Measurement
+
+Conventional linear measures capture the direction (e.g., length \> breadth) but not the location of geometric relations (e.g., position of maximum breadth).
+We address this by collecting linear measures defined by homologous semi-landmarks.
+All artifacts were oriented along their maximum dimension, which was measured and defined as "length." The next largest dimension orthogonal to length was used to define the plane of "breadth," with the dimension orthogonal to this plane defined as "thickness" Width (W~1~, W~2~, W~3~) and thickness (T~1~, T~2~, T~3~) measures were then collected at 25%, 50%, and 75% of length, oriented so that 25% Width \> 75% Width.
+To partition variation in shape from variation in size, we divided all linear measures by the geometric mean [@lycett2006].
+GM-transformed variables were then submitted to a Principal Components Analysis (covariance matrix) to identify the main dimensions of shape variation.
+
+Our semi-landmark measurement system allowed us to improve on the prism-based surface area formula (2LW + 2LT + 2 WT) by using our 7 recorded dimensions to more tightly fit three prisms around the artifact: SA = W~1~T~1~ + 2(.33L \* W~1~) + 2(.33L \* T~1~) + 2(.33L \* W~2~) + 2(.33L \* T~2~) + 2(.33L \* W~3~) + 2(.33L \* T~3~) + W~3~T~3~.
+Surface area calculated in this way correlates with mass^2/3^ at r^2^ = 0.947 in our sample.
+Calculated surface area was then used to derive the Scar Density Index: SDI = number of flake scars \> 1cm per unit surface area [@clarkson2013; @shiptonFlakeScarDensity2015].
+The Flaked Area Index (FAI: flaked area divided by total surface area)[@li2015] was estimated directly "by eye" as a percentage of the total artifact surface.
+
+### 3D Methods
+
+Artifact scans (N=33) were cleaned, smoothed, and re-meshed using MeshLab.
+The 3D triangular mesh of each scan was computed using Kazhdan and Hoppe's [-@kazhdan2013] method of screened Poisson surface reconstruction in MeshLab.
+3DGM analysis was conducted using the *AGMT3-D* program of Herzlinger and Grosman [-@herzlinger2018].
+Artifacts were automatically oriented according to the axis of least asymmetry, then manually oriented in the interests of standardization with the length, width, and thickness dimensions defined by the longest axis, followed by the next two longest axes perpendicular to the first.
+The wider end of the artifacts was positioned as the proximal end (base), and more protruding surfaces were oriented towards the user in the first orthogonal view.
+Then, a grid of 200 homologous semi-landmarks were overlain on each artifact's surface.
+Generalized Procrustes and Principal Component analyses were then undertaken to explore the shape variability of the sample.
+The surface area of each artifact was calculated using the *Artifact3-D* program of Grosman et al. [-@grosman2022].
+*Artifact3-D* was also used to automatically identify the flake scar boundaries and compute each scar's surface area, using the scar analysis functions of Richardson et al. [-@richardson2014].
+
+### Analyses
+
+Measurement Validation: To assess the adequacy of shape descriptions based on our linear measures, we directly compared these with shape as quantified by 3D methods on the 33 artifacts for which scans are available.
+GM-transformed linear measures from these 33 artifacts were submitted to a variance-covariance matrix PCA.
+PCs with an eigenvalue greater than the mean were retained for analysis and the results compared qualitatively (morphological interpretation of PCs) and quantitatively (correlation of artifact factor scores) to 3D results.
+Accuracy of surface area and flaked area estimates was also assessed by correlation with 3D results.
 
 Three-dimensional scanning and geometric morphometric (3DGM) methods are becoming increasingly common in the study of LCT form [@archer2010; @caruana2020; @li2021; @lycett2006; @presnyakova2018; @shiptonHandaxeReductionIts2015a].
 These methods can provide high-resolution, coordinate-based descriptions of artifact form including detailed information about whole object geometric relations that is not captured by conventional linear measures [@shott2010].
@@ -203,6 +244,5 @@ Mass removal is the aim during flake production and extent of shaping are not ne
 For example, imposition of a desired form
 
 # Results
-
 
 # References
