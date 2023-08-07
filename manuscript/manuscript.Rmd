@@ -190,59 +190,12 @@ GM-transformed linear measures from these 33 artifacts were submitted to a varia
 PCs with an eigenvalue greater than the mean were retained for analysis and the results compared qualitatively (morphological interpretation of PCs) and quantitatively (correlation of artifact factor scores) to 3D results.
 Accuracy of surface area and flaked area estimates was also assessed by correlation with 3D results.
 
-Three-dimensional scanning and geometric morphometric (3DGM) methods are becoming increasingly common in the study of LCT form [@archer2010; @caruana2020; @li2021; @lycett2006; @presnyakova2018; @shiptonHandaxeReductionIts2015a].
-These methods can provide high-resolution, coordinate-based descriptions of artifact form including detailed information about whole object geometric relations that is not captured by conventional linear measures [@shott2010].
-However, they also impose additional costs in terms of data collection and processing time as well as required equipment, software, and training.
-Insofar as these costs might present an obstacle to participation by some researchers and/or draw resources away from other activities, they must be balanced against benefits.
-In particular, it is not clear that these powerful methods are required in order to describe relevant variation in Acheulean LCT shape.
-Unlike hominin crania or even projectile points, Acheulean handaxes, cleavers, and picks are not complex shapes.
-Individual LCTs exhibit complex morphologies defined by idiosyncratic scar patterns, but these details are largely noise at the level of comparative analyses.
-Laser-scanning 3DGM studies of LCTs collect vast amounts of shape data, but typically discard upward of 50% of the observed variation in order to focus on two or three interpretable principal components.
-Across studies, these PCs consistently corresponding to basic features like elongation, relative thickness, pointedness, and position of maximum thickness that also emerge from lower-resolution spatial data [@archer2010; @garcía-medrano2019; @lycett2006] and studies employing linear measures rather than spatial coordinates [@crompton1993; @pargeter2019].
-Thus, while the level of detail enabled by 3DGM is arguably useful for building artifact phylogenies [@okumura2019], it is of questionable behavioral/technological relevance for the study of LCTs.
-For these reasons, we favored the use of simple caliper-based linear measures to quantify shape in our study.
-Nevertheless, Shott and Trail [-@shott2010] do identify three potential shortcomings of linear measurements compared to 3DGM.
-We considered each in the context of our particular materials and research questions.
-First, conventional linear measures capture the direction (e.g., length \> breadth) but not the location of geometric relations (e.g., position of maximum breadth).
-We address this by collecting linear measures defined by homologous semi-landmarks.
-All artifacts were oriented along their maximum dimension, which was measured and defined as "length." The next largest dimension orthogonal to length was used to define the plane of "breadth," with the dimension orthogonal to this plane defined as "thickness." Breath and thickness measures were then collected at 25%, 50%, and 75% of length, oriented so that 25% Breadth \> 75% Breath.
-To partition variation in shape from variation in size, we divided all linear measures by the geometric mean [@lycett2006].
-
-Second, linear measures risk reducing complex forms to overly simplistic "stick figure caricatures" [@shott2010].
-However, whether or not this risk actually presents a problem depends on the particular artifacts and research questions involved.
-We have already noted that 3DGM LCT studies typically evaluate only a small portion of the measured variation.
-To better evaluate the measurement density required for our study, we reanalyzed a data set of 128 experimental handaxes previously published by Pargeter et al. [-@pargeter2019].
-These data comprise 19 linear measures (length plus breadth and thickness at 10% increments of length) collected from digital photos using the same orientation protocol described above.
-We conducted a PCA on the full set of 19 measures and again on a reduced set of 7 (length plus breadth and thickness at 30%, 50%, and 70% length).
-Despite this reduction, the first two components from each analysis displayed strikingly similar component loading matrices (PC1 positive on length and tip breadth, negative on thickness; PC2 positive on base breadth, negative on length and thickness) almost perfectly correlated component scores for individual pieces (PC1 r=0.919, PC2 r=0.913).
-As a further check, we performed the same comparison on a subset of the current archaeological sample from Gona for which photos were available for measurement (n = 50).
-This produced two PCs that were not only similar with each other, but also matched the PCs extracted from the experimental handaxe sample.
-Individual piece component scores were again highly correlated (r=0.975 and 0.927 respectively).
-Seven linear measures thus appear sufficient to explain technologically/behaviorally relevant shape variation in our sample.
-Third, linear measures may struggle to capture attributes such as cross-sectional area and shape (e.g., Caruana, 2020) more easily assessed using 3DGM.
-Particularly relevant here are measures of surface area used to calculate indices of reduction intensity [@shiptonHandaxeReductionIts2015a; @clarkson2013] and surface modification [@li2015] used in our study.
-Clarkson [-@clarkson2013] advocates the use of 3D surface area measures as more accurate than estimation from linear measures (e.g., surface area of a rectangular prism defined by artifact dimensions).
-However, he also found that the error introduced by the linear approach was a highly systematic, isometric overestimation of surface area and that results correlated with direct 3D measures with an impressive r2 = 0.944 and no effect of variation in core shape.
-Insofar as it is variation in the relationship between surface area and flaking intensity that is of interest, rather than the absolute size of artifacts, such consistent overestimation is not problematic.
-Here we improved on the prism-based surface area formula (2LW + 2LT + 2 WT) by using our 7 recorded dimensions to more tightly fit three prisms (Figure 1) around the artifact: SA = W1T1 + 2(.33L \* W1) + 2(.33L \* T1) + 2(.33L \* W2) + 2(.33L \* T2) + 2(.33L \* W3) + 2(.33L \* T3) + W3T3.
-Surface area calculated in this way correlates with mass2/3 at r2 = 0.947 in our sample.
-
-PCA on GM-transformed caliper measures (length, 3 breadth, 3 thickness).
-Length is maximum dimension, piece oriented so that Br1\>Br3
-
-Typological and technological attributions considered unreliable.
-Data grouped according to context (\~2.5 mya Oldowan sites vs. \~1.5 mya Acheulean sites) and blank form (cobble, flake, indeterminant).
-
-Associations between form and reduction intensity are considered as an indicator of "imposed form." Such form could reflect mental templates and/or biased flaking patterns due to functional or technological constraints
-
-### Reduction Indices
-
-Research by Clarkson and Shipton has established the Scar Density Index (SDI = number of flake scars \> 1cm per unit surface area) as a reliable indicator of mass removed from a core across technologies [@clarkson2013] and for handaxes specifically [@shiptonFlakeScarDensity2015].
-We thus use SDI as an indicator of reduction intensity (mass removed) in our study.
-However, reduction intensity does not constitute a full description of core modification.
-Mass removal is the aim during flake production and extent of shaping are not necessarily the same thing.
-For example, imposition of a desired form
-
 # Results
+
+## Measurement Validation
+
+A PCA on GM transformed linear measures the 33 artifacts identified two PCs accounting for 75.6% of the variance. Linear-PC1 (Eigenvalue = 0.189) explained 55.2% of the variance. Factor loadings (Table 1) for Linear-PC1 reflect artifact elongation (i.e., an anti-correlation of length vs. distal width and thickness). This A PCA on GM transformed linear measures the 33 artifacts identified two PCs accounting for 75.6% of the variance. Linear-PC1 (Eigenvalue = 0.189) explained 55.2% of the variance. Factor loadings (Table 1) for Linear-PC1 reflect artifact elongation (i.e., an anti-correlation of length vs. distal width and thickness). This closely parallels the length vs. width and thickness tradeoff captured by 3DGM-PC1 (Figure 3a) and is reflected in a tight correlation of artifact scores produced by the two PCs (r = 0.903, p < 0.001, Figure 3c). Comparison with conventional shape ratios (Table 2) similarly indicates that both Linear-PC1 and 3DGM-PC1 largely capture variation in artifact elongation. A second factor (Linear-PC2, eigenvalue = 0.07) explained an additional 20.4% of variance. This factor was less strongly correlated with its 3DGM counterpart (3DGM-PC2; r = 0.344, p = 0.050) probably because Linear-PC2 describes anticorrelated variation in width and thickness (i.e., broad and flat vs. thick and pointed; Tables 1 & 2) whereas 3DGM-PC2 more purely isolates convergence (Table 2). The remainder of the shape variability explained by Linear-PC2 is captured by higher order 3DGM-PCs like 3DGM-PC3 to 5, which comprise the contribution of the left and right lateral margins to relative thickness. Including a third dimension in the GM analysis generates PCs that identify more specific shape attributes, but the underlying morphological variability captured by both the 2D and 3D analyses remains similar. Together, 3DGM-PC2 (r = 0.344, p = 0.050), 3DGM-PC3 (r = -0.416, p = 0.016), 3DGM-PC4 (r = 0.458, p = 0.007), and 3DGM-PC5 (r = -0.352, p = 0.044) correlate well with Linear-PC2, cumulatively capturing whether the items are broad and flat or thick and pointed.
+
+
 
 # References
