@@ -43,9 +43,9 @@ The imposition of intended form on artifacts has long been viewed as a watershed
 However, this interpretation of Acheulean LCTs as intentionally designed artifacts remains controversial.
 Alternative proposals range from the possibility that LCTs were unintended by-products of flake production [@moore2016; @noble1996] to the suggestion that their form was "at least partly under genetic control" [@corbey2016].
 Even accepting that LCT form was to some extent intended, there is substantial disagreement over the specificity of design.
-Some analyses have indicated that shape variation in Acheulean handaxes is largely a result of resharpening [@iovita2011; @mcpherron2000] whereas others find form to be unrelated to reduction intensity and more likely to reflect normative expectations of what handaxes should look like [@garcía-medrano2019; @shiptonHandaxeReductionIts2015a; @shipton2020].
-Such debates about shape of Acheulean LCTs may appear narrowly technical but have broad relevance for evolutionary questions including the origins of human culture [@corbey2016; @tennie2017; @shiptonHandaxeReductionIts2015a], language [@stout2012], teaching [@gärdenfors2017], brain structure [@hecht2015], and cognition [@stout2015; @wynn2016].
-To examine these questions, we studied the complete collection of Early Acheulean flaked pieces from 5 sites at Gona Project Area and compared them with Oldowan cores form 2 published sites at Gona.
+Some analyses have indicated that shape variation in Acheulean handaxes is largely a result of resharpening [@iovita2011; @mcpherron2000] whereas others find form to be unrelated to reduction intensity and more likely to reflect normative expectations of what handaxes should look like [@garcía-medrano2019; @shipton2015; @shipton2020].
+Such debates about shape of Acheulean LCTs may appear narrowly technical but have broad relevance for evolutionary questions including the origins of human culture [@corbey2016; @tennie2017; @shipton2015], language [@stout2012], teaching [@gärdenfors2017], brain structure [@hecht2015], and cognition [@stout2015; @wynn2016].
+To examine these questions, we studied the complete collection of Early Acheulean flaked pieces from 5 sites at Gona Project Area and compared them with Oldowan cores from 2 published sites at Gona.
 By comparing shape variation to measures of flaking intensity and patterning, we sought to identify technological patterns that might reveal intent.
 
 ## Identifying design
