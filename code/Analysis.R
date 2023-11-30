@@ -6,45 +6,57 @@ library(PCAmixdata)
 library(psych)
 library(patchwork)
 library(figpatch)
-# Add data
-gona_esa<-read.csv("data/EA_Reduction_Paper_Order.csv")
+# Data preparation
+## loading data
+gona_linear<-readr::read_csv("data/Gona_ESA_Linear.csv")
+gona_3d<-readr::read_csv("data/Gona_ESA_3D.csv")
+## creating a new column of unique identifier for merging
+gona_linear$Name <- paste(gona_linear$Site, gona_linear$Catalog, sep= "-")
+## merging two datasets based on Name
+joined_gona <-dplyr::left_join(gona_linear, gona_3d, by = c("Name" = "Name"))
+## Reordering column order for principle component analysis
+joined_gona <- joined_gona %>% dplyr::relocate(GM_L,GM_Br1,GM_Br2,GM_Br3,GM_T1,GM_T2,GM_T3)
+## Subsetting a dataframe that contains both linear and 3d data for measuremnt validation
+overlap_gona <- joined_gona %>% tidyr::drop_na(Flaked.y)
 
-# Principle component analysis
-gona_esa_pca <-prcomp(gona_esa[1:7],  scale = TRUE)
-pcaplot<-fviz_pca_ind(gona_esa_pca, habillage= gona_esa$Type, # color by groups
-                      addEllipses = TRUE, # Concentration ellipses
-                      ellipse.type = "convex",
-                      legend.title = "Type",
-                      label="none")
-pcaplot
+### #######################Trial
+gona_linear1<-readr::read_csv("data/EA_Reduction_Paper_41.csv")
+gona_linear1$Name <- paste(gona_linear1$Site, gona_linear1$Catalog, sep= "-")
+joined_gona1 <-dplyr::left_join(gona_linear1, gona_3d, by = c("Name" = "Name"))
+joined_gona1 <- joined_gona1 %>% dplyr::relocate(GM_L,GM_Br1,GM_Br2,GM_Br3,GM_T1,GM_T2,GM_T3)
+## Subsetting a dataframe that contains both linear and 3d data for measuremnt validation
+overlap_gona1 <- joined_gona1 %>% tidyr::drop_na(Flaked)
+
+gona_esa_pca12 <-prcomp(overlap_gona1[1:7],  scale = FALSE)
+res.var <- get_pca_var(gona_esa_pca12)
+variable_loadings123<-data.frame(res.var$coord) 
+fviz_eig(gona_esa_pca12, addlabels=TRUE, hjust = -0.1)
+
+##################################################
+
+# Measurement Validation
+## Principle component analysis
+gona_esa_pca <-prcomp(overlap_gona[1:7],  scale = TRUE)
 res.var <- get_pca_var(gona_esa_pca)
 variable_loadings<-data.frame(res.var$coord) 
 
-pca2 <- psych::principal(gona_esa[1:7], nfactors=2, rotate="varimax", scores=F)
+gona_esa_pca1 <-prcomp(joined_gona[1:7],  scale = FALSE)
+res.var <- get_pca_var(gona_esa_pca1)
+variable_loadings1<-data.frame(res.var$coord)
+
+## Screeplot
+fviz_eig(gona_esa_pca, addlabels=TRUE, hjust = -0.1)
+# Results for individuals
+
+res.ind <- get_pca_ind(gona_esa_pca)
+Indiv_handaxe_scores<-data.frame(res.ind$coord)
+# add data back to dataset
+overlap_gona$PC1<-Indiv_handaxe_scores$Dim.1
+overlap_gona$PC2<-Indiv_handaxe_scores$Dim.2
+
+pca2 <- psych::principal(overlap_gona[1:7], nfactors=2, rotate="varimax", scores=F)
 pca2
 
-
-# Data preparation
-## Loading data
-gona_esa<-readr::read_csv("data/EA_Reduction_Paper_Order.csv")
-gona_3dgmm<-readr::read_csv("data/Gona3Ddata_GMM.csv")
-gona_scars<-readr::read_csv("data/Gona3Ddata_scars.csv")
-## creating a new column of unique identifier for merging
-gona_esa$Name <- paste(gona_esa$Site, gona_esa$Catalog, sep= "-")
-## Subsetting scar data frame because starting from th 7th column it lists the area of individual scars on an artifact, the number of which vary between artifacts.
-gona_scars_6c<-gona_scars[1:6,]
-## Manually editing the names of three observations because of errors in naming
-gona_esa[146,44]<-'BSN17-35' # It was BSN17-17C-35 before
-gona_esa[136,44]<-'BSN17C-29' # It was BSN17-17C-29 before
-gona_esa[133,44]<-'BSN17C-231' # It was BSN17-17c-231 before
-
-
-## Merging caliper and 3d measurements
-joined_gona <-dplyr::left_join(gona_esa, gona_3dgmm, by = c("Name" = "Name"))
-full_gona <-dplyr::left_join(joined_gona, gona_scars_6c, by = c("Name" = "Name"))
-## Subsetting a dataframe that contains both capliper and 3d measurements.
-overlap_gona <- full_gona %>% tidyr::drop_na(Type.y)
-write.csv(overlap_gona, file = "data/overlap_gona.csv")
 
 # Evaluating the correlations in PC values between caliper and 3d methods.
 ggstatsplot::ggscatterstats(

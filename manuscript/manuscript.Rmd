@@ -7,12 +7,7 @@ author:
 - Michael J. Rogers^[Department of Anthropology, Southern Connecticut State University, New Haven, CT, USA; rogersm1@southernct.edu]
 - Sileshi Semaw^[Centro Nacional de Investigación sobre la Evolución Humana (CENIEH), Burgos, Spain; sileshi.semaw@cenieh.es]
 abstract: 
-|
-  ```{=latex}
-  TBD.
 
-  \textbf{Keywords:} Gona; TBD; TBD; TBD; TBD; TBD; TBD
-  ```
 date: "`r Sys.Date()`"
 fontsize: 11pt
 output: bookdown::pdf_document2
@@ -130,7 +125,7 @@ The accuracy of by-eye estimation has yet to be systematically studied in Early 
 
 ## The Early Acheulean at Gona
 
-Early Acheulean sites in the Gona Project area are distributed over a wide area within the Dana Aoule North (DAN), Ounda Gona South (OGS), and Busidima North (BSN) drainages in the Busidima Formation [@quade2004] and range in age from approximately 1.7 to 1.2 mya [@semaw2018].
+Early Acheulean sites in the Gona Project area (**Figure** \@ref(fig:fig2)) are distributed over a wide area within the Dana Aoule North (DAN), Ounda Gona South (OGS), and Busidima North (BSN) drainages in the Busidima Formation [@quade2004] and range in age from approximately 1.7 to 1.2 mya [@semaw2018].
 The specific sites included in the current analysis are DAN-5, OGS-5, OGS-12, and BSN-17, all estimated to ca.
 1.7 -- 1.4 mya by stratigraphic position in the Gona sequence [@quade2008; @semaw2020].
 The Busidima Formation accumulated through fluvial deposition by the ancestral Awash River (Type I context) and its smaller tributary channels (Type II context) [@quade2004; @quade2008].
@@ -139,6 +134,10 @@ Acheulean sites continue to occur in Type I contexts (BSN-17, DAN-5) but are als
 Clasts locally available in these tributaries were relatively small, implying that the large flakes and cobbles used to produce Acheulean artifacts were initially sourced from the axial river.
 A similar pattern of habitat diversification and increasing lithic transport distances has been described at other sites and may be typical of the early Acheulean [@rogers1994; @linaresmatás2021; @hay1976].
 As with other early (i.e. \>1.0 mya [@stoutStoneToolmakingEvolution2011; @presnyakova2018]) Acheulean assemblages, the Gona collections include numerous "crudely made" handaxes and picks on large flake blanks and cobbles, as well as large (\> 10cm) unmodified flakes, flaked pieces interpreted typo-technologically as Mode 1 cores (see Figure 1af), and smaller debitage [@semaw2018; @semaw2020].
+
+```{r fig2, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="Gona site map."}
+knitr::include_graphics(here::here("figure/site map.png"))
+```
 
 # Materials and Methods
 
@@ -277,30 +276,199 @@ They also appear to follow general trends of shape change with increasing FAI ob
 
 # Discussion
 
-Following the criteria we proposed in the Introduction, Large Flake base cores from Acheulean contexts show evidence of design.
-Importantly, "design" in this context is understood as "design in four dimensions" sensu Kuhn [-@kuhn2020].
-Increasing FAI is associated with progressive narrowing ( i.e., decreasing PC1) and convergence (decreasing PC2) whereas cSDI is not.
-This indicates that the size and non-overlapping placement of flake removals drives shape change, rather than simply the removal of mass in general as might be expected from conventional models of resharpening (?).
-The fact that cSDI nevertheless correlates with FAI is consistent with relatively light (number of scars per piece ranges from 2 to 17 with a mean of 6.94) and spatially distributed re-touching involving relatively little overlap between scars.
-Such a pattern could be produced by intentional imposition of a design target or "mental template" or a more procedural/functional bias in favor of establishing cutting edges at one end of the long axis.
-In the absence of effective thinning/volume management techniques, this will lead to rapid narrowing/thickening of the piece overall and especially at the "tip." This is consistent with differences between flaked vs. unmodified large flakes and furthers the point that blank production already can be conceived as a process of "design" -- many unmodified flakes may have been similar in shape and just as useful as many retouched tools.
+Our analyses of flaked pieces from Oldowan and Early Acheulean contexts at Gona support the presence of two distinct reduction modes (1 and 2) that can be reliably discriminated using measures of artifact shape, flaking intensity, and extent of surface modification.
+However, they fail to support further sub-division between conventional Mode 2 tool types (handaxe, pick, knife).
+Following criteria proposed in the Introduction, we find strong evidence of imposed form in the retouched large flakes from Acheulean contexts at Gona, weak evidence of shaping in Mode 2 cobble cores from Acheulean contexts, and little to no evidence of shaping in Mode 1 cores from both Acheulean and Oldowan contexts.
+Our framing of this research question and its proposed test criteria follows the preponderance of archaeological literature in conceptualizing artifact design as a binary presence/absence of intentionally imposed form [@dibbleMajorFallaciesSurrounding2017].
+However, we will now argue that our results are better interpreted as reflecting variation in the degree and nature of design expressed by ESA toolmakers.
+This shift in perspective recognizes that the purposeful production of desired morphological and functional features can be achieved by different combinations of raw material selection, blank production, and flaking strategies, including the preservation of function through patterned changes in morphology [@kuhn2020].
 
-This contrasts with reduction of Mode 1 cores.
-Unexpectedly, FAI did have an effect to increase convergence.
-However, this effect was substantially weaker than seen in LFB Acheulean cores and may simply reflect the fact that reduction is unlikely to be perfectly symmetrical and our orienting protocol guarantees that one end is always more pointed than the other unless they are precisely equal in breath.
-In support of this "byproduct" interpretation, the relationship between FAI and cSDI is essentially what one would expect from knapping unconstrained by any systematic core-shaping strategy (greater flaked area can, but does not necessarily, accommodate a greater number of flake scars)
+## Large Flakes
+
+As we argued in the Introduction, the systematic production of large flakes indicates attention to artifact size as a desired design feature.
+Many of these flakes would have possessed substantial lengths of sharp edge and could have been immediately useful as cutting tools without further retouch.
+In fact, 33% of the large flakes in our total sample are unretouched.
+Notably, this is also true of the sub-sample from sites (OGS-5 and OGS-12) located in Type II, "tributary" sediments (29 of 82 unmodified, 35%).
+This likely reflects transport and discard of unmodified flakes from production sites closer to the axial river system sources of large clasts, consistent with the idea that such flakes were themselves treated as useful tools.
+We consider the alternative possibility, that unmodified flakes were unintended byproducts of local LCT production from transported boulder cores, to be less likely considering the energetic inefficiency of this strategy as well as the absence of large boulder cores in the assemblages (but see discussion of LCTs on cobble cores below).
+
+Whether or not unmodified flakes were themselves desired "end products", a majority of large flakes in the sample were retouched to some extent.
+Our analyses indicate that this flaking was performed in a manner that produced systematic and directional shape changes.
+Specifically, increasing FAI is associated with progressive reduction in relative breadth (increasing relative thickness and elongation; PC1) and increasing convergence (PC2).
+In contrast, variation in cSDI is not associated with artifact shape.
+These effects of surface modification extent but not reduction intensity indicate that it is the size and non-overlapping placement of flake removals that drives directional shape change, rather than the removal of mass in general.
+The observed correlation of cSDI with FAI further indicates that each new scar tends to remove additional unflaked area, consistent with the observed pattern of small numbers of relatively large and spatially distributed flake removals.
+This clearly differs from classic re-sharpening models, which emphasize shape change with decreasing artifact size as a byproduct of concentrated and repeated mass removal from particular areas of the artifact, such a working edges [@dibble1987; @mcpherron2003].
+It also clearly differs from the expected effects of un-patterned debitage on flake blanks, which does tend to increase relative thickness but also decreases elongation and is not associated with convergence [@moore2016].
+
+It is possible that the observed pattern reflects the intentional pursuit of an explicit morphological target or "mental template." This is generally seen as a strong claim implying rich mental representation and manipulation of spatial features [@wynn2002], cultural mechanisms for the intersubjective sharing of ideas of "appropriate" form [@wynn1995], and social reproduction of the skills required to reliably achieve these forms [@liuDifferentialEffectsKnapping2023].
+If there is such a target, however, it would seem to be a very loose one considering the observed range of shape variation in retouched flakes (Figure 5).
+A more cognitively and culturally "lean" interpretation is that the pattern reflects a procedural and/or functional bias toward establishing (or rejuvenating original) cutting edges at one end of the long axis.
+In the absence of effective thinning and volume management techniques, such a bias would naturally lead to narrowing/thickening of the piece overall and especially at the "tip," as is seen in our sample.
+This bias might itself be a socially learned behavioral convention or "habit" (sensu Isaac, 1986), but could plausibly emerge directly from individual responses to the morphology of large flake blanks.
+Such flakes are typically elongated and thus present: 1) two longer edges along the maximum dimension that are a natural focus for retouch, and 2) an ergonomic polarity defined by a thick (platform and percussion bulb) "butt" vs. a feather terminated "tip" [cf. @key2016; @wynn2018].
+Even with this minimal interpretation, however, we would argue that LFB flaking strategies at Gona present evidence of design in the sense of being intended to produce and/or maintain desired functional features of the LCT.
+This contrasts with patterns observed in cores classified as Mode 1 in our analyses which, as expected, appear to reflect simple debitage without intended morphological targets.
+
+## Mode 1 Cores
+
+A Discriminant Function Analysis strongly supported the presence of two distinct morphological types in our sample (based on overall shape and flake scar characteristics), which we had previously typo-technologically interpreted as reflecting Mode 1 (debitage) and 2 (façonnage) flaking strategies.
+Consistent with this interpretation, cores assigned to Mode 1 showed little or no evidence of core shape management.
+One potential exception is an unexpected tendency of increasing FAI to be associated with increasing convergence.
+However, this effect is an order of magnitude weaker than that seen in LFB Acheulean cores and may be an artifact of our orienting protocol, which aligns cores such that width at 25% length is always less than width at 75% length.
+If reduction tends to increase asymmetry from initially rounded cobble forms, this could account for the weak convergence effect we observe.
+In support of this interpretation, Mode 1 cores display a relatively strong correlation between FAI and cSDI driven by an increase in the upper bound of cSDI values as FAI increases.
+In other words, we find that greater flaked area on Mode 1 cores can, but does not necessarily, accommodate a greater number of flake scars.
+This is what would be expected from knapping unconstrained by any systematic core-shaping strategy.
+
+The presence (n=14) of relatively large (\> 100mm) Mode 1 cores at Gona Acheulean sites raises the further possibility that at least some of these might be depleted cores from LFB production.
+However, none of these display scars \> 90mm (mean = 51.8 mm), most are very lightly reduced (mean = 5.7 scars), and none meet the 150mm length cut-off used by Sharon (2009) to identify "large" cores suitable for LFB production.
+The largest Mode I core in our sample is 137 mm long, has five scars ranging from 25- 85 mm long, and an FAI of 25%.
+We thus consider it unlikely that large Mode I cores from Acheulean contexts were used for LFB production.
+The behavioral significance of relatively large, lightly-worked Mode 1 cores in Acheulean contexts is a question for future research.
+
+## Mode 2 Cores
 
 Our most complicated results come from Mode 2 cobble cores.
-Evidence of intentional shaping is limited: FAI has a moderate effect on PC1(flatness) and no effect on pointedness.
-Furthermore, the is no association between FAI and cSDI cobble cores display a greater range of cSDI values.
-Instead, FAI is strongly correlated with scar size (mean scar length: n=33, r=.588, P\<0.001; Figure 11).
-Together, this suggests that the removal of large flakes in particular increases FAI and tends to narrow the piece.
-We propose that this pattern may actually indicate that at least some cobble cores were precisely that: cores for the generation of LFBs.
-Given the difficulty of working relatively spherical cobbles, we expect that knappers would have chosen elongated and/or tabular cobbles.
-Attempts to maximize potential flake dimensions would naturally lead to removals along the long axis rather than at either end.
-This hypothesis was suggested by informal "experiential" knapping by the lead author with Gona cobbles, during which LFB production produced pick like forms as a byproduct.
-In support of the plausibility of this hypothesis, the maximum scars length on Gona Mode 2 cobble cores substantially overlaps with the size of unmodified large flakes from Acheulean contexts.
-It is also possible that cobble cores might begin as cores for LFB production and then be finished into core tools in their own right.
-These possibilities have major implications for understanding the occurrence and apparent morphological stability [@beyene2013] of "picks" throughout the African Acheuelan but remains to be tested.
+Evidence of intentional shaping is limited: FAI has a moderate effect on PC1 such that increasing flaked area produces relatively shorter, thicker, and narrower pieces.
+This violates expectations that intentional LCT shaping should increase elongation and convergence.
+However, it also fails to align with a reported tendency for un-patterned debitage to decrease the thickness and increase the elongation of cobble cores (Moore & Perston, 2016).
+This may reflect the fact that Mode 2 cobble cores at Gona begin and remain relatively elongated (Table 3: mean L/W = 1.68) throughout reduction compared to starting (n=29, mean L/W = 1.29) and ending (mean L/W = 1.34) cobble cores in the experiment of Moore and Perston [-@moore2016].
+The moderate trend toward thickening and shortening of cores with increasing FAI might plausibly be an effect of particularly elongated initial core form.
+In the absence of intentional thinning techniques [@stout2014] flaking around the perimeter of an oblong core would be expected to preferentially reduce length and especially breath (due to the long axis providing more potential platforms, especially if knappers seek to maximize flake size) while preserving thickness.
+Along these lines, Toth [-@toth1985] reported that "roller" shaped cobbles tended to produce bifacial choppers in his unstructured debitage experiments.
+
+Whether or not shaping occurred, it is clear that the elongated Mode 2 cobble cores at Gona do provide evidence of initial size and shape selection within the range of rounded cobbles available from Type 1 channels in the Busidima Formation [@quade2004].
+This pattern is not simply an analytical artifact of classifying elongated cores as "Mode 2" while selectively omitting rounded forms: the complete sample of large (\>=750g) cores in our sample (n=25) is dominated by relatively elongated forms (median L/W = 1.66).
+The small number (n=5) of large, rounded (L/W \< 1.33) cores in the sample are also anomalous in being very lightly worked compared to more elongated large cores (mean scar count = 4.2 vs. 10.45, p \< 0.001; mean cSDI = 0.14 vs. 0.31, p= 0.002; mean FAI = 36 vs. 65, p = 0.016).
+
+This could reflect the intentional selection of large, elongated blanks for LCT production, as has been proposed at other early Acheulean sites [@duke2021; @harmand2009; @texier2018].
+We would characterize such selection as a design choice even in the absence of subsequent shaping.
+However, large-cobble shape preferences might equally reflect biases related to LFB production.
+Geometrically, elongated cobbles afford greater potential maximum dimensions for detached flakes than do rounder cobbles of a similar mass.
+Flaking along the long axis of elongated cobbles enables the production of elongated, side-struck flakes [@delatorre2018] that are typical of the LFB Acheulean and which provide longer and more ergonomic [cf. @wynn2018] cutting edges than do round flakes.
+Flatter and more elongated cobbles are also generally easier to open and exploit [@texier2018; @toth1982; @whittaker1994].
+This is an increasingly important consideration as size increases due to the increased percussive force needed to detach larger flakes and the challenges of supporting and positioning larger cores [@semaw2009], particularly with cobbles that are large but not sufficiently massive to act as stationary targets for thrown hammerstones [@toth2019].
+We thus find it plausible that at least some typological picks, handaxes, and knives made on cobble cores at Gona could have been by-products of large flake production rather than intended forms.
+Toth and Schick [-@toth2019: 741] similarly note that "heavily reduced boulder cores can assume the form of smallish discoids and polyhedrons [and] may not be identified as sources of large flake blanks by many archaeologists".
+If this is true, such cores are distinguished from classic Mode 1 cores by allometric effects on raw material choice and flake placement rather than a shift to deliberate shaping.
+
+The possibility that some Mode 2 cobble cores at Gona might be the remains of cores used for large flake production was initially suggested by informal, "experiential" knapping with Gona cobbles, during which attempts at LFB production produced pick-like forms as a byproduct.
+Consistent with this hypothesis, the mean (152.9mm) and median (156mm) length of Mode 2 cobble cores are both above the 150mm cut-off proposed by Sharon [-@sharon2009] and the maximum scar length on each Mode 2 cobble core substantially overlaps with the size range of unmodified large flakes (Table 3).
+Importantly, this is also true of the largest retouched flakes at Gona, nine of which exhibit flake scars \>100mm and thus could have been used as LFB cores.
+This possibility has also been suggested at Koobi Fora [@presnyakova2018] and might be relevant to understanding very large LCTs on flakes at other sites [e.g., @beyene2013].
+
+Nevertheless, the fact remains that the preponderance of scars on large cobble cores are from the removal of smaller flakes.
+Although these smaller scars could record preparatory flaking for LFB predetermination [@delatorre2018] and/or a subsequent stage of small flake debitage [@shea2010], it is difficult to rule out a role in shaping.
+Indeed, some pieces (e.g., Figure 1 ac, ad, ae) exhibit delicate points and sharp edges that are strongly suggestive of intentional shaping.
+If these pieces did in fact begin as cores for LFB production, it is possible that they were subsequently shaped into cutting tools in their own right.
+Such lithic "upcycling" of depleted LFB cores would help to explain the transport of these pieces away from the axial river system.
+However, we should also be cautious not to overinterpret a small number of suggestive pieces pulled from a wider range of variation, as they may simply represent low frequency "spandrels" of un-structured debitage [@moore2016; @moore2020].
+These various possibilities remain to be tested, but we note that there is no a priori reason to think that Acheulean tool makers would have neglected potentially useful cores because they "belonged" to a particular reduction sequence or technological type.
+
+## Implications
+
+Early Acheulean technology is differentiated from the preceding Oldowan by changes in artifact size as well as morphology [@isaac1977].
+However, discussion of the technological, cognitive, and cultural implications of this transition has often focused on the emergence (or not) of intentional shape imposition [e.g., @duke2021; @holloway1969; @gowlett1986; @isaac1976; @roche2005; @wynn1995; @wynn2002].
+Our results suggest that this emphasis may be misplaced, and that distinctive Early Acheulean artifact forms might represent secondary accommodations to the primary goal of increasing tool size.
+From this perspective, Early Acheulean shape imposition is best understood as reflecting an interaction between functional design goals and technological constraints [@kuhn2020; @wynn2018].
+
+The consensus view is that Oldowan flaking goals focused on the production of sharp, cutting flakes through least effort debitage [@toth1985].
+Somewhat more controversially, Oldowan flaking may have included preferred debitage patterns [@stout2019] and/or intentional core maintenance and rejuvenation strategies [@delagnes2005].
+Our failure to find systematic effects of reduction on Oldowan core shape at Gona is consistent with this broad characterization.
+Starting from this Oldowan baseline, the production of larger cutting tools could in principle be achieved by increasing the size of cores and detached flakes and/or by attempting to produce and maintain cutting edges on cores themselves rather than on the smaller pieces detached from them.
+Both strategies are evident in the Early Acheulean at Gona.
+
+At Gona, large flakes appear to have been transported across the landscape and discarded either in their original form or after relatively light modification to impose desired cutting edges.
+This behavior combines the two size-maximizing strategies identified above by increasing flake size and then using these large detached pieces as supports for retouched edges.
+On the other hand, large cobble cores at Gona display shape variation more consistent with debitage than shaping.
+This leads us to suggest that these pieces might be depleted cores from large flake production (size-maximizing strategy 1) that have been "upcycled" as large core tools (size-maximizing strategy 2).
+In this way, the full range of artifact types and patterns of shape variation in the Gona Early Acheulean can be parsimoniously accounted for as the expression of two strategies for increasing cutting tool size.
+
+This interpretation has three main implications.
+First, it supports the view that the Acheulean initially emerged as a set of technological strategies for increasing cutting tool size, especially by striking large flakes [@isaac1969].
+Hypothetically, this size increase might have been favored by novel functional priorities, such as extended use-life, enhanced transportability, and utility for heavy-duty cutting [@shea2010; @toth2019].
+It may also have been motivated and/or enabled by increases in hominid body size.
+These overlapping possibilities appear likely to be mutually reinforcing rather than mutually exclusive.
+In fact, the appearance of the Acheulean starting 1.95 mya [@mussi2023] is roughly contemporaneous with an increase in the number, size, and ecogeographic range of stone tool sites in general [@plummer2004], as well as evidence of habitat diversification and greater lithic transport distances for Acheulean sites specifically [@hay1976; @quade2008; @rogers1994; @delatorre2008], increasing emphasis on large animal butchery [@linaresmatás2021], and increases in hominid brain and body size [@antón2014] including the first appearance of *Homo erectus* [@mussi2023].
+Increased cutting tool size is a plausible response and/or enabling factor to many of these shifts and is in that sense appears "overdetermined" by available evidence.
+Importantly, the current study does not resolve the extent to which the production and transport of Early Acheulean tools around the landscape [@presnyakova2018] occurred through planned logistical [@binford1980] activities of individuals and/or collaborating groups vs. the cumulative effects of independent transport and recycling events over time [@reeves2023].
+Implications for planning and prospection capacities [@szpunar2014] thus remain unclear.
+
+Second, it reinforces a growing consensus [e.g., @duke2021; @kuhn2020; @presnyakova2018] that early Acheulean LCT types artificially partition a continuum of variation rather than representing distinct target forms.
+More specifically, we propose that these forms emerge as the expression of a generic goal of cutting tool size maximization implemented across varying material constraints and opportunities.
+This is particularly relevant to the interpretation of "picks," which have long been viewed as a morphologically distinct but functionally mysterious tool type.
+Toth and Schick [-@toth2019] note that picks do not appear designed to provide good cutting edges but also do not show use-wear consistent with digging.
+This leads them to speculate that picks may have been specialized weapons used to dispatch large, wounded animals with a blow to the head.
+However, picks are a common, persistent, and morphologically variable artifact type in the Early Acheulean, which argues against such a narrow function.
+We suggest that typological picks may lump together a variable mix of depleted LFB cores and large cutting tools made on relatively thick (cobble or flake) blanks, possibly including upcycled LFB cores.
+Within this interpretation, picks would be part of a continuum of morphological variation produced by different raw material forms and complex reduction histories, rather than a distinct tool type designed for novel function.
+Due to such constraints, picks as a class may appear less well designed for cutting than LCTs produced on thinner blanks.
+However, the relationship between tool morphology and cutting efficiency is complex and multivariate [@keyIntegratingMechanicalErgonomic2016], and the relative utility of short and/or higher-angle edges on a more massive tool is not well understood across diverse cutting tasks.
+Picks as an artifact class have not received the same attention as handaxes and cleavers and we are unaware of any broad comparative synthesis.
+Beyene et al. [-@beyene2013] do report that picks at Konso are relatively conservative in shape and scar counts over a period from 1.75-1.2 Ma during which associated handaxes show clear increases in refinement.
+They thus suggest that pick function may already have been effectively optimized by 1.75-1.6 Ma whereas the cutting function of handaxes continued to be enhanced.
+This is broadly consistent with the current suggestion that typological picks identify a morphological extreme produced by raw material features (esp. thickness) that constrain or discourage the refinement that might be developed on other blanks.
+From 1.75-1.2 Ma, these ad hoc and/or less refined cutting tools appear to have remained a stable element in the tool kit.
+However, they are nearly absent at 0.85 Ma, coincident with the appearance of "considerably refined" handaxes.
+Indeed, picks are not commonly reported to co-occur with refined handaxes in later Acheulean contexts anywhere.
+On a traditional functional interpretation, this would imply that their originally designed function also became less important in these contexts.
+The alternative possibility suggested here is that increased investment in handaxe refinement decreased the perceived value of producing and using ad hoc core tools for similar functions.
+
+Lastly, our interpretation suggests that LCT variation at Gona probably does not reflect intentional imposition of morphological norms [cf. @holloway1969] or detailed mental templates [@deetz1967].
+Instead, we would focus attention on the cognitive and cultural implications of size maximization strategies.
+As reviewed by Stout [-@stoutStoneToolmakingEvolution2011], these stem from 1) the physical and strategic challenges of quarrying large flakes and 2) the increased complexity of knapping action hierarchies resulting from the addition of novel sub-goals (e.g. create a cutting edge) involved in shaping large flake and cobble cores into useful tools.
+Systematic large flake production strategies and techniques are qualitatively different from small-flake debitage [@isaac1969; @toth2019] and thus add to the volume of technical knowledge and know-how that must be acquired by individuals.
+This is directly relevant for inferring learning demands and the possible role of social support in Acheulean skill reproduction [@pargeter2019].
+Stout [-@stout2002] provides a modern example of large flake production that illustrates the potential scope of such demands.
+Interestingly, much earlier large flake production has been reported at the 3.3 Ma site of Lomekwi 3 but is argued to be poorly controlled with minimal core reduction, numerous steps and hinges, and extensive platform battering.
+Although concerns have been raised regarding the dating and context of this site [@archer2020; @dominguez-rodrigo2019], it may provide an interesting technological comparison to Early Acheulean large flake production.
+
+With respect to knapping action organization, the intentional placement of flake removals to generate desired core morphologies demonstrates a more complex goal structure than is required for simple, least-effort debitage.
+Such complexity has implications for assessing cognitive demands including relational integration, temporal abstraction, and goal abstraction [@stoutStoneToolmakingEvolution2011]. For this reason, our study was designed to address concerns that intentional shaping might not actually be characteristic of Early Acheulean technology [e.g., @moore2016].
+We did find evidence for (at least) the imposition of cutting edges on LFBs, and offer this a foundation for "minimum necessary competence" [sensu @killin2021] cognitive interpretations.
+We remain agnostic as to whether similar knapping complexity was demonstrated in the preceding Oldowan, but note that the rare and un-standardized [@gallotti2018] occurrence of debitage on flakes prior to 2.0 mya does not provide evidence of intentional shaping.
+Stout [-@stoutStoneToolmakingEvolution2011] argued that elaborated small flake debitage methods contemporary with the Early Acheulean, such as single platform Karari scrapers [@isaac1997] and hierarchical centripetal cores [@delatorre2003], document complex goal structures including the intentional modification of the core morphology to enable subsequent flake detachments.
+Others have seen evidence of such intentions in earlier bifacial [@duke2021] and unifacial [@delagnes2005] debitage strategies.
+However, all of these interpretations are based on qualitative assessments of flake scar pattering and/or refitting and remain open to critique from quantitative and experimentally-based approaches contending that similar knapping patterns can emerge without "top down" intentions [@moore2016; @moore2020; @toth1985].
+
+However these debates are eventually resolved, we would stress that the earliest demonstration of a particular capacity is unlikely to represent its earliest presence.
+Logically, the minimum capacities required to support a novel behavior must be present before the behavioral innovation can occur [@stout2023] and may predate it substantially.
+We would thus argue that technological innovation in the Early Acheulean was more likely stimulated by changing behavioral and ecological strategies that placed a premium on cutting tool size, rather than by the sudden emergence of new cognitive capacities.
+In this context, it is important to note that the preponderance of cognitive and especially neuroarchaeological investigations of handaxe manufacture [@hecht2023; @stout2015; @stoutStoneToolmakingEvolution2011; @stout2008] have studied refined, later Acheulean forms and should not be generalized to discussions regarding the emergence of the Early Acheulean [cf. @duke2021].
+These neuroarchaeological studies were made possible by a robust understanding of the specific knapping behaviors being modeled [@stout2023].
+Similar studies modeling Early Acheulean technology are clearly needed and we hope that investigations like the current one can help to provide the necessary behavioral foundation.
+
+## Generalizability
+
+It remains to be seen to what extent current results can be generalized to other Early Acheulean sites.
+It is clear that LFB production as seen at Gona is typical [@isaac1969] of the African Acheulean from its first known appearance [@mussi2023].
+Similarly, the transport and discard of unmodified large flakes has also been reported at Peninj [@delatorre2008] and Koobi Fora [@presnyakova2018] and may be more widespread than has been specifically noted in publication.
+The general pattern of light, non-invasive retouch we observe also appears typical of Early Acheulean sites [reviewed by @presnyakova2018].
+However, the effects of reduction on LCT shape have not been systematically tested across sites in ways comparable to the current analyses.
+This makes it difficult to determine if rare examples of "well shaped" Early Acheulean LCTs [e.g., @diez-martín2019] represent distinct technological behaviors or extreme points along a continuum of variation.
+Presnyakova et al. [-@presnyakova2018] argue for the latter, supported by shape effects of reduction intensity identified using artifact size and edge angle as proxies.
+However, these authors do not consider SDI or FAI and their analyses excluded any flaked pieces without "clearly defined tips and bases," thus limiting comparability with current results.
+
+The occurrence of numerous large cobble cores (typological LCTs on cobble bases) at Gona is atypical for East Africa and may reflect local raw materials availability.
+Kuman [-@kuman2007] reports that river cobbles from the nearby Blaaubank gravels are the dominant blank form in Gauteng "Cradle of Humankind" Early Acheulean collections, possibly due to the rarity of larger boulder-size clasts.
+Relatively high frequencies of LCTs on cobbles have also been reported from Gadeb in Ethiopia [@delatorreEarlyStoneAge2011].
+However, the large cobble cores at these sites have not been systematically studied as a distinct technological component or potential source of LFBs.
+Substantial use of large slabs/blocks for LCT production has been reported at Kokiselei 4 [@harmand2009] and Olduvai Gorge [@delatorre2005] but again it is not clear whether these could also have been sources for LFBs during some part of their reduction sequence.
+Interestingly, Presnyakova et al. [-@presnyakova2018: Fig. 8] illustrate a boulder core with refitting large flake from FxJj65 that appears to be comparable in size (\~150mm long), shape (L/W $\approx$ 1.5), and reduction intensity to some of the more lightly worked cobble cores at Gona, providing at least anecdotal support for our interpretations.
+In sum, however, systematic comparison across published Early Acheulean sites is not currently possible due to differences in research questions, methods, and data reporting practices.
+Clearly much work is needed to enable such comparison, but we do find some encouragement in the current finding that conventional linear measures, simple scar counts, and visual flaked area estimations are sufficient to describe relevant variation in shape and reduction
+
+# Conclusion
+
+Characteristic Early Acheulean artifact forms including large retouched flakes and core tools began to appear ca.
+2.0 Ma [@mussi2023] as part of a pervasive ecological and behavioral shift encompassing changing diet, ranging patterns, and habitat usage; increasing site frequency, density, and ecogeographic distribution; and the first appearance of *Homo erectus*.
+Although the cognitive and cultural significance of this new lithic industry is often framed in terms of the emergence of discrete tool types and/or intentionally imposed morphological norms, we find little evidence at Gona to support this.
+Instead, we observe systematic patterns of raw material selection and core surface modification organized around the production and maintenance of useful cutting edges on large(r) supports.
+Such larger cutting tools may have been prioritized in newly emerging hominid behavioral adaptations due to their extended use-life, enhanced transportability, and/or suitability for heavy-duty cutting.
+
+This interpretation is consistent with a characterization of Early Acheulean tool forms as emerging from a set of "design imperatives" for large hand-held cutting tools [@gowlett2006; @wynn2018], specifically including elongation and ergonomic positioning of cutting edges [[\@key2016; \@keyIntegratingMechanicalErgonomic2016](Key%20et%20al.,%202016;%20Key,%202016)].
+Our results thus provide support for the presence of imposed form in the broad theoretical sense developed by Kuhn [-@kuhn2020]: not as the realization of a "holographic model" in the mind of the maker, but rather as the outcome of technological choices made in view of material constraints and affordances [@moore2020].
+To the extent that some, but not all [@muller2022], later Acheulean assemblages provide stronger evidence of normative form imposition [@garcía-medrano2019; @liuDifferentialEffectsKnapping2023; @shipton2020] this underlines the heterogeneity of lithic technologies subsumed within the "Acheulean Industry" and argues for more context-specific approaches to evaluating behavioral, cognitive, and cultural implications.
 
 # References
