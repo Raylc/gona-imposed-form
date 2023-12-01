@@ -1,11 +1,8 @@
 # Add packages
 library(tidyverse)
 library(factoextra)
-library(FactoMineR)
-library(PCAmixdata)
-library(psych)
 library(patchwork)
-library(figpatch)
+
 # Data preparation
 ## loading data
 gona_linear<-readr::read_csv("data/Gona_ESA_Linear.csv")
@@ -19,24 +16,91 @@ joined_gona <- joined_gona %>% dplyr::relocate(GM_L,GM_Br1,GM_Br2,GM_Br3,GM_T1,G
 ## Subsetting a dataframe that contains both linear and 3d data for measuremnt validation
 overlap_gona <- joined_gona %>% tidyr::drop_na(Flaked.y)
 
-### #######################Trial
-gona_linear1<-readr::read_csv("data/EA_Reduction_Paper_41.csv")
-gona_linear1$Name <- paste(gona_linear1$Site, gona_linear1$Catalog, sep= "-")
-joined_gona1 <-dplyr::left_join(gona_linear1, gona_3d, by = c("Name" = "Name"))
-joined_gona1 <- joined_gona1 %>% dplyr::relocate(GM_L,GM_Br1,GM_Br2,GM_Br3,GM_T1,GM_T2,GM_T3)
-## Subsetting a dataframe that contains both linear and 3d data for measuremnt validation
-overlap_gona1 <- joined_gona1 %>% tidyr::drop_na(Flaked)
-
-gona_esa_pca12 <-prcomp(overlap_gona1[1:7],  scale = FALSE)
-res.var <- get_pca_var(gona_esa_pca12)
-variable_loadings123<-data.frame(res.var$coord) 
-fviz_eig(gona_esa_pca12, addlabels=TRUE, hjust = -0.1)
-
-##################################################
 
 # Measurement Validation
 ## Principle component analysis
-gona_esa_pca <-prcomp(overlap_gona[1:7],  scale = TRUE)
+gona_pca_overlap <-prcomp(overlap_gona[1:7], scale = FALSE)
+overlap.res.var <- get_pca_var(gona_pca_overlap)
+overlap_variable_loadings<-data.frame(overlap.res.var$coord) 
+## Screeplot showing percentage of explained variances
+fviz_eig(gona_pca_overlap, addlabels=TRUE, hjust = -0.1)
+## Results for individuals
+overlap.res.ind <- get_pca_ind(gona_pca_overlap)
+Indiv_scores_overlap<-data.frame(overlap.res.ind$coord)
+## add data back to dataset
+overlap_gona$overlapPC1<-Indiv_scores_overlap$Dim.1
+overlap_gona$overlapPC2<-Indiv_scores_overlap$Dim.2
+## Comparison of linear PC1 and 3D PCA
+results_expr <- statsExpressions::corr_test(overlap_gona, "overlapPC1", "@3DGMPC110x10")$expression[[1]]
+fig4a<-ggplot(overlap_gona, aes(x="overlapPC1", y="@3DGMPC110x10")) + 
+  geom_point() + 
+  geom_smooth(method=lm) +
+  labs(subtitle = results_expr)
+
+ggstatsplot::ggscatterstats(
+  data  = overlap_gona,
+  x     = "overlapPC1",
+  y     = "@3DGMPC110x10",
+  xlab  = "linear PC1",
+  ylab  = "3d PC1",
+)
+
+
+pcvalues<-readr::read_csv("data/pcvalues.csv")
+ggstatsplot::ggscatterstats(
+  data  = pcvalues,
+  x     = "PC1",
+  y     = "PC11",
+  xlab  = "R PC1",
+  ylab  = "SPSS PC1",
+)
+
+
+
+#
+gona_pca_joined <-prcomp(joined_gona[1:7],  scale = FALSE)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gona_esa_pca$rotation
+eig.val <- get_eigenvalue(gona_esa_pca)
+eig.val
+var_coord_func <- function(loadings, comp.sdev){
+  loadings*comp.sdev
+}
+loadings <- gona_esa_pca$rotation
+sdev <- gona_esa_pca$sdev
+var.coord <- t(apply(loadings, 1, var_coord_func, sdev)) 
+head(var.coord[, 1:4])
+
+write.csv(joined_gona, "data/pcvalues.csv", row.names=FALSE)
+
+
+
+
+
+
+
+
+
+
+
+
 res.var <- get_pca_var(gona_esa_pca)
 variable_loadings<-data.frame(res.var$coord) 
 
@@ -44,28 +108,37 @@ gona_esa_pca1 <-prcomp(joined_gona[1:7],  scale = FALSE)
 res.var <- get_pca_var(gona_esa_pca1)
 variable_loadings1<-data.frame(res.var$coord)
 
-## Screeplot
-fviz_eig(gona_esa_pca, addlabels=TRUE, hjust = -0.1)
-# Results for individuals
 
-res.ind <- get_pca_ind(gona_esa_pca)
-Indiv_handaxe_scores<-data.frame(res.ind$coord)
-# add data back to dataset
-overlap_gona$PC1<-Indiv_handaxe_scores$Dim.1
-overlap_gona$PC2<-Indiv_handaxe_scores$Dim.2
 
-pca2 <- psych::principal(overlap_gona[1:7], nfactors=2, rotate="varimax", scores=F)
+pca2 <- psych::principal(joined_gona[1:7], nfactors=2, rotate="varimax",normalize=FALSE,eps=1e-14)
 pca2
 
 
 # Evaluating the correlations in PC values between caliper and 3d methods.
 ggstatsplot::ggscatterstats(
-  data  = overlap_gona,
-  x     = "FAC1_1.x",
-  y     = "3DGMPC1(10x10)",
+  data  = joined_gona,
+  x     = "PC1",
+  y     = "PC11",
+  xlab  = "R PC1",
+  ylab  = "SPSS PC1",
+)
+
+ggstatsplot::ggscatterstats(
+  data  = joined_gona,
+  x     = "PC2",
+  y     = "PC22",
+  xlab  = "R PC2",
+  ylab  = "SPSS PC2",
+)
+
+ggstatsplot::ggscatterstats(
+  data  = joined_gona,
+  x     = "PC1",
+  y     = "@3DGMPC110x10",
   xlab  = "Caliper PC1",
   ylab  = "3DGMM PC1",
 )
+
 ggplot2::ggsave("3D PC1 correlation.png", path="figure.", width = 5, height = 5, dpi = 600)
 
 ggstatsplot::ggscatterstats(
