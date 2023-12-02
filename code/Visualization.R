@@ -1,6 +1,7 @@
 # Add packages
 library(tidyverse)
 library(patchwork)
+library(cowplot)
 
 # Data preparation
 ## loading data
@@ -40,24 +41,27 @@ ggplot2::ggsave("Fig.3D comparison.png", path="figure.", width = 9, height = 3, 
 ## Figure for FAI by base
 
 fig5a<-joined_gona %>%
-  filter(Contexts == "Acheulean", Mode == "2") %>%
-  ggplot(aes(FAI, PC1, color = as.factor(Base))) + 
-  geom_point(alpha=0.5) + 
+  filter(Contexts == "Acheulean", Mode == "2", Flaked.x == "Flaked") %>%
+  ggplot(aes(FAI, PC1)) + 
+  geom_point(alpha=0.6,size=2,aes(color= as.factor(Base),shape=as.factor(Base))) + 
   geom_smooth(method=lm, aes(group = 1))+
   labs(x ="FAI", y = "PC1 (flatness)")+
   theme(legend.position="none")
 
+
 fig5b<-joined_gona %>%
-  filter(Contexts == "Acheulean", Mode == "2") %>%
-  ggplot(aes(FAI, PC2, color = as.factor(Base))) + 
-  geom_point(alpha=0.5) + 
+  filter(Contexts == "Acheulean", Mode == "2", Flaked.x == "Flaked") %>%
+  ggplot(aes(FAI, PC2)) + 
+  geom_point(alpha=0.6,size=2,aes(color = as.factor(Base),shape=as.factor(Base))) + 
   geom_smooth(method=lm, aes(group = 1))+
-  labs(x ="FAI", y = "PC2 (pointedness)")+
-  labs(color='Base')
+  labs(x ="FAI", y = "PC2 (convergence)")+
+  labs(color='Base', shape = 'Base')+
+  theme(legend.key.size = unit(0.2, "cm"))
+
 
 patchwork <- (fig5a + fig5b)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.FAI by base.png", path="figure.", width = 7, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.FAI by base new.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## Figure for FAI by flaked
@@ -69,10 +73,11 @@ PC1.mean <- joined_gona %>%
 fig6a<-joined_gona %>%
   filter(Contexts == "Acheulean", Base == "flake") %>%
   ggplot(aes(FAI, PC1, color = as.factor(Flaked.x))) + 
-  geom_point(alpha=0.5) + 
+  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked.x))) + 
   geom_smooth(method=lm)+
   geom_hline(data = PC1.mean, linetype="dashed",aes( group = Flaked.x, yintercept = PC1mean, color = Flaked.x)) +
   labs(x ="FAI", y = "PC1 (flatness)")+
+  scale_y_continuous(limits=c(-1.5,2.5))+
   theme(legend.position="none")
 
 PC2.mean <- joined_gona %>%
@@ -83,15 +88,30 @@ PC2.mean <- joined_gona %>%
 fig6b<-joined_gona %>%
   filter(Contexts == "Acheulean", Base == "flake") %>%
   ggplot(aes(FAI, PC2, color = as.factor(Flaked.x))) + 
-  geom_point(alpha=0.5) + 
+  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked.x))) + 
   geom_smooth(method=lm)+
   geom_hline(data = PC2.mean, linetype="dashed",aes( group = Flaked.x, yintercept = PC2mean, color = Flaked.x)) +
-  labs(x ="FAI", y = "PC2 (pointedness)")+
-  labs(color='Flaked')
+  labs(x ="FAI", y = "PC2 (convergence)")+
+  scale_y_continuous(limits=c(-2.5,3))+
+  labs(color='Modification')+
+  theme(legend.key.size = unit(0.2, "cm"))
 
-patchwork <- (fig6a + fig6b)
+fig6a1<-ggdraw(fig6a) + 
+  draw_image("figure/Picture1.PNG",
+             x = 0, y = 0.29, width = 0.12, height = 0.12)
+fig6a2<-ggdraw(fig6a1) + 
+  draw_image("figure/Picture2.PNG",
+             x = 0, y = 0.83, width = 0.12, height = 0.12)
+fig6b1<-ggdraw(fig6b) + 
+  draw_image("figure/Picture3.PNG",
+             x = 0, y = 0.12, width = 0.12, height = 0.12)
+fig6b2<-ggdraw(fig6b1) + 
+  draw_image("figure/Picture4.PNG",
+             x = 0, y = 0.81, width = 0.12, height = 0.12)
+
+patchwork <- (fig6a2 + fig6b2)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.FAI by flaked.png", path="figure.", width = 7, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.FAI by flaked new.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## heteroscedasticity test for mode1 and mode2 cores
@@ -110,3 +130,9 @@ car::ncvTest(lmMod1)
 lmMod2 <- lm(FAI ~ cSDI, data=MODE2CORE)
 lmtest::bptest(lmMod2)
 car::ncvTest(lmMod2)
+
+
+### Locating the extreme value of PC1 and PC2 in the last figure
+leftfig<-joined_gona %>%
+  filter(Contexts == "Acheulean", Base == "flake", Flaked.x == "Unmodified")
+
