@@ -70,48 +70,58 @@ PC1.mean <- joined_gona %>%
   group_by(Flaked.x) %>%
   summarize(PC1mean = mean(PC1))
 
-fig6a<-joined_gona %>%
-  filter(Contexts == "Acheulean", Base == "flake") %>%
-  ggplot(aes(FAI, PC1, color = as.factor(Flaked.x))) + 
-  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked.x))) + 
-  geom_smooth(method=lm)+
-  geom_hline(data = PC1.mean, linetype="dashed",aes( group = Flaked.x, yintercept = PC1mean, color = Flaked.x)) +
-  labs(x ="FAI", y = "PC1 (flatness)")+
-  scale_y_continuous(limits=c(-1.5,2.5))+
-  theme(legend.position="none")
 
 PC2.mean <- joined_gona %>%
   filter(Contexts == "Acheulean", Base == "flake", Flaked.x == "Unmodified") %>%
   group_by(Flaked.x) %>%
   summarize(PC2mean = mean(PC2))
 
+fig6a<-joined_gona %>%
+  filter(Contexts == "Acheulean", Base == "flake") %>%
+  ggplot(aes(FAI, PC1, color = as.factor(Flaked.x))) + 
+  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked.x))) + 
+  geom_smooth(method=lm)+
+  geom_hline(data = PC1.mean, linetype="dashed",aes( group = Flaked.x, yintercept = PC1mean, color = Flaked.x)) +
+  annotate(geom = "point", x = 55 , y = 2.02, colour = "black", fill = "#F8766D", size= 1, stroke = 0.5) +
+  annotate(geom = "text", x = 55 , y = 2.05, label = "OGS5:2013-1", vjust=2, size=2)+
+  annotate(geom = "point", x = 0 , y = -0.66, colour = "black", fill = "#619CFF", size= 1, stroke = 0.5) +
+  annotate(geom = "text", x = 0 , y = -0.66, label = "OGS5:54",  vjust=2, size=2)+
+  labs(x ="FAI", y = "PC1 (flatness)\n")+
+  scale_y_continuous(limits=c(-1.5,2.5))+
+  theme(legend.position="none")
+
+  
 fig6b<-joined_gona %>%
   filter(Contexts == "Acheulean", Base == "flake") %>%
   ggplot(aes(FAI, PC2, color = as.factor(Flaked.x))) + 
   geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked.x))) + 
   geom_smooth(method=lm)+
   geom_hline(data = PC2.mean, linetype="dashed",aes( group = Flaked.x, yintercept = PC2mean, color = Flaked.x)) +
-  labs(x ="FAI", y = "PC2 (convergence)")+
+  annotate(geom = "point", x = 5 , y = 2.47, colour = "black", fill = "#F8766D", size= 1,stroke = 0.5) +
+  annotate(geom = "text", x = 5 , y = 2.47, label = "DAN5:54", vjust=2,  size=2)+
+  annotate(geom = "point", x = 5 , y = -2.21, colour = "black", fill = "#F8766D", size= 1,stroke = 0.5) +
+  annotate(geom = "text", x = 5 , y = -2.21, label = "OGS5:5", vjust=2,  size=2)+
+  labs(x ="FAI", y = "PC2 (convergence)\n")+
   scale_y_continuous(limits=c(-2.5,3))+
   labs(color='Modification')+
   theme(legend.key.size = unit(0.2, "cm"))
 
 fig6a1<-ggdraw(fig6a) + 
   draw_image("figure/Picture1.PNG",
-             x = 0, y = 0.29, width = 0.12, height = 0.12)
+             x = 0.02, y = 0.29, width = 0.12, height = 0.12)
 fig6a2<-ggdraw(fig6a1) + 
   draw_image("figure/Picture2.PNG",
-             x = 0, y = 0.83, width = 0.12, height = 0.12)
+             x = 0.02, y = 0.8, width = 0.12, height = 0.12)
 fig6b1<-ggdraw(fig6b) + 
   draw_image("figure/Picture3.PNG",
-             x = 0, y = 0.12, width = 0.12, height = 0.12)
+             x = 0.02, y = 0.16, width = 0.12, height = 0.12)
 fig6b2<-ggdraw(fig6b1) + 
   draw_image("figure/Picture4.PNG",
-             x = 0, y = 0.81, width = 0.12, height = 0.12)
+             x = 0.02, y = 0.81, width = 0.12, height = 0.12)
 
 patchwork <- (fig6a2 + fig6b2)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.FAI by flaked new.png", path="figure.", width = 9, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.FAI by flaked new1.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## heteroscedasticity test for mode1 and mode2 cores
@@ -134,5 +144,5 @@ car::ncvTest(lmMod2)
 
 ### Locating the extreme value of PC1 and PC2 in the last figure
 leftfig<-joined_gona %>%
-  filter(Contexts == "Acheulean", Base == "flake", Flaked.x == "Unmodified")
+  filter(Contexts == "Acheulean", Base == "flake")
 
