@@ -3,85 +3,80 @@ library(tidyverse)
 library(patchwork)
 library(cowplot)
 
+
 # Data preparation
 ## loading data
-gona_linear<-readr::read_csv("data/Gona_ESA_Linear1.csv")
-gona_3d<-read.csv("data/Gona_ESA_3D.csv")
-## creating a new column of unique identifier for merging
-gona_linear$Name <- paste(gona_linear$Site, gona_linear$Catalog, sep= "-")
-## merging two datasets based on Name
-joined_gona <-dplyr::left_join(gona_linear, gona_3d, by = c("Name" = "Name"))
-## Reordering column order for principle component analysis
-joined_gona <- joined_gona %>% dplyr::relocate(GM_L,GM_Br1,GM_Br2,GM_Br3,GM_T1,GM_T2,GM_T3)
-## Subsetting a dataframe that contains both linear and 3d data for measuremnt validation
-overlap_gona <- joined_gona %>% tidyr::drop_na(Flaked.y)
+gona_linear<-readr::read_csv("data/Gona_EA_for_Cheng_020824.csv")
+gona_3d<-read.csv("data/3D-cleaned-for-Cheng-080224.csv")
 
 ## Figure for 3d comparison
 
-fig4a <- ggplot(overlap_gona, aes(X.3DGMPC110x10, Linear_PC1)) + 
+fig4a <- ggplot(gona_3d, aes(X.3DGMPC110x10, FAC1_2)) + 
   geom_point() + 
   geom_smooth(method=lm)+
   labs(x ="3DGM PC1", y = "Linear PC1")
 
-fig4b <- ggplot(overlap_gona, aes(SDI.y, SDILinearCorrected)) + 
+fig4b <- ggplot(gona_3d, aes(SDI_3D, SDIBoxTimesPointFive)) + 
   geom_point() + 
   geom_smooth(method=lm)+
-  labs(x ="SDI (3DGM)", y = "SDILinearCorrected")
+  labs(x ="3D SDI", y = "cSDI")
 
-fig4c <- ggplot(overlap_gona, aes(Flaked.y, FlakedVisual)) + 
+fig4c <- ggplot(gona_3d, aes(Flaked, FlakedVisual)) + 
   geom_point() + 
   geom_smooth(method=lm)+
-  labs(x ="Flaked percentage (3DGM)", y = "Flaked percentage (visual)")
+  labs(x ="Flaked percentage (3D)", y = "Flaked percentage (visual)")
 
 patchwork <- (fig4a + fig4b + fig4c)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.3D comparison.png", path="figure.", width = 9, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.3D comparison new.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## Figure for FAI by base
 
-fig5a<-joined_gona %>%
-  filter(Contexts == "Acheulean", Mode == "2", Flaked.x == "Flaked") %>%
-  ggplot(aes(FAI, PC1)) + 
+fig5a<-gona_linear %>%
+  filter(Contexts == "Acheulean", Mode == "2", Flaked == "Flaked") %>%
+  ggplot(aes(FAI, FAC1_1)) + 
   geom_point(alpha=0.6,size=2,aes(color= as.factor(Base),shape=as.factor(Base))) + 
   geom_smooth(method=lm, aes(group = 1))+
   labs(x ="FAI", y = "PC1 (flatness)")+
+  scale_y_continuous(limits=c(-1.5,2.5))+
   theme(legend.position="none")
 
 
-fig5b<-joined_gona %>%
-  filter(Contexts == "Acheulean", Mode == "2", Flaked.x == "Flaked") %>%
-  ggplot(aes(FAI, PC2)) + 
+fig5b<-gona_linear %>%
+  filter(Contexts == "Acheulean", Mode == "2", Flaked == "Flaked") %>%
+  ggplot(aes(FAI, FAC2_1)) + 
   geom_point(alpha=0.6,size=2,aes(color = as.factor(Base),shape=as.factor(Base))) + 
   geom_smooth(method=lm, aes(group = 1))+
   labs(x ="FAI", y = "PC2 (convergence)")+
   labs(color='Base', shape = 'Base')+
+  scale_y_continuous(limits=c(-3,3))+
   theme(legend.key.size = unit(0.2, "cm"))
 
 
 patchwork <- (fig5a + fig5b)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.FAI by base new.png", path="figure.", width = 9, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.FAI by base new NEW.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## Figure for FAI by flaked
-PC1.mean <- joined_gona %>%
-  filter(Contexts == "Acheulean", Base == "flake", Flaked.x == "Unmodified") %>%
-  group_by(Flaked.x) %>%
-  summarize(PC1mean = mean(PC1))
+PC1.mean <- gona_linear %>%
+  filter(Contexts == "Acheulean", Base == "flake", Flaked == "Unmodified") %>%
+  group_by(Flaked) %>%
+  summarize(PC1mean = mean(FAC1_1))
 
 
-PC2.mean <- joined_gona %>%
-  filter(Contexts == "Acheulean", Base == "flake", Flaked.x == "Unmodified") %>%
-  group_by(Flaked.x) %>%
-  summarize(PC2mean = mean(PC2))
+PC2.mean <- gona_linear %>%
+  filter(Contexts == "Acheulean", Base == "flake", Flaked == "Unmodified") %>%
+  group_by(Flaked) %>%
+  summarize(PC2mean = mean(FAC2_1))
 
-fig6a<-joined_gona %>%
+fig6a<-gona_linear %>%
   filter(Contexts == "Acheulean", Base == "flake") %>%
-  ggplot(aes(FAI, PC1, color = as.factor(Flaked.x))) + 
-  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked.x))) + 
+  ggplot(aes(FAI, FAC1_1, color = as.factor(Flaked))) + 
+  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked))) + 
   geom_smooth(method=lm)+
-  geom_hline(data = PC1.mean, linetype="dashed",aes( group = Flaked.x, yintercept = PC1mean, color = Flaked.x)) +
+  geom_hline(data = PC1.mean, linetype="dashed",aes( group = Flaked, yintercept = PC1mean, color = Flaked)) +
   annotate(geom = "point", x = 55 , y = 2.02, colour = "black", fill = "#F8766D", size= 1, stroke = 0.5) +
   annotate(geom = "text", x = 55 , y = 2.05, label = "OGS5:2013-1", vjust=2, size=2)+
   annotate(geom = "point", x = 0 , y = -0.66, colour = "black", fill = "#619CFF", size= 1, stroke = 0.5) +
@@ -91,12 +86,12 @@ fig6a<-joined_gona %>%
   theme(legend.position="none")
 
   
-fig6b<-joined_gona %>%
+fig6b<-gona_linear %>%
   filter(Contexts == "Acheulean", Base == "flake") %>%
-  ggplot(aes(FAI, PC2, color = as.factor(Flaked.x))) + 
-  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked.x))) + 
+  ggplot(aes(FAI, FAC2_1, color = as.factor(Flaked))) + 
+  geom_point(alpha=0.5,size=2,aes(color = as.factor(Flaked))) + 
   geom_smooth(method=lm)+
-  geom_hline(data = PC2.mean, linetype="dashed",aes( group = Flaked.x, yintercept = PC2mean, color = Flaked.x)) +
+  geom_hline(data = PC2.mean, linetype="dashed",aes( group = Flaked, yintercept = PC2mean, color = Flaked)) +
   annotate(geom = "point", x = 5 , y = 2.47, colour = "black", fill = "#F8766D", size= 1,stroke = 0.5) +
   annotate(geom = "text", x = 5 , y = 2.47, label = "DAN5:54", vjust=2,  size=2)+
   annotate(geom = "point", x = 5 , y = -2.21, colour = "black", fill = "#F8766D", size= 1,stroke = 0.5) +
@@ -121,7 +116,7 @@ fig6b2<-ggdraw(fig6b1) +
 
 patchwork <- (fig6a2 + fig6b2)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.FAI by flaked new1.png", path="figure.", width = 9, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.FAI by flaked new123.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## heteroscedasticity test for mode1 and mode2 cores
