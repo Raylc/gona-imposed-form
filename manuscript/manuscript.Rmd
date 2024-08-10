@@ -26,7 +26,7 @@ linestretch: 1.5
 link-citations: yes
 linkcolor: blue
 bibliography: bibliography.bib
-csl: apa.csl
+csl: frontiers.csl
 editor_options: 
   markdown: 
     wrap: sentence
@@ -271,11 +271,11 @@ Flake cores (n=69) show negative effects of FAI on PC1(Flatness) ($\beta$=-0.007
 Flake cores show a small but significant positive effect of FAI on cSDI that, in contrast to Mode 1 cores, represents actual covariance rather than simply a relaxation of constraint (i.e. both upper and lower limits of cSDI increase with FAI).
 
 ```{r FAIBASE, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="Mode 2 trends across blank types."}
-knitr::include_graphics(here::here("figure/Fig.FAI by base.png"))
+knitr::include_graphics(here::here("figure/Fig.FAI by base new NEW.png"))
 ```
 
 ```{r FAIFLAKED, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="Effect of FAI compared to unmodified large flakes from Acheulean contexts."}
-knitr::include_graphics(here::here("figure/Fig.FAI by flaked.png"))
+knitr::include_graphics(here::here("figure/Fig.FAI by flaked new123.png"))
 ```
 
 A small number of Mode 2 cores (n=9) were so heavily modified (mean FAI=89%, range 65-100) that the blank form could not be determined.

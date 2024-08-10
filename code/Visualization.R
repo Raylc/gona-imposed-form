@@ -19,16 +19,18 @@ fig4a <- ggplot(gona_3d, aes(X.3DGMPC110x10, FAC1_2)) +
 fig4b <- ggplot(gona_3d, aes(SDI_3D, SDIBoxTimesPointFive)) + 
   geom_point() + 
   geom_smooth(method=lm)+
+  geom_abline(slope=1, intercept = 0, colour = "red", linewidth=1.2, alpha=0.5)+
   labs(x ="3D SDI", y = "cSDI")
 
 fig4c <- ggplot(gona_3d, aes(Flaked, FlakedVisual)) + 
   geom_point() + 
   geom_smooth(method=lm)+
+  geom_abline(slope=1, intercept = 0, colour = "red", linewidth=1.2, alpha=0.5)+       
   labs(x ="Flaked percentage (3D)", y = "Flaked percentage (visual)")
 
 patchwork <- (fig4a + fig4b + fig4c)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.3D comparison new.png", path="figure.", width = 9, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.3D comparison new1.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## Figure for FAI by base
