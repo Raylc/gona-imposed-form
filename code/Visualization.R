@@ -148,30 +148,52 @@ leftfig<-joined_gona %>%
 ## figures for demonstrating the conceptual model as requested by R3
 gona_linear<- gona_linear %>% unite("FULLNAME", Locality:Catalog, remove = FALSE)
 ### mapping SDI and FAI
-fig0a <- ggplot(gona_linear, aes(cSDI, FAI)) + 
+fig0a <- ggplot(gona_linear, aes(cSDI, FAI, color = Typology)) +
   geom_point() + 
-  geom_smooth(method=lm)+
+  # geom_smooth(method=lm)+
   ggrepel::geom_text_repel(aes(label=FULLNAME))+
   labs(x ="cSDI", y = "FAI")
-fig0a < fig0a+
 
 ### correlation between SDI/PC1 correlation and FAI/PC1
-  
-fig0b <- ggplot(gona_linear, aes(SDI_3D, SDIBoxTimesPointFive)) + 
-  geom_point() + 
-  geom_smooth(method=lm)+
-  geom_abline(slope=1, intercept = 0, colour = "red", linewidth=1.2, alpha=0.5)+
-  labs(x ="3D SDI", y = "cSDI")
+correlation1<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC1R = cor(cSDI, FAC1_1))
+correlation2<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC1R = cor(FAI, FAC1_1))
+correlation12<- merge(correlation1,correlation2,by="Typology")
 
-fig0c <- ggplot(gona_linear, aes(Flaked, FlakedVisual)) + 
+### correlation between SDI/PC2 correlation and FAI/PC2
+
+correlation3<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC2R = cor(cSDI, FAC2_1))
+correlation4<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC2R = cor(FAI, FAC2_1))
+correlation34<- merge(correlation3,correlation4,by="Typology")
+  
+fig0b <- ggplot(correlation12, aes(SDIPC1R, FAIPC1R)) + 
   geom_point() + 
-  geom_smooth(method=lm)+
-  geom_abline(slope=1, intercept = 0, colour = "red", linewidth=1.2, alpha=0.5)+       
-  labs(x ="Flaked percentage (3D)", y = "Flaked percentage (visual)")
+  ggrepel::geom_text_repel(aes(label=Typology))+
+  labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")
+
+fig0c <- ggplot(correlation34, aes(SDIPC2R, FAIPC2R)) + 
+  geom_point() + 
+  ggrepel::geom_text_repel(aes(label=Typology))+
+  labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")
 
 patchwork <- (fig0a + fig0b + fig0c)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.CONCEPTUAL.png", path="figure.", width = 9, height = 9, dpi = 300)
+ggplot2::ggsave("Fig.CONCEPTUAL.png", path="figure.", width = 27, height = 9, dpi = 300)
+
+### RESIDUALS experiment
+
+fitSDI <- lm(cSDI ~ FAC1_1 + FAC2_1, data=gona_linear)  
+fig00a<-ggplot(fitSDI, aes(x = .fitted, y = .resid, color = gona_linear$Typology)) +
+  geom_point() +
+  geom_hline(yintercept = 0)+
+  labs(x ="fitted cSDI value", y = "Residuals")
+
+fitFAI <- lm(FAI ~ FAC1_1 + FAC2_1, data=gona_linear)  
+fig00B<-ggplot(fitFAI, aes(x = .fitted, y = .resid, color = gona_linear$Typology)) +
+  geom_point() +
+  geom_hline(yintercept = 0)+
+  labs(x ="fitted FAI value", y = "Residuals")
 
 
-### correlation between SDI/PC2 correlation and FAI/PC2
+patchwork <- (fig00a + fig00B)
+patchwork + plot_annotation(tag_levels = 'A')
+ggplot2::ggsave("Fig.RESIDUAL.png", path="figure.", width = 18, height = 9, dpi = 300)
