@@ -143,3 +143,35 @@ car::ncvTest(lmMod2)
 leftfig<-joined_gona %>%
   filter(Contexts == "Acheulean", Base == "flake")
 
+
+
+## figures for demonstrating the conceptual model as requested by R3
+gona_linear<- gona_linear %>% unite("FULLNAME", Locality:Catalog, remove = FALSE)
+### mapping SDI and FAI
+fig0a <- ggplot(gona_linear, aes(cSDI, FAI)) + 
+  geom_point() + 
+  geom_smooth(method=lm)+
+  ggrepel::geom_text_repel(aes(label=FULLNAME))+
+  labs(x ="cSDI", y = "FAI")
+fig0a < fig0a+
+
+### correlation between SDI/PC1 correlation and FAI/PC1
+  
+fig0b <- ggplot(gona_linear, aes(SDI_3D, SDIBoxTimesPointFive)) + 
+  geom_point() + 
+  geom_smooth(method=lm)+
+  geom_abline(slope=1, intercept = 0, colour = "red", linewidth=1.2, alpha=0.5)+
+  labs(x ="3D SDI", y = "cSDI")
+
+fig0c <- ggplot(gona_linear, aes(Flaked, FlakedVisual)) + 
+  geom_point() + 
+  geom_smooth(method=lm)+
+  geom_abline(slope=1, intercept = 0, colour = "red", linewidth=1.2, alpha=0.5)+       
+  labs(x ="Flaked percentage (3D)", y = "Flaked percentage (visual)")
+
+patchwork <- (fig0a + fig0b + fig0c)
+patchwork + plot_annotation(tag_levels = 'A')
+ggplot2::ggsave("Fig.CONCEPTUAL.png", path="figure.", width = 9, height = 9, dpi = 300)
+
+
+### correlation between SDI/PC2 correlation and FAI/PC2
