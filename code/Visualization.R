@@ -2,7 +2,9 @@
 library(tidyverse)
 library(patchwork)
 library(cowplot)
-
+library(mvtnorm) 
+library(MASS) 
+library(caret) 
 
 # Data preparation
 ## loading data
@@ -145,24 +147,42 @@ leftfig<-joined_gona %>%
 
 
 
+
+
+
+
 ## figures for demonstrating the conceptual model as requested by R3
 gona_linear<- gona_linear %>% unite("FULLNAME", Locality:Catalog, remove = FALSE)
 ### mapping SDI and FAI
-fig0a <- ggplot(gona_linear, aes(cSDI, FAI, color = Typology)) +
-  geom_point() + 
-  # geom_smooth(method=lm)+
-  ggrepel::geom_text_repel(aes(label=FULLNAME))+
-  labs(x ="cSDI", y = "FAI")
+# fig0a <- ggplot(gona_linear, aes(cSDI, FAI, color = Typology)) +
+#   geom_point() + 
+#   # geom_smooth(method=lm)+
+#   ggrepel::geom_text_repel(aes(label=FULLNAME))+
+#   labs(x ="cSDI", y = "FAI")
+
+# 
+# 
+# ### correlation between SDI/PC1 correlation and FAI/PC1
+# correlation1<- gona_linear %>% group_by(Locality) %>%  summarise(SDIPC1R = abs(cor(cSDI, FAC1_1)))
+# correlation2<- gona_linear %>% group_by(Locality) %>%  summarise(FAIPC1R = abs(cor(FAI, FAC1_1)))
+# correlation12<- merge(correlation1,correlation2,by="Locality")
+# 
+# ### correlation between SDI/PC2 correlation and FAI/PC2
+# 
+# correlation3<- gona_linear %>% group_by(Locality) %>%  summarise(SDIPC2R = abs(cor(cSDI, FAC2_1)))
+# correlation4<- gona_linear %>% group_by(Locality) %>%  summarise(FAIPC2R = abs(cor(FAI, FAC2_1)))
+# correlation34<- merge(correlation3,correlation4,by="Locality")
+
 
 ### correlation between SDI/PC1 correlation and FAI/PC1
-correlation1<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC1R = cor(cSDI, FAC1_1))
-correlation2<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC1R = cor(FAI, FAC1_1))
+correlation1<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC1R = abs(cor(cSDI, FAC1_1)))
+correlation2<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC1R = abs(cor(FAI, FAC1_1)))
 correlation12<- merge(correlation1,correlation2,by="Typology")
 
 ### correlation between SDI/PC2 correlation and FAI/PC2
 
-correlation3<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC2R = cor(cSDI, FAC2_1))
-correlation4<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC2R = cor(FAI, FAC2_1))
+correlation3<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC2R = abs(cor(cSDI, FAC2_1)))
+correlation4<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC2R = abs(cor(FAI, FAC2_1)))
 correlation34<- merge(correlation3,correlation4,by="Typology")
   
 fig0b <- ggplot(correlation12, aes(SDIPC1R, FAIPC1R)) + 
@@ -175,25 +195,210 @@ fig0c <- ggplot(correlation34, aes(SDIPC2R, FAIPC2R)) +
   ggrepel::geom_text_repel(aes(label=Typology))+
   labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")
 
-patchwork <- (fig0a + fig0b + fig0c)
+
+patchwork <- (fig0b + fig0c)
 patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.CONCEPTUAL.png", path="figure.", width = 27, height = 9, dpi = 300)
+ggplot2::ggsave("Fig.sdifai by typology(absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
+
+# 
+# patchwork <- (fig0a + fig0b + fig0c)
+# patchwork + plot_annotation(tag_levels = 'A')
+# ggplot2::ggsave("Fig.CONCEPTUAL.png", path="figure.", width = 27, height = 9, dpi = 300)
 
 ### RESIDUALS experiment
+# 
+# fitSDI <- lm(cSDI ~ FAC1_1 + FAC2_1, data=gona_linear)  
+# fig00a<-ggplot(fitSDI, aes(x = .fitted, y = .resid, color = gona_linear$Typology)) +
+#   geom_point() +
+#   geom_hline(yintercept = 0)+
+#   labs(x ="fitted cSDI value", y = "Residuals")
+# 
+# fitFAI <- lm(FAI ~ FAC1_1 + FAC2_1, data=gona_linear)  
+# fig00B<-ggplot(fitFAI, aes(x = .fitted, y = .resid, color = gona_linear$Typology)) +
+#   geom_point() +
+#   geom_hline(yintercept = 0)+
+#   labs(x ="fitted FAI value", y = "Residuals")
+# 
+# 
+# patchwork <- (fig00a + fig00B)
+# patchwork + plot_annotation(tag_levels = 'A')
+# ggplot2::ggsave("Fig.RESIDUAL.png", path="figure.", width = 18, height = 9, dpi = 300)
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# ### correlation by locality
+# 
+# gona_linear %>%  split(.$Locality)
+# split.df <- split(gona_linear, gona_linear$Locality)
+# for (I in 1:length(split.df)) { assign(unique(split.df[[I]]$Locality), split.df[[I]]) }
+# 
+# ### eg10 and ogs7 are oldowan
+# 
+# ### correlation between SDI/PC1 correlation and FAI/PC1
+# correlationBSN17A<- BSN17 %>% group_by(Typology) %>%  summarise(SDIPC1R = cor(cSDI, FAC1_1))
+# correlationBSN17B<- BSN17 %>% group_by(Typology) %>%  summarise(FAIPC1R = cor(FAI, FAC1_1))
+# correlationBSN17AB<- merge(correlationBSN17A,correlationBSN17B,by="Typology")
+# 
+# ### correlation between SDI/PC2 correlation and FAI/PC2
+# 
+# correlationBSN17C<- BSN17 %>% group_by(Typology) %>%  summarise(SDIPC2R = cor(cSDI, FAC2_1))
+# correlationBSN17D<- BSN17 %>% group_by(Typology) %>%  summarise(FAIPC2R = cor(FAI, FAC2_1))
+# correlationBSN17CD<- merge(correlationBSN17C,correlationBSN17D,by="Typology")
+# 
+# figBSN1 <- ggplot(correlationBSN17AB, aes(SDIPC1R, FAIPC1R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")+
+#   ggtitle("BSN17")
+# 
+# figBSN2 <- ggplot(correlationBSN17CD, aes(SDIPC2R, FAIPC2R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")+
+#   ggtitle("BSN17")
+# 
+# 
+# ### correlation between SDI/PC1 correlation and FAI/PC1
+# correlationDAN5A<- DAN5 %>% group_by(Typology) %>%  summarise(SDIPC1R = cor(cSDI, FAC1_1))
+# correlationDAN5B<- DAN5 %>% group_by(Typology) %>%  summarise(FAIPC1R = cor(FAI, FAC1_1))
+# correlationDAN5AB<- merge(correlationDAN5A,correlationDAN5B,by="Typology")
+# 
+# ### correlation between SDI/PC2 correlation and FAI/PC2
+# 
+# correlationDAN5C<- DAN5 %>% group_by(Typology) %>%  summarise(SDIPC2R = cor(cSDI, FAC2_1))
+# correlationDAN5D<- DAN5 %>% group_by(Typology) %>%  summarise(FAIPC2R = cor(FAI, FAC2_1))
+# correlationDAN5CD<- merge(correlationDAN5C,correlationDAN5D,by="Typology")
+# 
+# figDAN1 <- ggplot(correlationDAN5AB, aes(SDIPC1R, FAIPC1R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")+
+#   ggtitle("DAN5")
+# 
+# figDAN2 <- ggplot(correlationDAN5CD, aes(SDIPC2R, FAIPC2R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")+
+#   ggtitle("DAN5")
+# 
+# 
+# 
+# 
+# ### correlation between SDI/PC1 correlation and FAI/PC1
+# correlationOGS5A<- OGS5 %>% group_by(Typology) %>%  summarise(SDIPC1R = cor(cSDI, FAC1_1))
+# correlationOGS5B<- OGS5 %>% group_by(Typology) %>%  summarise(FAIPC1R = cor(FAI, FAC1_1))
+# correlationOGS5AB<- merge(correlationOGS5A,correlationOGS5B,by="Typology")
+# 
+# ### correlation between SDI/PC2 correlation and FAI/PC2
+# 
+# correlationOGS5C<- OGS5 %>% group_by(Typology) %>%  summarise(SDIPC2R = cor(cSDI, FAC2_1))
+# correlationOGS5D<- OGS5 %>% group_by(Typology) %>%  summarise(FAIPC2R = cor(FAI, FAC2_1))
+# correlationOGS5CD<- merge(correlationOGS5C,correlationOGS5D,by="Typology")
+# 
+# figOGS51 <- ggplot(correlationOGS5AB, aes(SDIPC1R, FAIPC1R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")+
+#   ggtitle("OGS5")
+# 
+# figOGS52 <- ggplot(correlationOGS5CD, aes(SDIPC2R, FAIPC2R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")+
+#   ggtitle("OGS5")
+# 
+# 
+# ### correlation between SDI/PC1 correlation and FAI/PC1
+# correlationOGS12A<- OGS12 %>% group_by(Typology) %>%  summarise(SDIPC1R = cor(cSDI, FAC1_1))
+# correlationOGS12B<- OGS12 %>% group_by(Typology) %>%  summarise(FAIPC1R = cor(FAI, FAC1_1))
+# correlationOGS12AB<- merge(correlationOGS12A,correlationOGS12B,by="Typology")
+# 
+# ### correlation between SDI/PC2 correlation and FAI/PC2
+# 
+# correlationOGS12C<- OGS12 %>% group_by(Typology) %>%  summarise(SDIPC2R = cor(cSDI, FAC2_1))
+# correlationOGS12D<- OGS12 %>% group_by(Typology) %>%  summarise(FAIPC2R = cor(FAI, FAC2_1))
+# correlationOGS12CD<- merge(correlationOGS12C,correlationOGS12D,by="Typology")
+# 
+# figOGS121 <- ggplot(correlationOGS12AB, aes(SDIPC1R, FAIPC1R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")+
+#   ggtitle("OGS12")
+# 
+# figOGS122 <- ggplot(correlationOGS12CD, aes(SDIPC2R, FAIPC2R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")+
+#   ggtitle("OGS12")
+# 
+# 
+# 
+# 
+# 
+# 
+# patchwork <- (figBSN1 + figBSN2 + figDAN1 + figDAN2 + figOGS51+ figOGS52 + figOGS121 + figOGS122)
+# patchwork + plot_annotation(tag_levels = 'A')
+# ggplot2::ggsave("Fig.TYPOLOGY BY LOCALITY.png", path="figure.", width = 15, height = 15, dpi = 300)
 
-fitSDI <- lm(cSDI ~ FAC1_1 + FAC2_1, data=gona_linear)  
-fig00a<-ggplot(fitSDI, aes(x = .fitted, y = .resid, color = gona_linear$Typology)) +
-  geom_point() +
-  geom_hline(yintercept = 0)+
-  labs(x ="fitted cSDI value", y = "Residuals")
 
-fitFAI <- lm(FAI ~ FAC1_1 + FAC2_1, data=gona_linear)  
-fig00B<-ggplot(fitFAI, aes(x = .fitted, y = .resid, color = gona_linear$Typology)) +
-  geom_point() +
-  geom_hline(yintercept = 0)+
-  labs(x ="fitted FAI value", y = "Residuals")
+### LDFA
+
+theme_set(theme_classic()) 
+
+# Load the data 
+# gona_lineardfa <- gona_linear %>% filter(Typology == c("Pick" , "Handaxe" , "Knife"))
+
+gona_lineardfa <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
+gona_lineardfa <- dplyr::select(gona_lineardfa, FAI, FAC1_1, cSDI, FAC2_1, Typology)
 
 
-patchwork <- (fig00a + fig00B)
-patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.RESIDUAL.png", path="figure.", width = 18, height = 9, dpi = 300)
+# Split the data into training (80%) and test set (20%) 
+set.seed(123) 
+training.individuals <- gona_lineardfa$Typology %>%  
+  createDataPartition(p = 0.8, list = FALSE) 
+train.data <- gona_lineardfa[training.individuals, ] 
+test.data <- gona_lineardfa[-training.individuals, ] 
+
+# Estimate preprocessing parameters 
+preproc.parameter <- train.data %>%  
+  preProcess(method = c("center", "scale")) 
+
+# Transform the data using the estimated parameters 
+train.transform <- preproc.parameter %>% predict(train.data) 
+test.transform <- preproc.parameter %>% predict(test.data) 
+
+# Fit the model 
+model <- lda(Typology~., data = train.transform) 
+
+# Make predictions 
+predictions <- model %>% predict(test.transform) 
+
+# Model accuracy 
+mean(predictions$class==test.transform$Typology) 
+
+model <- lda(Typology~., data = train.transform) 
+model 
+# Typology_colors <- c("Handaxe" = "red", "Pick" = "blue", "Knife" = "green")
+# plot(model, col = Typology_colors, main="Visualization of Linear Discriminant Analysis")
+
+lda.data <- cbind(train.transform, predict(model)$x)
+P<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Typology))
+P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
+# ggscatterstats(
+#   data  = ggplot2::lda.data,
+#   x     = LD1,
+#   y     = LD2,
+#   xlab  = "LD1",
+#   ylab  = "LD2",
+# )
+P1
+
+save_plot("figure/Fig.LDA123.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
