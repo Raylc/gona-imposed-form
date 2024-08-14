@@ -5,6 +5,7 @@ library(cowplot)
 library(mvtnorm) 
 library(MASS) 
 library(caret) 
+library(lsr)
 
 # Data preparation
 ## loading data
@@ -402,3 +403,99 @@ P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
 P1
 
 save_plot("figure/Fig.LDA123.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
+
+
+
+
+
+
+
+
+gona_lineardfa <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
+gona_lineardfa <- dplyr::select(gona_lineardfa, FAI, FAC1_1, cSDI, FAC2_1, Base)
+
+
+# Split the data into training (80%) and test set (20%) 
+set.seed(123) 
+training.individuals <- gona_lineardfa$Base %>%  
+  createDataPartition(p = 0.8, list = FALSE) 
+train.data <- gona_lineardfa[training.individuals, ] 
+test.data <- gona_lineardfa[-training.individuals, ] 
+
+# Estimate preprocessing parameters 
+preproc.parameter <- train.data %>%  
+  preProcess(method = c("center", "scale")) 
+
+# Transform the data using the estimated parameters 
+train.transform <- preproc.parameter %>% predict(train.data) 
+test.transform <- preproc.parameter %>% predict(test.data) 
+
+# Fit the model 
+model <- lda(Base~., data = train.transform) 
+
+# Make predictions 
+predictions <- model %>% predict(test.transform) 
+
+# Model accuracy 
+mean(predictions$class==test.transform$Base) 
+
+model <- lda(Base~., data = train.transform) 
+model 
+# Typology_colors <- c("Handaxe" = "red", "Pick" = "blue", "Knife" = "green")
+# plot(model, col = Typology_colors, main="Visualization of Linear Discriminant Analysis")
+
+lda.data <- cbind(train.transform, predict(model)$x)
+P<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Base))
+P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
+# ggscatterstats(
+#   data  = ggplot2::lda.data,
+#   x     = LD1,
+#   y     = LD2,
+#   xlab  = "LD1",
+#   ylab  = "LD2",
+# )
+P1
+
+save_plot("figure/Fig.LDA123base.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
+
+
+
+
+
+
+### calculating effect size instead of correlation coefficient
+SDIpc1effectsize<- gona_linear %>%  split(.$Typology) %>% 
+  map(~lm(FAC1_1 ~ cSDI, data =.)) %>% 
+  map_df(broom::tidy, .id = 'Typology') %>%
+  filter(term == 'cSDI')
+SDIpc2effectsize<- gona_linear %>%  split(.$Typology) %>% 
+  map(~lm(FAC2_1 ~ cSDI, data =.)) %>% 
+  map_df(broom::tidy, .id = 'Typology') %>%
+  filter(term == 'cSDI')
+FAIpc1effectsize<- gona_linear %>%  split(.$Typology) %>% 
+  map(~lm(FAC1_1 ~ FAI, data =.)) %>% 
+  map_df(broom::tidy, .id = 'Typology') %>%
+  filter(term == 'FAI')
+FAIpc2effectsize<- gona_linear %>%  split(.$Typology) %>% 
+  map(~lm(FAC2_1 ~ FAI, data =.)) %>% 
+  map_df(broom::tidy, .id = 'Typology') %>%
+  filter(term == 'FAI')
+
+### combine data sets
+pc1effectsize<-merge(SDIpc1effectsize, FAIpc1effectsize,by="Typology")
+pc2effectsize<-merge(SDIpc2effectsize, FAIpc2effectsize,by="Typology")
+
+fig0b <- ggplot(pc1effectsize, aes(abs(estimate.x), abs(estimate.y))) + 
+  geom_point() + 
+  ggrepel::geom_text_repel(aes(label=Typology))+
+  labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")
+
+fig0c <- ggplot(pc2effectsize, aes(abs(estimate.x), abs(estimate.y))) + 
+  geom_point() + 
+  ggrepel::geom_text_repel(aes(label=Typology))+
+  labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")
+
+
+patchwork <- (fig0b + fig0c)
+patchwork + plot_annotation(tag_levels = 'A')
+ggplot2::ggsave("Fig.sdifai by typology(slope absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
