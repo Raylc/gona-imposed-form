@@ -6,6 +6,7 @@ library(mvtnorm)
 library(MASS) 
 library(caret) 
 library(lsr)
+library(diptest)
 
 # Data preparation
 ## loading data
@@ -499,3 +500,10 @@ fig0c <- ggplot(pc2effectsize, aes(abs(estimate.x), abs(estimate.y))) +
 patchwork <- (fig0b + fig0c)
 patchwork + plot_annotation(tag_levels = 'A')
 ggplot2::ggsave("Fig.sdifai by typology(slope absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
+
+
+dip_test_result <- dip.test(lda.data$LD1)
+print(dip_test_result)
+
+dip_test_result <- dip.test(lda.data$LD2)
+print(dip_test_result)
