@@ -26,7 +26,7 @@ linestretch: 1.5
 link-citations: yes
 linkcolor: blue
 bibliography: bibliography.bib
-csl: frontiers.csl
+csl: jhe.csl
 editor_options: 
   markdown: 
     wrap: sentence
@@ -34,14 +34,15 @@ editor_options:
 
 # Introduction
 
-The imposition of intended form on artifacts has long been viewed as a watershed in human cognitive and cultural evolution and is most commonly associated with the emergence of "Large Cutting Tools" (LCTs) in the Early Acheulean [@isaac1976; @kuhn2020; @holloway1969].
+The imposition of intended form on artifacts has long been viewed as a watershed in human cognitive and cultural evolution and is most commonly associated with the emergence of “Large Cutting Tools” (LCTs; cf. Long Core Tools [Shea, -@shea2013]) in the Early Acheulean [@isaac1976; @kuhn2020; @holloway1969].
 However, this interpretation of Acheulean LCTs as intentionally designed artifacts remains controversial.
-Alternative proposals range from the possibility that LCTs were unintended by-products of flake production [@moore2016; @noble1996] to the suggestion that their form was "at least partly under genetic control" [@corbey2016].
+Alternative proposals range from the possibility that LCTs were unintended by-products of flake production [@moore2016; @noble1996] to the suggestion that their form was “at least partly under genetic control” [@corbey2016: 6].
 Even accepting that LCT form was to some extent intended, there is substantial disagreement over the specificity of design.
-Some analyses have indicated that shape variation in Acheulean handaxes is largely a result of resharpening [@iovita2011; @mcpherron2000] whereas others find form to be unrelated to reduction intensity and more likely to reflect normative expectations of what handaxes should look like [@garcía-medrano2019; @shipton2015; @shipton2020].
-Such debates about shape of Acheulean LCTs may appear narrowly technical but have broad relevance for evolutionary questions including the origins of human culture [@corbey2016; @tennie2017; @shipton2015], language [@stout2012], teaching [@gärdenfors2017], brain structure [@hecht2015], and cognition [@stout2015; @wynn2016].
-To examine these questions, we studied the complete collection of Early Acheulean flaked pieces from 5 sites at Gona Project Area and compared them with Oldowan cores from 2 published sites at Gona.
-By comparing shape variation to measures of flaking intensity and patterning, we sought to identify technological patterns that might reveal intent.
+Some analyses have indicated that shape variation in Acheulean handaxes is largely a result of function-driven resharpening [@iovita2011; @mcpherron2000] whereas others find it more likely to reflect normative expectations of what handaxes should look like [@garcía-medrano2019; @shipton2015; @shipton2020].
+Such debates about the shape of Acheulean LCTs may appear narrowly technical but have broad relevance for evolutionary questions, including the origins of human culture [@corbey2016; @liu2023; @tennie2017; @shipton2015], language [@stout2012], teaching [@gärdenfors2017], brain structure [@hecht2015], and cognition [@stout2015; @wynn2016].
+To examine these questions, we studied the complete collection of Early Acheulean (ca. 1.7 –1.2 Ma) flaked pieces from four sites (BSN17, DAN5, OGS12, and OGS5) in the Gona Project Area and compared them with all of the flaked pieces from two published Oldowan (\>2.5 Ma) sites at Gona (OGS7 and EG10; Semaw, 2000; Semaw et al., 2003; Stout et al., 2010).
+By comparing variation in overall artifact shape (or “Bauplan” [Lycett and Gowlett, 2008)) to measures of flaking intensity and coverage, we sought to identify technological patterns that might reveal intent.
+The possibilities we considered include: a) intentional shape standardization reflecting normative expectations of what handaxes should look like, b) regularities of overall form arising as by-products of the intentional pursuit of particular morpho-functional attributes, and c) the absence of any intentional form imposition as in the case of simple debitage.
 
 ## Identifying design
 
@@ -89,12 +90,12 @@ However, in core shaping and resharpening, mass removal would typically represen
 Without further information, relationships between artifact shape and reduction intensity are thus open to conflicting interpretations as evidence of intentional design or its absence.
 
 Li, et al. [-@li2015] proposed a Flaked Area Index (FAI) as an alternative to SDI as a measure of reduction intensity, arguing that its validity is supported by an observed correlation (r=0.424) with SDI.
-However, they also explain that "flaked area does not necessarily relate to the number of flake scars\...a small number of large scars can produce a large area of scar coverage, and conversely, a large number of small scars can produce a small area of scar coverage." (p. 6).
+However, they also explain that "flaked area does not necessarily relate to the number of flake scars...a small number of large scars can produce a large area of scar coverage, and conversely, a large number of small scars can produce a small area of scar coverage." (p. 6).
 We suggest that what FAI actually captures is the spatial extent modifications to the surface of a core.
 It is thus complementary to the measure of volume reduction provided by SDI and provides additional information to inform technological interpretations.
 For example, a correlation between FAI and artifact form without any effect of SDI would suggest a focus on "least-effort" shape imposition whereas the opposite pattern would be consistent with relatively intense resharpening of spatially restricted areas on the core.
-A lack of shape correlation with either measure would be expected for simple debitage with no morphological targets whereas a strong correlation with both would indicate a highly "designed" form achieved through extensive morphological and volumetric transformation. (**Figure** \@ref(fig:FAISDI))
-In the current study we thus considered SDI and FAI together in order to evaluate evidence of intentional shaping in the early Acheulean of Gona.
+A lack of shape correlation with either measure would be expected for simple debitage with no morphological targets whereas a strong correlation with both would indicate a highly "designed" form achieved through extensive morphological and volumetric transformation.
+(**Figure** \@ref(fig:FAISDI)) In the current study we thus considered SDI and FAI together in order to evaluate evidence of intentional shaping in the early Acheulean of Gona.
 
 ```{r FAISDI, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="A conceptual model of inferring intention from artifact morphology."}
 knitr::include_graphics(here::here("figure/FAI_SDI.png"))
@@ -139,9 +140,11 @@ Clasts locally available in these tributaries were relatively small, implying th
 A similar pattern of habitat diversification and increasing lithic transport distances has been described at other sites and may be typical of the early Acheulean [@rogers1994; @linaresmatás2021; @hay1976].
 As with other early (i.e. \>1.0 mya [@stoutStoneToolmakingEvolution2011; @presnyakova2018]) Acheulean assemblages, the Gona collections include numerous "crudely made" handaxes and picks on large flake blanks and cobbles, as well as large (\> 10cm) unmodified flakes, flaked pieces interpreted typo-technologically as Mode 1 cores (see Figure 1af), and smaller debitage [@semaw2018; @semaw2020].
 
-```{r fig2, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="Gona site map."}
-knitr::include_graphics(here::here("figure/site map.png"))
-```
+<!-- ```{r fig2, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="Gona site map."} -->
+
+<!-- knitr::include_graphics(here::here("figure/site map.png")) -->
+
+<!-- ``` -->
 
 # Materials and Methods
 
@@ -165,7 +168,8 @@ The validity of technological interpretations and typological classifications wa
 
 Conventional linear measures capture the direction (e.g., length \> breadth) but not the location of geometric relations (e.g., position of maximum breadth).
 We address this by collecting linear measures defined by homologous semi-landmarks.
-All artifacts were oriented along their maximum dimension, which was measured and defined as "length". The next largest dimension orthogonal to length was used to define the plane of "breadth", with the dimension orthogonal to this plane defined as "thickness" Width (W~1~, W~2~, W~3~) and thickness (T~1~, T~2~, T~3~) measures were then collected at 25%, 50%, and 75% of length, oriented so that 25% Width \> 75% Width.
+All artifacts were oriented along their maximum dimension, which was measured and defined as "length".
+The next largest dimension orthogonal to length was used to define the plane of "breadth", with the dimension orthogonal to this plane defined as "thickness" Width (W~1~, W~2~, W~3~) and thickness (T~1~, T~2~, T~3~) measures were then collected at 25%, 50%, and 75% of length, oriented so that 25% Width \> 75% Width.
 To partition variation in shape from variation in size, we divided all linear measures by the geometric mean [@lycett2006].
 GM-transformed variables were then submitted to a Principal Components Analysis (covariance matrix) to identify the main dimensions of shape variation.
 
@@ -174,12 +178,19 @@ Surface area calculated in this way correlates with mass^2/3^ at r^2^ = 0.947 in
 Calculated surface area was then used to derive the Scar Density Index: SDI = number of flake scars \> 1cm per unit surface area [@clarkson2013; @shiptonFlakeScarDensity2015].
 The Flaked Area Index (FAI: flaked area divided by total surface area)[@li2015] was estimated directly "by eye" as a percentage of the total artifact surface.
 
-To assess the adequacy of shape descriptions based on our linear measures, we directly compared these with shape as quantified by 3D methods on the 33 artifacts for which scans are available. GM-transformed linear measures from these 33 artifacts were submitted to a variance-covariance matrix PCA. PCs with an eigenvalue greater than the mean were retained for analysis and the results compared qualitatively (morphological interpretation of PCs) and quantitatively (correlation of artifact factor scores) to 3D results. Accuracy of surface area and flaked area estimates was also assessed by correlation with 3D results.  
+To assess the adequacy of shape descriptions based on our linear measures, we directly compared these with shape as quantified by 3D methods on the 33 artifacts for which scans are available.
+GM-transformed linear measures from these 33 artifacts were submitted to a variance-covariance matrix PCA.
+PCs with an eigenvalue greater than the mean were retained for analysis and the results compared qualitatively (morphological interpretation of PCs) and quantitatively (correlation of artifact factor scores) to 3D results.
+Accuracy of surface area and flaked area estimates was also assessed by correlation with 3D results.
 
 ### 3D Methods
 
 3DGM analysis was conducted using the *AGMT3-D* program of Herzlinger and Grosman [-@herzlinger2018].
-Artifacts were automatically oriented according to the axis of least asymmetry, then manually oriented following the same orthogonal conventions described in section 2.3. Then, a grid of 200 homologous semi-landmarks were overlain on each artifact's surface. Generalized Procrustes and Principal Component analyses were then undertaken to explore the shape variability of the sample. The surface area of each artifact was calculated using the *Artifact3-D* program of Grosman et al. [-@grosman2022]. *Artifact3-D* was also used to automatically identify the flake scar boundaries and compute each scar's surface area, using the scar analysis functions of Richardson et al. [-@richardson2014].
+Artifacts were automatically oriented according to the axis of least asymmetry, then manually oriented following the same orthogonal conventions described in section 2.3.
+Then, a grid of 200 homologous semi-landmarks were overlain on each artifact's surface.
+Generalized Procrustes and Principal Component analyses were then undertaken to explore the shape variability of the sample.
+The surface area of each artifact was calculated using the *Artifact3-D* program of Grosman et al. [-@grosman2022].
+*Artifact3-D* was also used to automatically identify the flake scar boundaries and compute each scar's surface area, using the scar analysis functions of Richardson et al. [-@richardson2014].
 
 # Results
 
@@ -192,7 +203,12 @@ This A PCA on GM transformed linear measures the 33 artifacts identified two PCs
 Linear-PC1 (Eigenvalue = 0.189) explained 55.2% of the variance.
 Factor loadings (**Table** \@ref(tab:tab1)) for Linear-PC1 reflect artifact elongation (i.e., an anti-correlation of length vs. distal width and thickness).
 This closely parallels the length vs. width and thickness tradeoff captured by 3DGM-PC1 (**Figure** \@ref(fig:fig3d)) and is reflected in a tight correlation of artifact scores produced by the two PCs (r = 0.903, p \< 0.001, **Figure** \@ref(fig:figcomparison)A).
-A second factor (Linear-PC2, eigenvalue = 0.07) explained an additional 20.4% of variance. This factor was less strongly correlated with its 3DGM counterpart (3DGM-PC2; r = 0.344, p = 0.050) probably because Linear-PC2 describes anticorrelated variation in width and thickness (i.e., broad and flat vs. thick and pointed; **Table** \@ref(tab:tab1)) whereas 3DGM-PC2 more purely isolates convergence (**Figure** \@ref(fig:fig3d)). The remainder of the shape variability explained by Linear-PC2 is captured by higher order 3DGM-PCs 3 through 5, which comprise the contribution of the left and right lateral margins to relative thickness. Use of high-resolution, coordinate-based scan data thus generates PCs that identify more specific shape attributes, but the underlying morphological variability captured by the linear and 3D analyses remains similar. Together, 3DGM-PC2 (r = 0.344, p = 0.050), 3DGM-PC3 (r = -0.416, p = 0.016), 3DGM-PC4 (r = 0.458, p = 0.007), and 3DGM-PC5 (r = -0.352, p = 0.044) correlate well with Linear-PC2, cumulatively capturing whether the items are broad and flat or thick and pointed. A stepwise regression ($r^2$=0.625, F(4,28)=11.697, p<0.001, Probability-of-F-to-enter <= 0.050; Probability-of-F-to-remove >= 0.100) with Linear-PC2 as the dependent variable retained all four of these 3DGM-PCs as significant predictors.
+A second factor (Linear-PC2, eigenvalue = 0.07) explained an additional 20.4% of variance.
+This factor was less strongly correlated with its 3DGM counterpart (3DGM-PC2; r = 0.344, p = 0.050) probably because Linear-PC2 describes anticorrelated variation in width and thickness (i.e., broad and flat vs. thick and pointed; **Table** \@ref(tab:tab1)) whereas 3DGM-PC2 more purely isolates convergence (**Figure** \@ref(fig:fig3d)).
+The remainder of the shape variability explained by Linear-PC2 is captured by higher order 3DGM-PCs 3 through 5, which comprise the contribution of the left and right lateral margins to relative thickness.
+Use of high-resolution, coordinate-based scan data thus generates PCs that identify more specific shape attributes, but the underlying morphological variability captured by the linear and 3D analyses remains similar.
+Together, 3DGM-PC2 (r = 0.344, p = 0.050), 3DGM-PC3 (r = -0.416, p = 0.016), 3DGM-PC4 (r = 0.458, p = 0.007), and 3DGM-PC5 (r = -0.352, p = 0.044) correlate well with Linear-PC2, cumulatively capturing whether the items are broad and flat or thick and pointed.
+A stepwise regression ($r^2$=0.625, F(4,28)=11.697, p\<0.001, Probability-of-F-to-enter \<= 0.050; Probability-of-F-to-remove \>= 0.100) with Linear-PC2 as the dependent variable retained all four of these 3DGM-PCs as significant predictors.
 
 ```{r tab1, echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -207,7 +223,7 @@ knitr::include_graphics(here::here("figure/Fig3a.png"))
 ```
 
 ```{r figcomparison, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="Comparison between linear measurement and 3d measurement."}
-knitr::include_graphics(here::here("figure/Fig.3D comparison.png"))
+knitr::include_graphics(here::here("figure/Fig.3D comparison new1.png"))
 ```
 
 We thus concluded that linear measures are adequate to capture relevant shape variation and proceeded with a PCA on our full sample.
@@ -227,11 +243,14 @@ kableExtra::kbl(df1, booktabs = T, caption = "Component loadings for linear metr
 
 We also tested the validity of our two reduction measures, SDI and FAI.
 In agreement with Clarkson (2013), we found that surface area estimated from caliper measures displayed a strong correlation with (r2=0.975, p \< 0.001) but linear over-estimation of ($\beta$ = 1.58) 3D surface area.
-This results in a systematic underestimation of SDI that scales with core size. However, a simple correction of the caliper estimate (dividing by the slope, 1.58) eliminates surface area over-estimation (mean difference = $256mm^2$ [\<1.7% of mean], p=0.040) and produces SDI values that agree with 3D values (r2=0.975, p \< 0.001, $\beta$ = 0.98) (**Figure** \@ref(fig:figcomparison)B).
+This results in a systematic underestimation of SDI that scales with core size.
+However, a simple correction of the caliper estimate (dividing by the slope, 1.58) eliminates surface area over-estimation (mean difference = $256mm^2$ [\<1.7% of mean], p=0.040) and produces SDI values that agree with 3D values (r2=0.975, p \< 0.001, $\beta$ = 0.98) (**Figure** \@ref(fig:figcomparison)B).
 We thus proceeded to apply this correction to surface area estimates in the full sample.
 Insofar as these relationships are driven by basic geometry, we expect these methods (including correction) to be generalizable to other ESA assemblages.
 
-Visual estimation of flaked area approximated 3DGM measurement very closely (r2=0.932, p < 0.001, $\beta$ = 1.051; **Figure** \@ref(fig:figcomparison)C) and without any systematic bias (paired t-test: mean difference = -0.015%, 95% CI = 2.02% to 1.99%, p = 0.987). Individual errors ranged between -10.46% and 14.24%. We thus considered visual estimation to be reliable in our sample.
+Visual estimation of flaked area approximated 3DGM measurement very closely (r2=0.932, p \< 0.001, $\beta$ = 1.051; **Figure** \@ref(fig:figcomparison)C) and without any systematic bias (paired t-test: mean difference = -0.015%, 95% CI = 2.02% to 1.99%, p = 0.987).
+Individual errors ranged between -10.46% and 14.24%.
+We thus considered visual estimation to be reliable in our sample.
 
 ## Classification Validation
 
@@ -267,7 +286,9 @@ FAI and SDIc are moderately correlated ($\beta$=0.001, r=0.524, p\<0.001), an ef
 In Mode 2 cores (n=115), reduction measures have different effects depending on initial blank form.
 In general, the contrast between flat, lightly-worked flake bases and rounder, more-heavily worked cobble bases tends to inflate relationships between FAI and core shape (**Figure** \@ref(fig:FAIBASE)).
 Mode 2 cobble cores (n=37) display a negative effect of FAI on PC1(Flatness) ($\beta$=-0.011, r=0.367, p = 0.026), no effect of FAI on pointedness, and no association between FAI and cSDI (r=0.141, p = 0.406).
-Flake cores (n=69) show negative effects of FAI on PC1(Flatness) ($\beta$=-0.007, r=0.284, p = 0.018) and, more strongly, PC2(pointedness) ($\beta$=-0.019, r=0.443, p \< 0.001). Comparison of Mode 2 flake cores with unmodified large flakes from Acheulean contexts (n=35) shows that ranges of shape variation substantially overlap but that flaking generally reduces both PC1 and PC2. In fact, regressions of PC1 and PC2 on FAI show y-intercepts that closely approximate unmodified flake mean values (0.852 vs. 0.774 and 0.693 vs. 0.594, respectively) and significantly negative slopes as FAI increases (**Figure** \@ref(fig:FAIFLAKED)). 
+Flake cores (n=69) show negative effects of FAI on PC1(Flatness) ($\beta$=-0.007, r=0.284, p = 0.018) and, more strongly, PC2(pointedness) ($\beta$=-0.019, r=0.443, p \< 0.001).
+Comparison of Mode 2 flake cores with unmodified large flakes from Acheulean contexts (n=35) shows that ranges of shape variation substantially overlap but that flaking generally reduces both PC1 and PC2.
+In fact, regressions of PC1 and PC2 on FAI show y-intercepts that closely approximate unmodified flake mean values (0.852 vs. 0.774 and 0.693 vs. 0.594, respectively) and significantly negative slopes as FAI increases (**Figure** \@ref(fig:FAIFLAKED)).
 Flake cores show a small but significant positive effect of FAI on cSDI that, in contrast to Mode 1 cores, represents actual covariance rather than simply a relaxation of constraint (i.e. both upper and lower limits of cSDI increase with FAI).
 
 ```{r FAIBASE, echo=FALSE, out.width = '80%', fig.align='center', fig.cap="Mode 2 trends across blank types."}
@@ -432,7 +453,8 @@ Interestingly, much earlier large flake production has been reported at the 3.3 
 Although concerns have been raised regarding the dating and context of this site [@archer2020; @dominguez-rodrigo2019], it may provide an interesting technological comparison to Early Acheulean large flake production.
 
 With respect to knapping action organization, the intentional placement of flake removals to generate desired core morphologies demonstrates a more complex goal structure than is required for simple, least-effort debitage.
-Such complexity has implications for assessing cognitive demands including relational integration, temporal abstraction, and goal abstraction [@stoutStoneToolmakingEvolution2011]. For this reason, our study was designed to address concerns that intentional shaping might not actually be characteristic of Early Acheulean technology [e.g., @moore2016].
+Such complexity has implications for assessing cognitive demands including relational integration, temporal abstraction, and goal abstraction [@stoutStoneToolmakingEvolution2011].
+For this reason, our study was designed to address concerns that intentional shaping might not actually be characteristic of Early Acheulean technology [e.g., @moore2016].
 We did find evidence for (at least) the imposition of cutting edges on LFBs, and offer this a foundation for "minimum necessary competence" [sensu @killin2021] cognitive interpretations.
 We remain agnostic as to whether similar knapping complexity was demonstrated in the preceding Oldowan, but note that the rare and un-standardized [@gallotti2018] occurrence of debitage on flakes prior to 2.0 mya does not provide evidence of intentional shaping.
 Stout [-@stoutStoneToolmakingEvolution2011] argued that elaborated small flake debitage methods contemporary with the Early Acheulean, such as single platform Karari scrapers [@isaac1997] and hierarchical centripetal cores [@delatorre2003], document complex goal structures including the intentional modification of the core morphology to enable subsequent flake detachments.
