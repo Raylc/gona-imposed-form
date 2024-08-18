@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.24)  18 AUG 2024 14:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.7.24)  19 AUG 2024 01:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -647,76 +647,81 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 
 [2]
+Underfull \hbox (badness 1337) in paragraph at lines 170--174
+\T1/put/m/n/10.95 There is a broad con-sen-sus that re-fined han-daxes and cleavers known from some later
+ []
+
+
 
 [3]
 
 [4]
 
 [5]
-<../figure/FAI_SDI.png, id=251, 342.5598pt x 335.3328pt>
+<../figure/FAI_SDI.png, id=271, 342.5598pt x 335.3328pt>
 File: ../figure/FAI_SDI.png Graphic file (type png)
 <use ../figure/FAI_SDI.png>
 Package pdftex.def Info: ../figure/FAI_SDI.png  used on input line 223.
 (pdftex.def)             Requested size: 342.57462pt x 335.3473pt.
 
 
-[6 <../figure/FAI_SDI.png>]
-<../figure/Fig1.png, id=271, 441.65pt x 739.7236pt>
+[6]
+
+[7 <../figure/FAI_SDI.png>]
+<../figure/Fig1.png, id=303, 441.65pt x 739.7236pt>
 File: ../figure/Fig1.png Graphic file (type png)
 <use ../figure/Fig1.png>
 Package pdftex.def Info: ../figure/Fig1.png  used on input line 242.
 (pdftex.def)             Requested size: 375.82208pt x 629.46783pt.
 
 
-[7]
+[8]
 
-[8 <../figure/Fig1.png>]
+[9 <../figure/Fig1.png>]
 
-LaTeX Warning: Reference `fig:fig2' on page 9 undefined on input line 264.
+LaTeX Warning: Reference `fig:fig2' on page 10 undefined on input line 264.
 
 
-
-[9]
 
 [10]
 
 [11]
 
 [12]
-<../figure/Fig3a.png, id=373, 963.6pt x 191.9672pt>
+
+[13]
+<../figure/Fig3a.png, id=398, 963.6pt x 191.9672pt>
 File: ../figure/Fig3a.png Graphic file (type png)
 <use ../figure/Fig3a.png>
 Package pdftex.def Info: ../figure/Fig3a.png  used on input line 360.
 (pdftex.def)             Requested size: 375.80249pt x 74.8669pt.
-<../figure/Fig.3D comparison new1.png, id=374, 650.43pt x 216.81pt>
+<../figure/Fig.3D comparison new1.png, id=399, 650.43pt x 216.81pt>
 File: ../figure/Fig.3D comparison new1.png Graphic file (type png)
 <use ../figure/Fig.3D comparison new1.png>
 Package pdftex.def Info: ../figure/Fig.3D comparison new1.png  used on input line 369.
 (pdftex.def)             Requested size: 375.81058pt x 125.27019pt.
 
 
-[13{c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} <../figure/Fig3a.png>]
+[14{c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc} <../figure/Fig3a.png>]
 
-[14 <../figure/Fig.3D comparison new1.png>]
-
-[15]
+[15 <../figure/Fig.3D comparison new1.png>]
 
 [16]
-<../figure/Fig.FAI by base new NEW.png, id=409, 650.43pt x 216.81pt>
+
+[17]
+<../figure/Fig.FAI by base new NEW.png, id=434, 650.43pt x 216.81pt>
 File: ../figure/Fig.FAI by base new NEW.png Graphic file (type png)
 <use ../figure/Fig.FAI by base new NEW.png>
 Package pdftex.def Info: ../figure/Fig.FAI by base new NEW.png  used on input line 455.
 (pdftex.def)             Requested size: 375.81058pt x 125.27019pt.
-<../figure/Fig.FAI by flaked new123.png, id=410, 650.43pt x 216.81pt>
+<../figure/Fig.FAI by flaked new123.png, id=435, 650.43pt x 216.81pt>
 File: ../figure/Fig.FAI by flaked new123.png Graphic file (type png)
 <use ../figure/Fig.FAI by flaked new123.png>
 Package pdftex.def Info: ../figure/Fig.FAI by flaked new123.png  used on input line 464.
 (pdftex.def)             Requested size: 375.81058pt x 125.27019pt.
 
 
-[17 <../figure/Fig.FAI by base new NEW.png> <../figure/Fig.FAI by flaked new123.png>]
-
-[18]
+[18 <../figure/Fig.FAI by base new NEW.png> <../figure/Fig.FAI by flaked new123.png>]
 
 [19]
 
@@ -736,9 +741,9 @@ Package pdftex.def Info: ../figure/Fig.FAI by flaked new123.png  used on input l
 
 [27]
 
-[28{c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
+[28]
 
-[29]
+[29{c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}]
 
 [30]
 
@@ -756,7 +761,9 @@ Package pdftex.def Info: ../figure/Fig.FAI by flaked new123.png  used on input l
 
 [37]
 
-[38] (./manuscript.aux)
+[38]
+
+[39] (./manuscript.aux)
  ***********
 LaTeX2e <2024-06-01> patch level 2
 L3 programming layer <2024-05-27>
@@ -766,18 +773,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 15567 strings out of 475544
- 251478 string characters out of 5775996
- 1954908 words of memory out of 5000000
- 37738 multiletter control sequences out of 15000+600000
- 657798 words of font info for 94 fonts, out of 8000000 for 9000
+ 15586 strings out of 475544
+ 251909 string characters out of 5775996
+ 1955908 words of memory out of 5000000
+ 37748 multiletter control sequences out of 15000+600000
+ 658116 words of font info for 95 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  83i,12n,93p,936b,545s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmmi10.pfb><c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr10.pfb><c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmr8.pfb><c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmss8.pfb><c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/public/lm/lmsy10.pfb><c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/adobe/utopia/putb8a.pfb><c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/adobe/utopia/putr8a.pfb><c:/Users/raylc/AppData/Roaming/TinyTeX/texmf-dist/fonts/type1/adobe/utopia/putri8a.pfb>
-Output written on manuscript.pdf (38 pages, 15169285 bytes).
+Output written on manuscript.pdf (39 pages, 15172483 bytes).
 PDF statistics:
- 1111 PDF objects out of 1200 (max. 8388607)
- 1033 compressed objects within 11 object streams
- 185 named destinations out of 1000 (max. 500000)
+ 1147 PDF objects out of 1200 (max. 8388607)
+ 1068 compressed objects within 11 object streams
+ 194 named destinations out of 1000 (max. 500000)
  183 words of extra memory for PDF output out of 10000 (max. 10000000)
 
