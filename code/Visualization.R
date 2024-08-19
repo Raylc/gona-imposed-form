@@ -13,7 +13,9 @@ library(diptest)
 gona_linear<-readr::read_csv("data/Gona_EA_for_Cheng_020824.csv")
 gona_3d<-read.csv("data/3D-cleaned-for-Cheng-080224.csv")
 
-## Figure for 3d comparison
+# Visualization
+
+## Figure 4 (3d and caliper measurement comparison)
 
 fig4a <- ggplot(gona_3d, aes(X.3DGMPC110x10, FAC1_2)) + 
   geom_point() + 
@@ -33,11 +35,92 @@ fig4c <- ggplot(gona_3d, aes(Flaked, FlakedVisual)) +
   labs(x ="Flaked percentage (3D)", y = "Flaked percentage (visual)")
 
 patchwork <- (fig4a + fig4b + fig4c)
-patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.3D comparison new1.png", path="figure.", width = 9, height = 3, dpi = 300)
+patchwork + plot_annotation(tag_levels = 'a')
+ggplot2::ggsave("Fig.4.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
-## Figure for FAI by base
+## Figure 5 (DFA results)
+### LDFA (typology based)
+
+theme_set(theme_classic()) 
+gona_linearfil <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
+gona_lineardfa <- dplyr::select(gona_linearfil, FAI, FAC1_1, cSDI, FAC2_1, Typology)
+
+# Split the data into training (80%) and test set (20%) 
+set.seed(123) 
+training.individuals <- gona_lineardfa$Typology %>%  
+  createDataPartition(p = 0.8, list = FALSE) 
+train.data <- gona_lineardfa[training.individuals, ] 
+test.data <- gona_lineardfa[-training.individuals, ] 
+
+# Estimate preprocessing parameters 
+preproc.parameter <- train.data %>%  
+  preProcess(method = c("center", "scale")) 
+
+# Transform the data using the estimated parameters 
+train.transform <- preproc.parameter %>% predict(train.data) 
+test.transform <- preproc.parameter %>% predict(test.data) 
+
+# Fit the model 
+model <- lda(Typology~., data = train.transform) 
+
+# Make predictions 
+predictions <- model %>% predict(test.transform) 
+
+# Model accuracy 
+mean(predictions$class==test.transform$Typology) 
+
+model <- lda(Typology~., data = train.transform) 
+model
+lda.data <- cbind(train.transform, predict(model)$x)
+P0<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Typology))
+# P1<-ggExtra::ggMarginal(P0+ theme(legend.position = "left"),type="histogram")
+
+
+### LDFA (base based)
+gona_lineardfa1 <- dplyr::select(gona_linearfil, FAI, FAC1_1, cSDI, FAC2_1, Base)
+
+# Split the data into training (80%) and test set (20%) 
+set.seed(123) 
+training.individuals1 <- gona_lineardfa1$Base %>%  
+  createDataPartition(p = 0.8, list = FALSE) 
+train.data1 <- gona_lineardfa1[training.individuals, ] 
+test.data1 <- gona_lineardfa1[-training.individuals, ] 
+
+# Estimate preprocessing parameters 
+preproc.parameter1 <- train.data1 %>%  
+  preProcess(method = c("center", "scale")) 
+
+# Transform the data using the estimated parameters 
+train.transform1 <- preproc.parameter1 %>% predict(train.data1) 
+test.transform1 <- preproc.parameter1 %>% predict(test.data1) 
+
+# Fit the model 
+model1 <- lda(Base~., data = train.transform1) 
+
+# Make predictions 
+predictions1 <- model1 %>% predict(test.transform1) 
+
+# Model accuracy 
+mean(predictions1$class==test.transform1$Base) 
+
+model1 <- lda(Base~., data = train.transform1) 
+model 
+
+lda.data1 <- cbind(train.transform1, predict(model1)$x)
+lda.data1_neg <- lda.data1 %>% 
+  mutate_if(is.numeric, funs(. * -1))
+P2<-ggplot(lda.data1_neg, aes(LD1, LD2)) + geom_point(aes(color = Base))
+# P3<-ggExtra::ggMarginal(P2+ theme(legend.position = "left"),type="histogram")
+
+patchwork <- (P0 + P2)
+patchwork + plot_annotation(tag_levels = 'a')
+
+ggplot2::ggsave("Fig.5.png", path="figure.", width = 10, height = 4, dpi = 300)
+# save_plot("figure/Fig.4.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
+
+
+## Figure 6 (FAI by base)
 
 fig5a<-gona_linear %>%
   filter(Contexts == "Acheulean", Mode == "2", Flaked == "Flaked") %>%
@@ -54,18 +137,18 @@ fig5b<-gona_linear %>%
   ggplot(aes(FAI, FAC2_1)) + 
   geom_point(alpha=0.6,size=2,aes(color = as.factor(Base),shape=as.factor(Base))) + 
   geom_smooth(method=lm, aes(group = 1))+
-  labs(x ="FAI", y = "PC2 (convergence)")+
+  labs(x ="FAI", y = "PC2 (pointedness)")+
   labs(color='Base', shape = 'Base')+
   scale_y_continuous(limits=c(-3,3))+
   theme(legend.key.size = unit(0.2, "cm"))
 
 
 patchwork <- (fig5a + fig5b)
-patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.FAI by base new NEW.png", path="figure.", width = 9, height = 3, dpi = 300)
+patchwork + plot_annotation(tag_levels = 'a')
+ggplot2::ggsave("Fig.6.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
-## Figure for FAI by flaked
+## Figure 7 (FAI by flaked)
 PC1.mean <- gona_linear %>%
   filter(Contexts == "Acheulean", Base == "flake", Flaked == "Unmodified") %>%
   group_by(Flaked) %>%
@@ -102,7 +185,7 @@ fig6b<-gona_linear %>%
   annotate(geom = "text", x = 5 , y = 2.47, label = "DAN5:54", vjust=2,  size=2)+
   annotate(geom = "point", x = 5 , y = -2.21, colour = "black", fill = "#F8766D", size= 1,stroke = 0.5) +
   annotate(geom = "text", x = 5 , y = -2.21, label = "OGS5:5", vjust=2,  size=2)+
-  labs(x ="FAI", y = "PC2 (convergence)\n")+
+  labs(x ="FAI", y = "PC2 (pointedness)\n")+
   scale_y_continuous(limits=c(-2.5,3))+
   labs(color='Modification')+
   theme(legend.key.size = unit(0.2, "cm"))
@@ -121,8 +204,8 @@ fig6b2<-ggdraw(fig6b1) +
              x = 0.02, y = 0.81, width = 0.12, height = 0.12)
 
 patchwork <- (fig6a2 + fig6b2)
-patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.FAI by flaked new123.png", path="figure.", width = 9, height = 3, dpi = 300)
+patchwork + plot_annotation(tag_levels = 'a')
+ggplot2::ggsave("Fig.7.png", path="figure.", width = 9, height = 3, dpi = 300)
 
 
 ## heteroscedasticity test for mode1 and mode2 cores
@@ -394,14 +477,7 @@ model
 lda.data <- cbind(train.transform, predict(model)$x)
 P<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Typology))
 P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
-# ggscatterstats(
-#   data  = ggplot2::lda.data,
-#   x     = LD1,
-#   y     = LD2,
-#   xlab  = "LD1",
-#   ylab  = "LD2",
-# )
-P1
+
 
 save_plot("figure/Fig.LDA123.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
 
@@ -464,43 +540,43 @@ save_plot("figure/Fig.LDA123base.png", P1, base_height = 8, base_aspect_ratio = 
 
 
 
-### calculating effect size instead of correlation coefficient
-SDIpc1effectsize<- gona_linear %>%  split(.$Typology) %>% 
-  map(~lm(FAC1_1 ~ cSDI, data =.)) %>% 
-  map_df(broom::tidy, .id = 'Typology') %>%
-  filter(term == 'cSDI')
-SDIpc2effectsize<- gona_linear %>%  split(.$Typology) %>% 
-  map(~lm(FAC2_1 ~ cSDI, data =.)) %>% 
-  map_df(broom::tidy, .id = 'Typology') %>%
-  filter(term == 'cSDI')
-FAIpc1effectsize<- gona_linear %>%  split(.$Typology) %>% 
-  map(~lm(FAC1_1 ~ FAI, data =.)) %>% 
-  map_df(broom::tidy, .id = 'Typology') %>%
-  filter(term == 'FAI')
-FAIpc2effectsize<- gona_linear %>%  split(.$Typology) %>% 
-  map(~lm(FAC2_1 ~ FAI, data =.)) %>% 
-  map_df(broom::tidy, .id = 'Typology') %>%
-  filter(term == 'FAI')
-
-### combine data sets
-pc1effectsize<-merge(SDIpc1effectsize, FAIpc1effectsize,by="Typology")
-pc2effectsize<-merge(SDIpc2effectsize, FAIpc2effectsize,by="Typology")
-
-fig0b <- ggplot(pc1effectsize, aes(abs(estimate.x), abs(estimate.y))) + 
-  geom_point() + 
-  ggrepel::geom_text_repel(aes(label=Typology))+
-  labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")
-
-fig0c <- ggplot(pc2effectsize, aes(abs(estimate.x), abs(estimate.y))) + 
-  geom_point() + 
-  ggrepel::geom_text_repel(aes(label=Typology))+
-  labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")
-
-
-patchwork <- (fig0b + fig0c)
-patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.sdifai by typology(slope absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
-
+# ### calculating effect size instead of correlation coefficient
+# SDIpc1effectsize<- gona_linear %>%  split(.$Typology) %>% 
+#   map(~lm(FAC1_1 ~ cSDI, data =.)) %>% 
+#   map_df(broom::tidy, .id = 'Typology') %>%
+#   filter(term == 'cSDI')
+# SDIpc2effectsize<- gona_linear %>%  split(.$Typology) %>% 
+#   map(~lm(FAC2_1 ~ cSDI, data =.)) %>% 
+#   map_df(broom::tidy, .id = 'Typology') %>%
+#   filter(term == 'cSDI')
+# FAIpc1effectsize<- gona_linear %>%  split(.$Typology) %>% 
+#   map(~lm(FAC1_1 ~ FAI, data =.)) %>% 
+#   map_df(broom::tidy, .id = 'Typology') %>%
+#   filter(term == 'FAI')
+# FAIpc2effectsize<- gona_linear %>%  split(.$Typology) %>% 
+#   map(~lm(FAC2_1 ~ FAI, data =.)) %>% 
+#   map_df(broom::tidy, .id = 'Typology') %>%
+#   filter(term == 'FAI')
+# 
+# ### combine data sets
+# pc1effectsize<-merge(SDIpc1effectsize, FAIpc1effectsize,by="Typology")
+# pc2effectsize<-merge(SDIpc2effectsize, FAIpc2effectsize,by="Typology")
+# 
+# fig0b <- ggplot(pc1effectsize, aes(abs(estimate.x), abs(estimate.y))) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")
+# 
+# fig0c <- ggplot(pc2effectsize, aes(abs(estimate.x), abs(estimate.y))) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")
+# 
+# 
+# patchwork <- (fig0b + fig0c)
+# patchwork + plot_annotation(tag_levels = 'A')
+# ggplot2::ggsave("Fig.sdifai by typology(slope absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
+# 
 
 dip_test_result <- dip.test(lda.data$LD1)
 print(dip_test_result)
