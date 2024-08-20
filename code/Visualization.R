@@ -7,6 +7,7 @@ library(MASS)
 library(caret) 
 library(lsr)
 library(diptest)
+library(DFA.CANCOR)
 
 # Data preparation
 ## loading data
@@ -42,82 +43,64 @@ ggplot2::ggsave("Fig.4.png", path="figure.", width = 9, height = 3, dpi = 300)
 ## Figure 5 (DFA results)
 ### LDFA (typology based)
 
+
 theme_set(theme_classic()) 
 gona_linearfil <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
 gona_lineardfa <- dplyr::select(gona_linearfil, FAI, FAC1_1, cSDI, FAC2_1, Typology)
 
-# Split the data into training (80%) and test set (20%) 
-set.seed(123) 
-training.individuals <- gona_lineardfa$Typology %>%  
-  createDataPartition(p = 0.8, list = FALSE) 
-train.data <- gona_lineardfa[training.individuals, ] 
-test.data <- gona_lineardfa[-training.individuals, ] 
 
-# Estimate preprocessing parameters 
-preproc.parameter <- train.data %>%  
-  preProcess(method = c("center", "scale")) 
+DFA_Field=DFA.CANCOR::DFA(data = gona_lineardfa, 
+              groups = 'Typology', 
+              variables = c('FAI', 'FAC1_1', 'cSDI', 'FAC2_1'),
+              predictive = TRUE, 
+              priorprob = 'EQUAL',   
+              covmat_type='within', # altho better to use 'separate' for these data
+              verbose = TRUE)
+DFA_Field$dfa_scores$Function.2<- (-1)*(DFA_Field$dfa_scores$Function.2)
 
-# Transform the data using the estimated parameters 
-train.transform <- preproc.parameter %>% predict(train.data) 
-test.transform <- preproc.parameter %>% predict(test.data) 
+P0<-ggplot(DFA_Field$dfa_scores, aes(Function.1, Function.2)) + geom_point(aes(color = group))+
+  labs(x ="DF1", y = "DF2")
+P1<-ggExtra::ggMarginal(P0+ theme(legend.position = "left"),type="histogram")
 
-# Fit the model 
-model <- lda(Typology~., data = train.transform) 
+gona_lineardfa1 <- dplyr::select(gona_linearfil, FAI, FAC1_1, cSDI, FAC2_1, Base, Typology)
 
-# Make predictions 
-predictions <- model %>% predict(test.transform) 
+DFA_Field=DFA.CANCOR::DFA(data = gona_lineardfa1, 
+                          groups = 'Typology', 
+                          variables = c('FAI', 'FAC1_1', 'cSDI', 'FAC2_1'),
+                          predictive = TRUE, 
+                          priorprob = 'EQUAL',   
+                          covmat_type='within', # altho better to use 'separate' for these data
+                          verbose = TRUE)
+dfaresults <- cbind(DFA_Field$dfa_scores, gona_lineardfa1$Base)
+dfaresults$Function.2 <- (-1)*(dfaresults$Function.2)
 
-# Model accuracy 
-mean(predictions$class==test.transform$Typology) 
-
-model <- lda(Typology~., data = train.transform) 
-model
-lda.data <- cbind(train.transform, predict(model)$x)
-P0<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Typology))
-# P1<-ggExtra::ggMarginal(P0+ theme(legend.position = "left"),type="histogram")
+P2<-ggplot(dfaresults, aes(Function.1, Function.2)) + geom_point(aes(color = gona_lineardfa1$Base))+
+  labs(x ="DF1", y = "DF2")+guides(color=guide_legend(title="group"))+scale_color_brewer(palette="Accent")
+P3<-ggExtra::ggMarginal(P2+ theme(legend.position = "left"),type="histogram")
 
 
-### LDFA (base based)
-gona_lineardfa1 <- dplyr::select(gona_linearfil, FAI, FAC1_1, cSDI, FAC2_1, Base)
-
-# Split the data into training (80%) and test set (20%) 
-set.seed(123) 
-training.individuals1 <- gona_lineardfa1$Base %>%  
-  createDataPartition(p = 0.8, list = FALSE) 
-train.data1 <- gona_lineardfa1[training.individuals, ] 
-test.data1 <- gona_lineardfa1[-training.individuals, ] 
-
-# Estimate preprocessing parameters 
-preproc.parameter1 <- train.data1 %>%  
-  preProcess(method = c("center", "scale")) 
-
-# Transform the data using the estimated parameters 
-train.transform1 <- preproc.parameter1 %>% predict(train.data1) 
-test.transform1 <- preproc.parameter1 %>% predict(test.data1) 
-
-# Fit the model 
-model1 <- lda(Base~., data = train.transform1) 
-
-# Make predictions 
-predictions1 <- model1 %>% predict(test.transform1) 
-
-# Model accuracy 
-mean(predictions1$class==test.transform1$Base) 
-
-model1 <- lda(Base~., data = train.transform1) 
-model 
-
-lda.data1 <- cbind(train.transform1, predict(model1)$x)
-lda.data1_neg <- lda.data1 %>% 
-  mutate_if(is.numeric, funs(. * -1))
-P2<-ggplot(lda.data1_neg, aes(LD1, LD2)) + geom_point(aes(color = Base))
-# P3<-ggExtra::ggMarginal(P2+ theme(legend.position = "left"),type="histogram")
-
-patchwork <- (P0 + P2)
+patchwork <- patchwork::wrap_elements(P1) + patchwork::wrap_elements(P3)
 patchwork + plot_annotation(tag_levels = 'a')
 
 ggplot2::ggsave("Fig.5.png", path="figure.", width = 10, height = 4, dpi = 300)
-# save_plot("figure/Fig.4.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
+
+dip_test_result <- dip.test(DFA_Field$dfa_scores$Function.1)
+print(dip_test_result)
+
+dip_test_result1 <- dip.test(DFA_Field1$dfa_scores$Function.1)
+print(dip_test_result1)
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Figure 6 (FAI by base)
@@ -127,9 +110,9 @@ fig5a<-gona_linear %>%
   ggplot(aes(FAI, FAC1_1)) + 
   geom_point(alpha=0.6,size=2,aes(color= as.factor(Base),shape=as.factor(Base))) + 
   geom_smooth(method=lm, aes(group = 1))+
-  labs(x ="FAI", y = "PC1 (flatness)")+
+  labs(x ="FAI", y = "PC1 (flatness, higher = flatter)")+
   scale_y_continuous(limits=c(-1.5,2.5))+
-  theme(legend.position="none")
+  theme(legend.position="none", axis.title=element_text(size=8))
 
 
 fig5b<-gona_linear %>%
@@ -137,10 +120,10 @@ fig5b<-gona_linear %>%
   ggplot(aes(FAI, FAC2_1)) + 
   geom_point(alpha=0.6,size=2,aes(color = as.factor(Base),shape=as.factor(Base))) + 
   geom_smooth(method=lm, aes(group = 1))+
-  labs(x ="FAI", y = "PC2 (pointedness)")+
+  labs(x ="FAI", y = "PC2 (pointedness, lower = more pointed)")+
   labs(color='Base', shape = 'Base')+
   scale_y_continuous(limits=c(-3,3))+
-  theme(legend.key.size = unit(0.2, "cm"))
+  theme(legend.key.size = unit(0.2, "cm"), axis.title=element_text(size=8))
 
 
 patchwork <- (fig5a + fig5b)
@@ -170,9 +153,9 @@ fig6a<-gona_linear %>%
   annotate(geom = "text", x = 55 , y = 2.05, label = "OGS5:2013-1", vjust=2, size=2)+
   annotate(geom = "point", x = 0 , y = -0.66, colour = "black", fill = "#619CFF", size= 1, stroke = 0.5) +
   annotate(geom = "text", x = 0 , y = -0.66, label = "OGS5:54",  vjust=2, size=2)+
-  labs(x ="FAI", y = "PC1 (flatness)\n")+
+  labs(x ="FAI", y = "PC1 (flatness, higher = flatter)")+
   scale_y_continuous(limits=c(-1.5,2.5))+
-  theme(legend.position="none")
+  theme(legend.position="none", axis.title=element_text(size=8))
 
   
 fig6b<-gona_linear %>%
@@ -185,27 +168,27 @@ fig6b<-gona_linear %>%
   annotate(geom = "text", x = 5 , y = 2.47, label = "DAN5:54", vjust=2,  size=2)+
   annotate(geom = "point", x = 5 , y = -2.21, colour = "black", fill = "#F8766D", size= 1,stroke = 0.5) +
   annotate(geom = "text", x = 5 , y = -2.21, label = "OGS5:5", vjust=2,  size=2)+
-  labs(x ="FAI", y = "PC2 (pointedness)\n")+
+  labs(x ="FAI", y = "PC2 (pointedness, lower = more pointed)")+
   scale_y_continuous(limits=c(-2.5,3))+
   labs(color='Modification')+
-  theme(legend.key.size = unit(0.2, "cm"))
+  theme(legend.key.size = unit(0.2, "cm"), axis.title=element_text(size=8))
 
 fig6a1<-ggdraw(fig6a) + 
   draw_image("figure/Picture1.PNG",
-             x = 0.02, y = 0.29, width = 0.12, height = 0.12)
+             x = -0.045, y = 0.22, width = 0.12, height = 0.12)
 fig6a2<-ggdraw(fig6a1) + 
   draw_image("figure/Picture2.PNG",
-             x = 0.02, y = 0.8, width = 0.12, height = 0.12)
+             x = -0.045, y = 0.8, width = 0.12, height = 0.12)
 fig6b1<-ggdraw(fig6b) + 
   draw_image("figure/Picture3.PNG",
-             x = 0.02, y = 0.16, width = 0.12, height = 0.12)
+             x = -0.045, y = 0.12, width = 0.12, height = 0.12)
 fig6b2<-ggdraw(fig6b1) + 
   draw_image("figure/Picture4.PNG",
-             x = 0.02, y = 0.81, width = 0.12, height = 0.12)
+             x = -0.045, y = 0.81, width = 0.12, height = 0.12)
 
 patchwork <- (fig6a2 + fig6b2)
 patchwork + plot_annotation(tag_levels = 'a')
-ggplot2::ggsave("Fig.7.png", path="figure.", width = 9, height = 3, dpi = 300)
+ggplot2::ggsave("Fig.7.png", path="figure.", width = 15, height = 5, dpi = 300)
 
 
 ## heteroscedasticity test for mode1 and mode2 cores
@@ -237,7 +220,7 @@ leftfig<-joined_gona %>%
 
 
 ## figures for demonstrating the conceptual model as requested by R3
-gona_linear<- gona_linear %>% unite("FULLNAME", Locality:Catalog, remove = FALSE)
+# gona_linear<- gona_linear %>% unite("FULLNAME", Locality:Catalog, remove = FALSE)
 ### mapping SDI and FAI
 # fig0a <- ggplot(gona_linear, aes(cSDI, FAI, color = Typology)) +
 #   geom_point() + 
@@ -259,33 +242,33 @@ gona_linear<- gona_linear %>% unite("FULLNAME", Locality:Catalog, remove = FALSE
 # correlation34<- merge(correlation3,correlation4,by="Locality")
 
 
-### correlation between SDI/PC1 correlation and FAI/PC1
-correlation1<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC1R = abs(cor(cSDI, FAC1_1)))
-correlation2<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC1R = abs(cor(FAI, FAC1_1)))
-correlation12<- merge(correlation1,correlation2,by="Typology")
+# ### correlation between SDI/PC1 correlation and FAI/PC1
+# correlation1<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC1R = abs(cor(cSDI, FAC1_1)))
+# correlation2<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC1R = abs(cor(FAI, FAC1_1)))
+# correlation12<- merge(correlation1,correlation2,by="Typology")
 
 ### correlation between SDI/PC2 correlation and FAI/PC2
-
-correlation3<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC2R = abs(cor(cSDI, FAC2_1)))
-correlation4<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC2R = abs(cor(FAI, FAC2_1)))
-correlation34<- merge(correlation3,correlation4,by="Typology")
-  
-fig0b <- ggplot(correlation12, aes(SDIPC1R, FAIPC1R)) + 
-  geom_point() + 
-  ggrepel::geom_text_repel(aes(label=Typology))+
-  labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")
-
-fig0c <- ggplot(correlation34, aes(SDIPC2R, FAIPC2R)) + 
-  geom_point() + 
-  ggrepel::geom_text_repel(aes(label=Typology))+
-  labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")
-
-
-patchwork <- (fig0b + fig0c)
-patchwork + plot_annotation(tag_levels = 'A')
-ggplot2::ggsave("Fig.sdifai by typology(absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
-
 # 
+# correlation3<- gona_linear %>% group_by(Typology) %>%  summarise(SDIPC2R = abs(cor(cSDI, FAC2_1)))
+# correlation4<- gona_linear %>% group_by(Typology) %>%  summarise(FAIPC2R = abs(cor(FAI, FAC2_1)))
+# correlation34<- merge(correlation3,correlation4,by="Typology")
+#   
+# fig0b <- ggplot(correlation12, aes(SDIPC1R, FAIPC1R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC1", y = "correlation between FAI and PC1")
+# 
+# fig0c <- ggplot(correlation34, aes(SDIPC2R, FAIPC2R)) + 
+#   geom_point() + 
+#   ggrepel::geom_text_repel(aes(label=Typology))+
+#   labs(x ="correlation between SDI and PC2", y = "correlation between FAI and PC2")
+# 
+# 
+# patchwork <- (fig0b + fig0c)
+# patchwork + plot_annotation(tag_levels = 'A')
+# ggplot2::ggsave("Fig.sdifai by typology(absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
+# 
+# # 
 # patchwork <- (fig0a + fig0b + fig0c)
 # patchwork + plot_annotation(tag_levels = 'A')
 # ggplot2::ggsave("Fig.CONCEPTUAL.png", path="figure.", width = 27, height = 9, dpi = 300)
@@ -433,108 +416,108 @@ ggplot2::ggsave("Fig.sdifai by typology(absolute value).png", path="figure.", wi
 # patchwork + plot_annotation(tag_levels = 'A')
 # ggplot2::ggsave("Fig.TYPOLOGY BY LOCALITY.png", path="figure.", width = 15, height = 15, dpi = 300)
 
-
-### LDFA
-
-theme_set(theme_classic()) 
-
-# Load the data 
-# gona_lineardfa <- gona_linear %>% filter(Typology == c("Pick" , "Handaxe" , "Knife"))
-
-gona_lineardfa <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
-gona_lineardfa <- dplyr::select(gona_lineardfa, FAI, FAC1_1, cSDI, FAC2_1, Typology)
-
-
-# Split the data into training (80%) and test set (20%) 
-set.seed(123) 
-training.individuals <- gona_lineardfa$Typology %>%  
-  createDataPartition(p = 0.8, list = FALSE) 
-train.data <- gona_lineardfa[training.individuals, ] 
-test.data <- gona_lineardfa[-training.individuals, ] 
-
-# Estimate preprocessing parameters 
-preproc.parameter <- train.data %>%  
-  preProcess(method = c("center", "scale")) 
-
-# Transform the data using the estimated parameters 
-train.transform <- preproc.parameter %>% predict(train.data) 
-test.transform <- preproc.parameter %>% predict(test.data) 
-
-# Fit the model 
-model <- lda(Typology~., data = train.transform) 
-
-# Make predictions 
-predictions <- model %>% predict(test.transform) 
-
-# Model accuracy 
-mean(predictions$class==test.transform$Typology) 
-
-model <- lda(Typology~., data = train.transform) 
-model 
-# Typology_colors <- c("Handaxe" = "red", "Pick" = "blue", "Knife" = "green")
-# plot(model, col = Typology_colors, main="Visualization of Linear Discriminant Analysis")
-
-lda.data <- cbind(train.transform, predict(model)$x)
-P<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Typology))
-P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
-
-
-save_plot("figure/Fig.LDA123.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
-
-
-
-
-
-
-
-
-gona_lineardfa <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
-gona_lineardfa <- dplyr::select(gona_lineardfa, FAI, FAC1_1, cSDI, FAC2_1, Base)
-
-
-# Split the data into training (80%) and test set (20%) 
-set.seed(123) 
-training.individuals <- gona_lineardfa$Base %>%  
-  createDataPartition(p = 0.8, list = FALSE) 
-train.data <- gona_lineardfa[training.individuals, ] 
-test.data <- gona_lineardfa[-training.individuals, ] 
-
-# Estimate preprocessing parameters 
-preproc.parameter <- train.data %>%  
-  preProcess(method = c("center", "scale")) 
-
-# Transform the data using the estimated parameters 
-train.transform <- preproc.parameter %>% predict(train.data) 
-test.transform <- preproc.parameter %>% predict(test.data) 
-
-# Fit the model 
-model <- lda(Base~., data = train.transform) 
-
-# Make predictions 
-predictions <- model %>% predict(test.transform) 
-
-# Model accuracy 
-mean(predictions$class==test.transform$Base) 
-
-model <- lda(Base~., data = train.transform) 
-model 
-# Typology_colors <- c("Handaxe" = "red", "Pick" = "blue", "Knife" = "green")
-# plot(model, col = Typology_colors, main="Visualization of Linear Discriminant Analysis")
-
-lda.data <- cbind(train.transform, predict(model)$x)
-P<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Base))
-P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
-# ggscatterstats(
-#   data  = ggplot2::lda.data,
-#   x     = LD1,
-#   y     = LD2,
-#   xlab  = "LD1",
-#   ylab  = "LD2",
-# )
-P1
-
-save_plot("figure/Fig.LDA123base.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
-
+# 
+# ### LDFA
+# 
+# theme_set(theme_classic()) 
+# 
+# # Load the data 
+# # gona_lineardfa <- gona_linear %>% filter(Typology == c("Pick" , "Handaxe" , "Knife"))
+# 
+# gona_lineardfa <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
+# gona_lineardfa <- dplyr::select(gona_lineardfa, FAI, FAC1_1, cSDI, FAC2_1, Typology)
+# 
+# 
+# # Split the data into training (80%) and test set (20%) 
+# set.seed(123) 
+# training.individuals <- gona_lineardfa$Typology %>%  
+#   createDataPartition(p = 0.8, list = FALSE) 
+# train.data <- gona_lineardfa[training.individuals, ] 
+# test.data <- gona_lineardfa[-training.individuals, ] 
+# 
+# # Estimate preprocessing parameters 
+# preproc.parameter <- train.data %>%  
+#   preProcess(method = c("center", "scale")) 
+# 
+# # Transform the data using the estimated parameters 
+# train.transform <- preproc.parameter %>% predict(train.data) 
+# test.transform <- preproc.parameter %>% predict(test.data) 
+# 
+# # Fit the model 
+# model <- lda(Typology~., data = train.transform) 
+# 
+# # Make predictions 
+# predictions <- model %>% predict(test.transform) 
+# 
+# # Model accuracy 
+# mean(predictions$class==test.transform$Typology) 
+# 
+# model <- lda(Typology~., data = train.transform) 
+# model 
+# # Typology_colors <- c("Handaxe" = "red", "Pick" = "blue", "Knife" = "green")
+# # plot(model, col = Typology_colors, main="Visualization of Linear Discriminant Analysis")
+# 
+# lda.data <- cbind(train.transform, predict(model)$x)
+# P<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Typology))
+# P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
+# 
+# 
+# save_plot("figure/Fig.LDA123.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# 
+# gona_lineardfa <- gona_linear %>% filter(Typology == "Pick" | Typology =="Handaxe" | Typology == "Knife")
+# gona_lineardfa <- dplyr::select(gona_lineardfa, FAI, FAC1_1, cSDI, FAC2_1, Base)
+# 
+# 
+# # Split the data into training (80%) and test set (20%) 
+# set.seed(123) 
+# training.individuals <- gona_lineardfa$Base %>%  
+#   createDataPartition(p = 0.8, list = FALSE) 
+# train.data <- gona_lineardfa[training.individuals, ] 
+# test.data <- gona_lineardfa[-training.individuals, ] 
+# 
+# # Estimate preprocessing parameters 
+# preproc.parameter <- train.data %>%  
+#   preProcess(method = c("center", "scale")) 
+# 
+# # Transform the data using the estimated parameters 
+# train.transform <- preproc.parameter %>% predict(train.data) 
+# test.transform <- preproc.parameter %>% predict(test.data) 
+# 
+# # Fit the model 
+# model <- lda(Base~., data = train.transform) 
+# 
+# # Make predictions 
+# predictions <- model %>% predict(test.transform) 
+# 
+# # Model accuracy 
+# mean(predictions$class==test.transform$Base) 
+# 
+# model <- lda(Base~., data = train.transform) 
+# model 
+# # Typology_colors <- c("Handaxe" = "red", "Pick" = "blue", "Knife" = "green")
+# # plot(model, col = Typology_colors, main="Visualization of Linear Discriminant Analysis")
+# 
+# lda.data <- cbind(train.transform, predict(model)$x)
+# P<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Base))
+# P1<-ggExtra::ggMarginal(P+ theme(legend.position = "left"),type="histogram")
+# # ggscatterstats(
+# #   data  = ggplot2::lda.data,
+# #   x     = LD1,
+# #   y     = LD2,
+# #   xlab  = "LD1",
+# #   ylab  = "LD2",
+# # )
+# P1
+# 
+# save_plot("figure/Fig.LDA123base.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
+# 
 
 
 
@@ -577,6 +560,66 @@ save_plot("figure/Fig.LDA123base.png", P1, base_height = 8, base_aspect_ratio = 
 # patchwork + plot_annotation(tag_levels = 'A')
 # ggplot2::ggsave("Fig.sdifai by typology(slope absolute value).png", path="figure.", width = 10, height = 5, dpi = 300)
 # 
+
+# 
+# 
+# 
+# # Split the data into training (80%) and test set (20%) 
+# set.seed(123) 
+# training.individuals <- gona_lineardfa$Typology %>%  
+#   createDataPartition(p = 0.8, list = FALSE) 
+# train.data <- gona_lineardfa[training.individuals, ] 
+# test.data <- gona_lineardfa[-training.individuals, ] 
+# 
+# # Estimate preprocessing parameters 
+# preproc.parameter <- train.data %>%  
+#   preProcess(method = c("center", "scale")) 
+# 
+# # Transform the data using the estimated parameters 
+# train.transform <- preproc.parameter %>% predict(train.data) 
+# test.transform <- preproc.parameter %>% predict(test.data) 
+# 
+# # Fit the model 
+# model <- lda(Typology~., data = train.transform) 
+# 
+# # Make predictions 
+# predictions <- model %>% predict(test.transform) 
+# 
+# # Model accuracy 
+# mean(predictions$class==test.transform$Typology) 
+# 
+# model <- lda(Typology~., data = train.transform) 
+# model
+# lda.data <- cbind(train.transform, predict(model)$x)
+# P0<-ggplot(lda.data, aes(LD1, LD2)) + geom_point(aes(color = Typology))+
+#   labs(x ="DF1", y = "DF2")
+# P1<-ggExtra::ggMarginal(P0+ theme(legend.position = "left"),type="histogram")
+# 
+# 
+# ### LDFA (base based)
+# gona_lineardfa1 <- dplyr::select(gona_linearfil, FAI, FAC1_1, cSDI, FAC2_1, Base)
+# 
+# # Split the data into training (80%) and test set (20%) 
+# set.seed(123) 
+# 
+# 
+# patchwork <- patchwork::wrap_elements(P1) + patchwork::wrap_elements(P3)
+# patchwork + plot_annotation(tag_levels = 'a')
+# 
+# ggplot2::ggsave("Fig.5.png", path="figure.", width = 10, height = 4, dpi = 300)
+# # save_plot("figure/Fig.4.png", P1, base_height = 8, base_aspect_ratio = 1.4, dpi = 300)
+
+
+# DFA_Field1=DFA.CANCOR::DFA(data = gona_lineardfa1, 
+#                           groups = 'Base', 
+#                           variables = c('FAI', 'FAC1_1', 'cSDI', 'FAC2_1'),
+#                           predictive = TRUE, 
+#                           priorprob = 'EQUAL',   
+#                           covmat_type='within', # altho better to use 'separate' for these data
+#                           verbose = TRUE)
+# P2<-ggplot(DFA_Field1$dfa_scores, aes(Function.1, Function.2)) + geom_point(aes(color = group))+
+#   labs(x ="DF1", y = "DF2")
+# P3<-ggExtra::ggMarginal(P2+ theme(legend.position = "left"),type="histogram")
 
 dip_test_result <- dip.test(lda.data$LD1)
 print(dip_test_result)
