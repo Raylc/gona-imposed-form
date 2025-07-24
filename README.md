@@ -1,11 +1,11 @@
 # gona-imposed-form
-Imposed form in the Early Acheulean? Evidence from Gona, Afar, Ethiopia, Journal of Human Evolution.
+Research compendium for “Imposed form in the Early Acheulean? Evidence from Gona, Afar, Ethiopia”, Journal of Archaeological Method and Theory.
 
 ## Getting Started
 Please open the Rproj file instead of the Rcode directly to make sure relative paths work!
 
 ## File Structure
-The repository is organised into four main directories: code, data, figure, and manuscript.
+The repository is organized into four main directories: code, data, figure, and manuscript.
 
 ### code
 * `Visualization` ... This is the R script generating the main figures (fig. 4-7) of this paper using data derived from SPSS.
